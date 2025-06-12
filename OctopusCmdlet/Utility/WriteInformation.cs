@@ -1,6 +1,4 @@
-﻿using System;
-
-// Ignore Spelling: Cmdlet
+﻿// Ignore Spelling: Cmdlet
 
 using System.Management.Automation;
 using System.Runtime.CompilerServices;

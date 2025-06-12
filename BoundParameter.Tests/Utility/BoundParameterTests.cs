@@ -1,13 +1,4 @@
-﻿using Markdig.Helpers;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using OctopusCmdlet.Utility;
-
-using System;
-using System.Collections.Generic;
-
-namespace BoundParameter.Tests.Utility
+﻿namespace BoundParameter.Tests.Utility
 {
     [TestClass]
     public class BoundParameterTests

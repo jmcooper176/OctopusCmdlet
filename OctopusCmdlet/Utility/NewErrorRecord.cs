@@ -594,5 +594,11 @@ namespace OctopusCmdlet.Utility
         }
 
         #endregion Public Methods
+
+        #region Private Fields
+
+        private bool disposedValue;
+
+        #endregion Private Fields
     }
 }
