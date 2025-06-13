@@ -1,0 +1,53 @@
+---
+name: PowerShell Linter and Pester Tests
+on: push
+    workflow_dispatch: 
+
+  jobs: 
+    pester-test: 
+        name: Pester test
+        runs-on: ubuntu-latest
+        steps: 
+            - name: Check Out Repository Code
+              uses: actions/checkout@v4
+
+            - name: Setup PowerShell module cache
+              id  : cacher
+              uses: actions/cache@v3
+              with: 
+              path: "~/.local/share/powershell/Modules"
+              key : ${{ runner.os }}-${{ github.workflow }}
+
+            - name: Install from PSGallery
+              shell: pwsh
+              run: |
+                Set-PSRepository PSGallery -InstallationPolicy Trusted
+                Install-Module -Name PSScriptAnalyzer
+
+            - name: Lint with PSScriptAnalyzer
+              shell: pwsh
+              run: |
+                Invoke-ScriptAnalyzer -Path *.ps1 -Recurse -Outvariable issues
+                $errors   = $issues.Where({ $_.Severity -eq 'Error' })
+                $warnings = $issues.Where( {$_.Severity -eq 'Warning' })
+                if ($errors) {
+                    Write-Error -Message "There were $($errors.Count) errors and $($warnings.Count) warnings total." -ErrorAction Stop
+                } else {
+                    Write-Host "There were $($errors.Count) errors and $($warnings.Count) warnings total."
+                }
+
+            - name: Perform a Pester tests from the Tests.ps1 file
+              shell: pwsh
+              run: |
+                Get-ChildItem -LiteralPath ${{ github.workspace }} -Include '*.tests.ps1' | 
+                ForEach-Object -Process [
+                    Invoke-Pester -Path $_.FullName -Verbose -Passthru |
+                    Export-CliXml -Path ./$_.BaseName.xml
+                }
+
+            - name: Upload test results
+              uses: actions/upload-artifact@v4
+              with:
+                name: ubuntu-Unit-Tests
+                path: Unit.Tests.xml
+              if: ${{ always() }}
