@@ -36,7 +36,7 @@ namespace OctopusCmdlet.Utility
         [ValidateRange(-1, 2147483647)]
         public int BufferSize { get; set; }
 
-        [ValidateConsoleColumn]
+        [ValidateConsoleColumnAttribute]
         public int Column { get; set; }
 
         [ValidateSet("ASCII", "BigEndianUnicode", "Default", "Latin1", "Unicode", "UTF32", "UTF8", IgnoreCase = true)]
@@ -60,7 +60,7 @@ namespace OctopusCmdlet.Utility
 
         public string Path { get; set; }
 
-        [ValidateConsoleRow]
+        [ValidateConsoleRowAttribute]
         public int Row { get; set; }
 
         public object? Separator { get; set; }

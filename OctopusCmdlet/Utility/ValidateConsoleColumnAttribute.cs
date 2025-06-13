@@ -6,7 +6,7 @@ namespace OctopusCmdlet.Utility
     /// <summary>
     /// Implements the 'ValidateConsoleColumn' validate arguments attribute.
     /// </summary>
-    public class ValidateConsoleColumn : ValidateArgumentsAttribute
+    public class ValidateConsoleColumnAttribute : ValidateArgumentsAttribute
     {
         #region Protected Methods
 

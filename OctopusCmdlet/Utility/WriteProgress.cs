@@ -8,18 +8,17 @@ namespace OctopusCmdlet.Utility
     {
         #region Public Methods
 
-        public void WriteProgressCommand(ProgressRecord progressRecord)
+        public virtual void WriteProgressCommand(ProgressRecord progressRecord)
         {
             base.WriteProgress(progressRecord);
         }
 
-        public void WriteProgressCommand(
+        public virtual void WriteProgressCommand(
             int activityId,
-            string? currentOperation = null,
-            int parentActivityId = 0,
-            int percentComplete = -1,
+            double percentComplete,
             ProgressRecordType recordType = ProgressRecordType.Processing,
-            int secondsRemaining = -1)
+            string? currentOperation = null,
+            int parentActivityId = 0)
         {
             var pr = new ProgressRecord(activityId);
 
@@ -33,30 +32,47 @@ namespace OctopusCmdlet.Utility
                 pr.ParentActivityId = parentActivityId;
             }
 
-            if (percentComplete >= -1)
-            {
-                pr.PercentComplete = percentComplete;
-            }
-
             pr.RecordType = recordType;
-
-            if (secondsRemaining >= -1)
-            {
-                pr.SecondsRemaining = secondsRemaining;
-            }
+            pr.PercentComplete = percentComplete <= 0.005 || pr.RecordType == ProgressRecordType.Completed ? 0 : Convert.ToInt32(percentComplete * 100);
+            pr.SecondsRemaining = -1;
 
             WriteProgressCommand(pr);
         }
 
-        public void WriteProgressCommand(
+        public virtual void WriteProgressCommand(
+            int activityId,
+            TimeSpan remaining,
+            ProgressRecordType recordType = ProgressRecordType.Processing,
+            string? currentOperation = null,
+            int parentActivityId = 0)
+        {
+            var pr = new ProgressRecord(activityId);
+
+            if (!string.IsNullOrWhiteSpace(currentOperation))
+            {
+                pr.CurrentOperation = currentOperation;
+            }
+
+            if (parentActivityId > 0)
+            {
+                pr.ParentActivityId = parentActivityId;
+            }
+
+            pr.PercentComplete = -1;
+            pr.RecordType = recordType;
+            pr.SecondsRemaining = remaining == TimeSpan.Zero || pr.RecordType == ProgressRecordType.Completed ? 0 : Convert.ToInt32(remaining.TotalSeconds);
+
+            WriteProgressCommand(pr);
+        }
+
+        public virtual void WriteProgressCommand(
             int activityId,
             string activity,
             string statusDescription,
-            string? currentOperation = null,
-            int parentActivityId = 0,
-            int percentComplete = -1,
+            double percentComplete,
             ProgressRecordType recordType = ProgressRecordType.Processing,
-            int secondsRemaining = -1)
+            string? currentOperation = null,
+            int parentActivityId = 0)
         {
             var pr = new ProgressRecord(activityId, activity, statusDescription);
 
@@ -70,17 +86,37 @@ namespace OctopusCmdlet.Utility
                 pr.ParentActivityId = parentActivityId;
             }
 
-            if (percentComplete >= -1)
-            {
-                pr.PercentComplete = percentComplete;
-            }
-
             pr.RecordType = recordType;
+            pr.PercentComplete = percentComplete <= 0.005 || pr.RecordType == ProgressRecordType.Completed ? 0 : Convert.ToInt32(percentComplete * 100);
+            pr.SecondsRemaining = -1;
 
-            if (secondsRemaining >= -1)
+            WriteProgressCommand(pr);
+        }
+
+        public virtual void WriteProgressCommand(
+            int activityId,
+            string activity,
+            string statusDescription,
+            TimeSpan remaining,
+            ProgressRecordType recordType = ProgressRecordType.Processing,
+            string? currentOperation = null,
+            int parentActivityId = 0)
+        {
+            var pr = new ProgressRecord(activityId, activity, statusDescription);
+
+            if (!string.IsNullOrWhiteSpace(currentOperation))
             {
-                pr.SecondsRemaining = secondsRemaining;
+                pr.CurrentOperation = currentOperation;
             }
+
+            if (parentActivityId > 0)
+            {
+                pr.ParentActivityId = parentActivityId;
+            }
+
+            pr.PercentComplete = -1;
+            pr.RecordType = recordType;
+            pr.SecondsRemaining = remaining == TimeSpan.Zero || pr.RecordType == ProgressRecordType.Completed ? 0 : Convert.ToInt32(remaining.TotalSeconds);
 
             WriteProgressCommand(pr);
         }
