@@ -121,7 +121,7 @@ _Below is an example of how you can instruct your audience on installing and set
    ```
 3. Install .NET 9.0 SDK
    ```sh
-
+   choco install dotnet-9.0-sdk
    ```
 4. Change git remote url to avoid accidental pushes to base project
    ```sh
