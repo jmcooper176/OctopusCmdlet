@@ -1,6 +1,15 @@
 ﻿---
 name: PowerShell Linter and Pester Tests
-on: push
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+  pull_request:
+
+defaults:
+  run:
+    shell: pwsh
 
 jobs:
   pester-test:
