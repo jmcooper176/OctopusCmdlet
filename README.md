@@ -12,7 +12,7 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![Unlicense License][license-shield]][license-url]
+[![BSD-3-Clause License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
@@ -20,7 +20,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://github.com/jmcooper176/OctopusCmdlet">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -29,7 +29,7 @@
   <p align="center">
     A project to re-imagine, re-design, and re-engineer 'Octopus-Cmdlets'
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/jmcooper176/OctopusCmdlet"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/jmcooper176/OctopusCmdlet/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
@@ -69,20 +69,18 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## About OctopusCmdlet
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![OctopusCmdlet][product-screenshot]](https://github.com/jmcooper176/OctopusCmdlet/images/screenshot.png)
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+Since 2007, I have done plenty of work with Octopus Deploy.  Octopus-Cmdlets were interesting, but had some issues:
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+* The Octopus Client has not been kept up to date, which has resulted in some significant drift;
+* Many of the Cmdlets tried to do too much;
+* The Cmdlets did not really leverage the PowerShell pipeline well; AND
+* While at least it had unit tests, I think they could be better, and segregate some tests as integration tests.
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
+So, why not?
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -92,10 +90,10 @@ Use the `BLANK_README.md` to get started.
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-* [![Octopus Client][NuGet]][ODClient-NuGet-url]
-* [![PowerShell SDK][NuGet]][PowerShellSDK-NuGet-url]
-* [![PowerShell][Microsoft][PowerShell-Installers-url]
-* [![.NET 9.0 SDK][Microsoft][DotNet-SDK-Installers-url]
+* [Octopus Client][ODClient-NuGet-url]
+* [PowerShell SDK][PowerShellSDK-NuGet-url]
+* [PowerShell][PowerShell-Installers-url]
+* [.NET 9.0 SDK][DotNet-SDK-Installers-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -177,7 +175,7 @@ Do not forget to give the project a star! Thanks again!
 ### Top contributors:
 
 <a href="https://github.com/jmcooper176/OctopusCmdlet/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=othneildrew/Best-README-Template" alt="contrib.rocks image" />
+  <img src="https://contrib.rocks/image?repo=jmcooper176/OctopusCmdlet" alt="contrib.rocks image" />
 </a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -201,8 +199,13 @@ John Merryweather Cooper
 - LinkedIn [johnmcooper8654](https://linkedin.com/in/johnmcooper8654)
 - email [jmcooper8654@gmail.com](mailto:jmcooper8654@gmail.com)
 
-Project Link: [https://github.com/jmcooper176/OctopusCmdlet](https://github.com/jmcooper176/OctopusCmdlet)
-Clone Link: [https://github.com/jmcooper176/OctopusCmdlet.git](https://github.com/jmcooper176/OctopusCmdlet.git)
+### Project Link:
+
+[https://github.com/jmcooper176/OctopusCmdlet](https://github.com/jmcooper176/OctopusCmdlet)
+
+### Clone Link:
+
+[https://github.com/jmcooper176/OctopusCmdlet.git](https://github.com/jmcooper176/OctopusCmdlet.git)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -211,7 +214,7 @@ Clone Link: [https://github.com/jmcooper176/OctopusCmdlet.git](https://github.co
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
+Useful resources I find helpful.
 
 * [Choose an Open Source License](https://choosealicense.com)
 * [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
@@ -237,3 +240,7 @@ Use this space to list resources you find helpful and would like to give credit 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/johnmcooper8654
 [product-screenshot]: images/screenshot.png
+[ODClient-NuGet-url]: https://www.nuget.org/packages/Octopus.Client
+[PowerShellSDK-NuGet-url]: https://www.nuget.org/packages/Microsoft.PowerShell.SDK
+[PowerShell-Installers-url]: https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.5
+[DotNet-SDK-Installers-url]: https://dotnet.microsoft.com/en-us/download/dotnet/9.0
