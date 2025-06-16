@@ -21,7 +21,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/jmcooper176/OctopusCmdlet">
-    <img src="images/logo.png" alt="Logo" width="120" height="90">
+    <img src="images/logo.png" alt="Logo" width="160" height="90">
   </a>
 
   <h3 align="center">README for OctopusCmdlet</h3>
