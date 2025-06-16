@@ -147,10 +147,20 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
+- [x] Add CHANGELOG.md
+- [x] Add CODEOWNERS
+- [x] Add CODE_OF_CONDUCT.md
+- [x] Add LICENSE.txt and Licensing headers to all source code
+- [x] Add PowerShell Linter and Pester Unit Test Workflow
+- [x] Add README.md
+- [x] Add RELEASENOTES.txt
+- [x] Add SECURITY.md
+- [x] Add stand-in logo.png
+- [x] Add Issue-support code
+- [ ] Implement all Infrastructure Cmdlets with Unit Tests (both VSTest and Pester)
+- [ ] Implement New-Endpoint, New-Client, and New-Repository with Unit Tests (both VSTest and Pester)
+- [ ] Implement Remaining Cmdlets (there will be subregions here)
+- [ ] Circle back and refine code, unit tests, etc.
 - [ ] Multi-language Support
     - [ ] German
 
