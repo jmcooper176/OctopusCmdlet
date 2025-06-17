@@ -1,3 +1,4 @@
 {
-  "iis.configDir": ""
+  "iis.configDir": "",
+  "sarif-viewer.connectToGithubCodeScanning": "on"
 }

@@ -1,19 +1,181 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <AnalysisLevel>latest-recommended</AnalysisLevel>
+    <Authors>John Merryweather Cooper</Authors>
+    <Company>John Merryweather Cooper</Company>
+    <Copyright>Copyright (c) 2025, John Merryweather Cooper.  All Rights Reserved</Copyright>
+    <Description>OctopusCmdlet is a comprehensive re-working of Octopus-Cmdlets</Description>
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+    <FileVersion>0.0.0.0</FileVersion>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <ImplicitUsings>enable</ImplicitUsings>
+    <IncludeSymbols>True</IncludeSymbols>
+    <LangVersion>latest</LangVersion>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <NuGetAuditMode>all</NuGetAuditMode>
     <Nullable>enable</Nullable>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/jmcooper176/OctopusCmdlet</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageReleaseNotes>See RELEASENOTES.txt</PackageReleaseNotes>
+    <PackageTags>octopus;deploy;powershell;cmdlets;deploy;release;automation</PackageTags>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/jmcooper176/OctopusCmdlet.git</RepositoryUrl>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <TargetFramework>net9.0</TargetFramework>
+    <Title>OctopusCmdlet PowerShell Cmdlets for Octopus Deploy Automation</Title>
+    <Version>0.0.0-a0</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>9999</WarningLevel>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <WarningLevel>9999</WarningLevel>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.6" />
     <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.5.1" />
+    <PackageReference Include="Octopus.Client" Version="15.2.2170" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="OctopusCmdletModule.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ActionTemplate\" />
+    <Folder Include="ActionUpdate\" />
+    <Folder Include="AWS\" />
+    <Folder Include="Azure\" />
+    <Folder Include="Archive\" />
+    <Folder Include="Artifact\" />
+    <Folder Include="Audited\" />
+    <Folder Include="AutoDeploy\" />
+    <Folder Include="Backup\" />
+    <Folder Include="BuildInformation\" />
+    <Folder Include="BuiltInFeed\" />
+    <Folder Include="BuiltInPackageRepository\" />
+    <Folder Include="Commit\" />
+    <Folder Include="CommunityActionTemplate\" />
+    <Folder Include="Configuration\" />
+    <Folder Include="Dashboard\" />
+    <Folder Include="Database\" />
+    <Folder Include="Defect\" />
+    <Folder Include="Deploy\" />
+    <Folder Include="DeploymentAction\" />
+    <Folder Include="DeploymentFreeze\" />
+    <Folder Include="DeploymentPreview\" />
+    <Folder Include="DeploymentSettings\" />
+    <Folder Include="DeploymentStep\" />
+    <Folder Include="DeploymentTemplate\" />
+    <Folder Include="DirectoryServices\" />
+    <Folder Include="Docker\" />
+    <Folder Include="DocumentType\" />
+    <Folder Include="Endpoint\" />
+    <Folder Include="Environment\" />
+    <Folder Include="Event\" />
+    <Folder Include="Execution\" />
+    <Folder Include="Extension\" />
+    <Folder Include="ExternalSecurityGroup\" />
+    <Folder Include="Features\" />
+    <Folder Include="Git\" />
+    <Folder Include="GitHub\" />
+    <Folder Include="GCP\" />
+    <Folder Include="Guest\" />
+    <Folder Include="Helm\" />
+    <Folder Include="HostProtection\" />
+    <Folder Include="IDConfiguration\" />
+    <Folder Include="Icon\" />
+    <Folder Include="Identity\" />
+    <Folder Include="Interruption\" />
+    <Folder Include="Invitation\" />
+    <Folder Include="Jira\" />
+    <Folder Include="Kubernetes\" />
+    <Folder Include="Ldap\" />
+    <Folder Include="LibraryVariableSet\" />
+    <Folder Include="License\" />
+    <Folder Include="Machine\" />
+    <Folder Include="MachinePolicy\" />
+    <Folder Include="MachineRole\" />
+    <Folder Include="Maintenance\" />
+    <Folder Include="Maven\" />
+    <Folder Include="Migration\" />
+    <Folder Include="Named\" />
+    <Folder Include="XOption\" />
+    <Folder Include="Worker\" />
+    <Folder Include="WebPortal\" />
+    <Folder Include="VersioningStrategy\" />
+    <Folder Include="VariableSet\" />
+    <Folder Include="Variable\" />
+    <Folder Include="UsernamePassword\" />
+    <Folder Include="UserTeam\" />
+    <Folder Include="UserRole\" />
+    <Folder Include="UserPermission\" />
+    <Folder Include="UserInvite\" />
+    <Folder Include="User\" />
+    <Folder Include="Upgrade\" />
+    <Folder Include="Telemetry\" />
+    <Folder Include="Team\" />
+    <Folder Include="Task\" />
+    <Folder Include="Tag\" />
+    <Folder Include="SystemInfo\" />
+    <Folder Include="Summary\" />
+    <Folder Include="Subscription\" />
+    <Folder Include="StepPackage\" />
+    <Folder Include="WorkerPool\" />
+    <Folder Include="Ssh\" />
+    <Folder Include="Snapshot\" />
+    <Folder Include="Smtp\" />
+    <Folder Include="ServiceNow\" />
+    <Folder Include="ServiceFabric\" />
+    <Folder Include="Server\" />
+    <Folder Include="Scoped\" />
+    <Folder Include="Scheduler\" />
+    <Folder Include="ScheduledTask\" />
+    <Folder Include="RunbookSnapshot\" />
+    <Folder Include="RunbookRun\" />
+    <Folder Include="RunbookProcess\" />
+    <Folder Include="Retention\" />
+    <Folder Include="Report\" />
+    <Folder Include="ReleaseTemplate\" />
+    <Folder Include="Proxy\" />
+    <Folder Include="PropertyValue\" />
+    <Folder Include="ProjectFeed\" />
+    <Folder Include="Progression\" />
+    <Folder Include="Process\" />
+    <Folder Include="Phase\" />
+    <Folder Include="Persistence\" />
+    <Folder Include="Performance\" />
+    <Folder Include="Package\" />
+    <Folder Include="OpenID\" />
+    <Folder Include="Okta\" />
+    <Folder Include="Oicd\" />
+    <Folder Include="OfflineDrop\" />
+    <Folder Include="Repository\" />
+    <Folder Include="OciRegistry\" />
+    <Folder Include="NuGet\" />
+    <Folder Include="Tentacle\" />
+    <Folder Include="Token\" />
+    <Folder Include="Trigger\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\images\logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 

@@ -42,6 +42,8 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Utility
 {
+    [Cmdlet(VerbsDiagnostic.Trace, "Command")]
+    [OutputType(typeof(void))]
     public class TraceCommand : PSCmdlet
     {
     }

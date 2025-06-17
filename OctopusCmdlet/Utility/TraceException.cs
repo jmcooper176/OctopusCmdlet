@@ -42,6 +42,8 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Utility
 {
+    [Cmdlet(VerbsDiagnostic.Trace, "Exception")]
+    [OutputType(typeof(void))]
     public class TraceException : PSCmdlet
     {
     }

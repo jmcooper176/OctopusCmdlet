@@ -36,12 +36,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Utility
 {
-    internal class NewProgressRecord
+    [Cmdlet(VerbsCommon.New, "ProgressRecord")]
+    [OutputType(typeof(ProgressRecord))]
+    public class NewProgressRecord : PSCmdlet
     {
     }
 }

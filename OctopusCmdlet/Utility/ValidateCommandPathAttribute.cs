@@ -43,7 +43,7 @@ namespace OctopusCmdlet.Utility
     /// <summary>
     /// Implements the 'ValidateApplicationPath' validate arguments attribute.
     /// </summary>
-    public class ValidateApplicationPathAttribute : ValidateArgumentsAttribute
+    public class ValidateCommandPathAttribute : ValidateArgumentsAttribute
     {
         #region Private Fields
 
@@ -56,9 +56,9 @@ namespace OctopusCmdlet.Utility
 
         #region Public Constructors
 
-        public ValidateApplicationPathAttribute()
+        public ValidateCommandPathAttribute()
         {
-            ValidatorName = nameof(ValidateApplicationPathAttribute);
+            ValidatorName = nameof(ValidateCommandPathAttribute);
 
             All = false;
             ListImported = false;

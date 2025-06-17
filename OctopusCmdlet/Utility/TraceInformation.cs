@@ -37,6 +37,8 @@ using System.Management.Automation;
 
 namespace OctopusCmdlet.Utility
 {
+    [Cmdlet(VerbsDiagnostic.Trace, "Information")]
+    [OutputType(typeof(void))]
     public class TraceInformation : PSCmdlet
     {
     }
