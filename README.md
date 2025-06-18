@@ -158,161 +158,974 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [x] Add stand-in logo.png
 - [x] Add Issue-support code
 - [ ] Implement all Infrastructure Cmdlets with Unit Tests (both VSTest and Pester)
-- [ ] Implement New-Endpoint, New-Client, New-Repository, and Get-SpaceForRepository with Unit Tests (both VSTest and Pester)
+- [ ] Implement New-Endpoint, New-Client, New-Repository, New-Client, Find-Space, and Get-Repository with Unit Tests (both VSTest and Pester)
+  * [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+  * [ ] Implement New-Endpoint Cmdlet
+  * [ ] Implement New-Repository Cmdlet
+  * [ ] Implement New-Client Cmdlet
+  * [ ] Implement Find-Space
+  * [ ] Implement Get-Repository
+
 - [ ] Implement Remaining Cmdlets (there will be subregions here)
-  * [ ] Account Cmdlets
 
+    **ACTION**
   * [ ] ActionTemplate Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
   * [ ] ActionUpdate Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
 
-  * [ ] ApiKey Cmdlets
-  * [ ] Archive Cmdlets
+    **ARTIFACTS**
   * [ ] Artifact Cmdlets
-  * [ ] Audited Cmdlets
-  * [ ] Authentication Cmdlets
-  * [ ] AutoDeploy Cmdlets
-  * [ ] AWS Cmdlets
-  * [ ] Azure Cmdlets
-  * [ ] Backup Cmdlets
-  * [ ] BuildInformation Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
 
-  * [ ] BuiltInFeed Cmdlets
-  * [ ] BuiltInPackageRepository Cmdlets
+  * [ ] BuildInformation Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+    **AUTHORIZATION/AUTHENTICATION**
+  * [ ] Account Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Authentication Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
 
   * [ ] Certificate Cmdlets
-  * [ ] Channel Cmdlets
-  * [ ] Commit Cmdlets
-  * [ ] CommunityActionTemplate Cmdlets
-  * [ ] Configuration Cmdlets
-  * [ ] Dashboard Cmdlets
-  * [ ] Database Cmdlets
-  * [ ] Defect Cmdlets
-  * [ ] Deploy Cmdlets
-
-  * [ ] Deployment Cmdlets
-  * [ ] DeploymentAction Cmdlets
-  * [ ] DeploymentFreeze Cmdlets
-  * [ ] DeploymentPreview Cmdlets
-  * [ ] DeploymentProcess Cmdlets
-  * [ ] DeploymentSettings Cmdlets
-  * [ ] DeploymentStep Cmdlets
-  * [ ] DeploymentTemplate Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
 
   * [ ] DirectoryServices Cmdlets
-  * [ ] Docker Cmdlets
-  * [ ] DocumentType Cmdlets
-  * [ ] Endpoint Cmdlets
-  * [ ] Environment Cmdlets
-  * [ ] Event Cmdlets
-  * [ ] Execution Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
   * [ ] ExternalSecurityGroup Cmdlets
-  * [ ] Features Cmdlets
-  * [ ] Feed Cmdlets
-  * [ ] GCP Cmdlets
-  * [ ] Git Cmdlets
-  * [ ] GitHub Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
   * [ ] Guest Cmdlets
-  * [ ] Helm Cmdlets
-  * [ ] HostProtection Cmdlets
-  * [ ] Icon Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
   * [ ] IDConfiguration Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
   * [ ] Identity Cmdlets
-  * [ ] Interruption Cmdlets
-  * [ ] Invitation Cmdlets
-  * [ ] Jira Cmdlets
-  * [ ] Kubernetes Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
   * [ ] LDAP Cmdlets
-  * [ ] LibraryVariableSet Cmdlets
-  * [ ] License Cmdlets
-  * [ ] LifeCycle Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
 
-  * [ ] Machine/Target Cmdlets
-  * [ ] Machine/Target Policy Cmdlets
-  * [ ] Machine/Target Role Cmdlets
-
-  * [ ] Maintenance Cmdlets
-  * [ ] Maven Cmdlets
-  * [ ] Migration Cmdlets
-  * [ ] Named Cmdlets
-  * [ ] NuGet Cmdlets
-  * [ ] OciRegistry Cmdlets
-  * [ ] OfflineDrop Cmdlets
   * [ ] Oicd Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
   * [ ] Okta Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
   * [ ] OpenID Cmdlets
-  * [ ] Package Cmdlets
-  * [ ] Performance Cmdlets
-  * [ ] Persistence Cmdlets
-  * [ ] Phase Cmdlets
-  * [ ] Process Cmdlets
-  * [ ] Progression Cmdlets
-
-  * [ ] ProjectCmdlets
-  * [ ] ProjectFeed Cmdlets
-  * [ ] ProjectGroup Cmdlets
-  * [ ] ProjectTrigger Cmdlets
-
-  * [ ] PropertyValue Cmdlets
-  * [ ] Proxy Cmdlets
-
-  * [ ] Release Cmdlets
-  * [ ] ReleaseTemplate Cmdlets
-
-  * [ ] Report Cmdlets
-  * [ ] Repository Cmdlets
-  * [ ] Retention Cmdlets
-
-  * [ ] Runbook Cmdlets
-  * [ ] RunbookProcess Cmdlets
-  * [ ] RunbookRun Cmdlets
-  * [ ] RunbookSnapshot Cmdlets
-  * [ ] RunbookTrigger Cmdlets
-
-  * [ ] ScheduleTask Cmdlets
-  * [ ] Scheduler Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
 
   * [ ] Scoped Cmdlets
-  * [ ] Server Cmdlets
-  * [ ] ServiceFabric Cmdlets
-  * [ ] ServiceNow Cmdlets
-  * [ ] Smtp Cmdlets
-  * [ ] Snapshot Cmdlets
-  * [ ] Space Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
   * [ ] SSH Cmdlets
-  * [ ] StepPackage Cmdlets
-  * [ ] Subscription Cmdlets
-  * [ ] Summary Cmdlets
-  * [ ] SystemInfo Cmdlets
-  * [ ] SystemRepository Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
 
-  * [ ] Tag Cmdlets
-  * [ ] TagSet Cmdlets
-
-  * [ ] Task Cmdlets
-  * [ ] Team Cmdlets
-  * [ ] Telemetry Cmdlets
-  * [ ] Tenant Cmdlets
-  * [ ] Tentacle/Target Cmdlets
   * [ ] Token Cmdlets
-  * [ ] Trigger Cmdlets
-  * [ ] Upgrade Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
 
-  * [ ] User Cmdlets
-  * [ ] UserInvite Cmdlets
   * [ ] UsernamePassword Cmdlets
-  * [ ] UserPermission Cmdlets
-  * [ ] UserRole Cmdlets
-  * [ ] UserTeam Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
 
-  * [ ] Variable Cmdlets
-  * [ ] VariableSet Cmdlets
+    **BASIC**
+  * [ ] ApiKey Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Client Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Endpoint Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Repository Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] SystemRepository Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Space Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+    **BUILTIN**
+  * [ ] BuiltInFeed Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] BuiltInPackageRepository Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+    **CLOUD**
+  * [ ] AWS Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Azure Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] GCP Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Kubernetes Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+    **CONFIGURATION**
+  * [ ] Archive Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Configuration Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Database Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Features Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] License Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] OfflineDrop Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Performance Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Persistence Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Proxy Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Retention Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] SMTP Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Subscription Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] SystemInfo Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+    **DEPLOY**
+  * [ ] AutoDeploy Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Deploy Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+    **DEPLOYMENT**
+  * [ ] Deployment Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] DeploymentAction Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] DeploymentFreeze Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] DeploymentPreview Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] DeploymentProcess Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] DeploymentSettings Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] DeploymentStep Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] DeploymentTemplate Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+    **FAILURE ARTIFACTS**
+  * [ ] Defect Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Interruption Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+    **FEED**
+  * [ ] Docker Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Feed Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Helm Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Maven Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] NuGet Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] OciRegistry Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Package Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+    **MACHINE/TARGET**
+  * [ ] Machine/Target Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Machine/Target Policy Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Machine/Target Role Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Tentacle/Target Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Upgrade Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+    **MAINTENANCE**
+  * [ ] Backup Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Maintenance Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+    **MISC**
+  * [ ] DocumentType Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Execution Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Migration Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Named Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Process Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] PropertyValue Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Server Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] ServiceFabric Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] ServiceNow Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
   * [ ] VersioningStragegy Cmdlets
-  * [ ] WebPortal Cmdlets
-
-  * [ ] Worker Cmdlets
-  * [ ] WorkerPool Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
 
   * [ ] XOption Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+    **PROJECT**
+  * [ ] ProjectCmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] ProjectFeed Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] ProjectGroup Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] ProjectTrigger Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+    **RELEASE**
+  * [ ] Release Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] ReleaseTemplate Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+    **REPORT**
+  * [ ] Report Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Summary Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+    **RUNBOOK**
+  * [ ] Runbook Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] RunbookProcess Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] RunbookRun Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] RunbookSnapshot Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] RunbookTrigger Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Snapshot Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+    **SCHEDULE(R)/TASK**
+  * [ ] ScheduleTask Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Scheduler Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Task Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Trigger Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+    **SECURITY**
+  * [ ] Audited Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Event Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] HostProtection Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Telemetry Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+    **SOURCE CONTROL**
+  * [ ] Git Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] GitHub Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+    **TAG**
+  * [ ] Tag Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] TagSet Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+    **USER**
+  * [ ] Invitation Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Team Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] User Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] UserInvite Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] UserPermission Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] UserRole Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] UserTeam Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+    **USER INTERFACE**
+  * [ ] Dashboard Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Icon Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] WebPortal Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+    **VARIABLE**
+  * [ ] LibraryVariableSet Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Variable Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] VariableSet Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+    **WORKER**
+  * [ ] Worker Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] WorkerPool Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+    **WORK ITEM**
+  * [ ] Jira Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+    **WORKFLOW**
+  * [ ] Channel Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Commit Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] CommunityActionTemplate Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Environment Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] LifeCycle Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Phase Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Progression Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] StepPackage Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
+
+  * [ ] Tenant Cmdlets
+    + [ ] Implement VSTest and Pester Unit Tests and Integration Tests for all Cmdlets
+    + [ ] Implement New- Cmdlet(s)
+    + [ ] Implement Get-, Remove-, and Update- Cmdlets
+    + [ ] Implement any other Cmdlets
+    + [ ] Author MAML Help for each Cmdlet
 
 - [ ] Circle back and refine code, unit tests, etc.
 

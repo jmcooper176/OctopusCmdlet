@@ -32,6 +32,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **************************************************************************** */
 
 // Ignore Spelling: cmdlet
+using Octopus.Client;
+
+using OctopusCmdlet.Utility;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,9 +45,105 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Client
 {
-    [Cmdlet(VerbsCommon.Close, "Client")]
+    [Cmdlet(VerbsCommon.Close, "Client", DefaultParameterSetName = "UsingClient")]
     [OutputType(typeof(void))]
-    public class CloseClient : PSCmdlet
+    public class CloseClient : PSCmdlet, IDisposable
     {
+        #region Public Constructors
+
+        public CloseClient()
+        {
+            CmdletName = MyInvocation.MyCommand.Name;
+        }
+
+        #endregion Public Constructors
+
+        #region Public Properties
+
+        [Parameter(Mandatory = true, ParameterSetName = "UsingClient", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
+        public IOctopusAsyncClient? AsyncClient { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = "UsingClient", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
+        public IOctopusClient? Client { get; set; }
+
+        #endregion Public Properties
+
+        #region Public Methods
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
+
+        #endregion Public Methods
+
+        #region Internal Properties
+
+        internal string CmdletName { get; }
+
+        #endregion Internal Properties
+
+        #region Protected Methods
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    if (ParameterSetName.Equals("UsingAsyncClient", StringComparison.OrdinalIgnoreCase))
+                    {
+                        AsyncClient.Dispose();
+                    }
+                    else
+                    {
+                        Client.Dispose();
+                    }
+                }
+
+                if (ParameterSetName.Equals("UsingAsyncClient", StringComparison.OrdinalIgnoreCase))
+                {
+                    AsyncClient = null;
+                }
+                else
+                {
+                    Client = null;
+                }
+
+                disposedValue = true;
+            }
+        }
+
+        /// <inheritdoc />
+        /// <exception cref="PipelineStoppedException">
+        /// Always throws when <see cref="StopProcessing" /> is called.
+        /// </exception>
+        protected override void StopProcessing()
+        {
+            base.StopProcessing();
+
+            Dispose();
+
+            NewErrorRecord stopProcessingErr = new();
+            FormatErrorId pipelineStoppedEx = new();
+
+            var er = stopProcessingErr.NewErrorRecordCommand(
+                new PipelineStoppedException($"{CmdletName} : PipelineStoppedException : Pipeline stopping because 'StopProcessing' called"),
+                pipelineStoppedEx.FormatErrorIdCommand(typeof(PipelineStoppedException)),
+                ErrorCategory.OperationStopped,
+                this);
+            WriteFatal operationStopped = new();
+            operationStopped.WriteFatalCommand(er);
+        }
+
+        #endregion Protected Methods
+
+        #region Private Fields
+
+        private bool disposedValue;
+
+        #endregion Private Fields
     }
 }

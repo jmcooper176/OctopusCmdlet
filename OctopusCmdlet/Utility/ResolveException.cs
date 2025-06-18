@@ -155,11 +155,11 @@ namespace OctopusCmdlet.Utility
         /// <returns>
         /// Returns an <see cref="Exception" /> if <paramref name="errorCode" /> is non-zero; otherwise, returns null.
         /// </returns>
-        public static Exception? ResolveExceptionCommand(int errorCode, string? message = null, Exception? innerException = null)
+        public virtual Exception? ResolveExceptionCommand(int errorCode, string? message = null, Exception? innerException = null)
         {
-            Type? exceptionType = Marshal.GetExceptionForHR(errorCode)?.GetType();
+            Exception? exception = Marshal.GetExceptionForHR(errorCode);
 
-            return exceptionType != null ? Activator.CreateInstance(exceptionType, message, innerException) as Exception : null;
+            return exception != null ? Activator.CreateInstance(exception.GetType(), message, innerException) as Exception : null;
         }
 
         /// <summary>
@@ -177,7 +177,7 @@ namespace OctopusCmdlet.Utility
         /// <returns>
         /// Returns an <see cref="Exception" />.
         /// </returns>
-        public static Exception ResolveExceptionCommand(ErrorCategory category, string? message = null, Exception? innerException = null)
+        public virtual Exception ResolveExceptionCommand(ErrorCategory category, string? message = null, Exception? innerException = null)
         {
             switch (category)
             {
@@ -277,7 +277,6 @@ namespace OctopusCmdlet.Utility
             base.BeginProcessing();
 
             BoundParameter bp = new(MyInvocation.BoundParameters);
-            var sessionState = InitialSessionState.CreateDefault();
 
             if (Stopping)
             {
@@ -287,9 +286,7 @@ namespace OctopusCmdlet.Utility
             }
             else if (Force.IsPresent && !bp.HasParameter("Confirm"))
             {
-                var description = sessionState.Variables.Where(v => v.Name.Equals("ConfirmPreference", StringComparison.OrdinalIgnoreCase)).Select(e => e.Description).FirstOrDefault();
-                sessionState.Variables.Remove("ConfirmPreference", typeof(ConfirmImpact));
-                sessionState.Variables.Add(new SessionStateVariableEntry("ConfirmPreference", ConfirmImpact.None, description ?? string.Empty));
+                SessionState.PSVariable.Set("ConfirmPreference", ConfirmImpact.None);
             }
         }
 
@@ -308,34 +305,36 @@ namespace OctopusCmdlet.Utility
             {
                 if (ShouldProcess($"0x{ErrorCode:X8}", CmdletName))
                 {
-                    WriteObject(ResolveException.ResolveExceptionCommand(ErrorCode, Message, InnerException));
+                    WriteObject(ResolveExceptionCommand(ErrorCode, Message, InnerException));
                 }
             }
             else
             {
                 if (ShouldProcess(Category.ToString(), CmdletName))
                 {
-                    WriteObject(ResolveException.ResolveExceptionCommand(Category, Message, InnerException));
+                    WriteObject(ResolveExceptionCommand(Category, Message, InnerException));
                 }
             }
         }
 
         /// <inheritdoc />
         /// <exception cref="PipelineStoppedException">
-        /// Always throws.
+        /// Always throws when <see cref="StopProcessing" /> is called.
         /// </exception>
         protected override void StopProcessing()
         {
             base.StopProcessing();
 
-            ErrorRecord er = NewErrorRecord.NewErrorRecordCommand(
+            NewErrorRecord stopProcessingErr = new();
+            FormatErrorId pipelineStoppedEx = new();
+
+            var er = stopProcessingErr.NewErrorRecordCommand(
                 new PipelineStoppedException($"{CmdletName} : PipelineStoppedException : Pipeline stopping because 'StopProcessing' called"),
-                FormatErrorId.FormatErrorIdCommand(new PipelineStoppedException()),
+                pipelineStoppedEx.FormatErrorIdCommand(typeof(PipelineStoppedException)),
                 ErrorCategory.OperationStopped,
                 this);
-
-            WriteFatal pipelineStopped = new();
-            pipelineStopped.WriteFatalCommand(er);
+            WriteFatal operationStopped = new();
+            operationStopped.WriteFatalCommand(er);
         }
 
         #endregion Protected Methods

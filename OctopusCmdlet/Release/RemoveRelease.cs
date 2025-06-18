@@ -32,7 +32,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **************************************************************************** */
 
 // Ignore Spelling: cmdlet
-using Octopus.Client;
+using OctopusCmdlet.LifeCycle;
+using OctopusCmdlet.Utility;
 
 using System;
 using System.Collections.Generic;
@@ -41,11 +42,55 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OctopusCmdlet.Utility
+namespace OctopusCmdlet.Release
 {
-    [Cmdlet(VerbsCommon.New, "OctopusClientFactory")]
-    [OutputType(typeof(IOctopusClientFactory))]
-    public class NewOctopusClientFactory : PSCmdlet
+    [Cmdlet(VerbsCommon.Remove, "Release")]
+    [OutputType(typeof(void))]
+    public class RemoveRelease : PSCmdlet
     {
+        #region Public Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RemoveRelease" /> class.
+        /// </summary>
+        public RemoveRelease()
+        {
+            CmdletName = MyInvocation.MyCommand.Name;
+        }
+
+        #endregion Public Constructors
+
+        #region Internal Properties
+
+        /// <summary>
+        /// Gets a value indicating this <see cref="Cmdlet" /> name.
+        /// </summary>
+        internal string CmdletName { get; }
+
+        #endregion Internal Properties
+
+        #region Protected Methods
+
+        /// <inheritdoc />
+        /// <exception cref="PipelineStoppedException">
+        /// Always throws when <see cref="StopProcessing" /> is called.
+        /// </exception>
+        protected override void StopProcessing()
+        {
+            base.StopProcessing();
+
+            NewErrorRecord stopProcessingErr = new();
+            FormatErrorId pipelineStoppedEx = new();
+
+            var er = stopProcessingErr.NewErrorRecordCommand(
+                new PipelineStoppedException($"{CmdletName} : PipelineStoppedException : Pipeline stopping because 'StopProcessing' called"),
+                pipelineStoppedEx.FormatErrorIdCommand(typeof(PipelineStoppedException)),
+                ErrorCategory.OperationStopped,
+                this);
+            WriteFatal operationStopped = new();
+            operationStopped.WriteFatalCommand(er);
+        }
+
+        #endregion Protected Methods
     }
 }

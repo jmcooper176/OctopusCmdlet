@@ -35,6 +35,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 using Octopus.Client;
 using Octopus.Client.Repositories.Async;
 
+using OctopusCmdlet.Utility;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,5 +50,28 @@ namespace OctopusCmdlet.Space
     [OutputType(typeof(ISpaceRepository))]
     public class NewSpaceAsyncRepository : PSCmdlet
     {
+        #region Protected Methods
+
+        /// <inheritdoc />
+        /// <exception cref="PipelineStoppedException">
+        /// Always throws when <see cref="StopProcessing" /> is called.
+        /// </exception>
+        protected override void StopProcessing()
+        {
+            base.StopProcessing();
+
+            NewErrorRecord stopProcessingErr = new();
+            FormatErrorId pipelineStoppedEx = new();
+
+            var er = stopProcessingErr.NewErrorRecordCommand(
+                new PipelineStoppedException($"{CmdletName} : PipelineStoppedException : Pipeline stopping because 'StopProcessing' called"),
+                pipelineStoppedEx.FormatErrorIdCommand(typeof(PipelineStoppedException)),
+                ErrorCategory.OperationStopped,
+                this);
+            WriteFatal operationStopped = new();
+            operationStopped.WriteFatalCommand(er);
+        }
+
+        #endregion Protected Methods
     }
 }

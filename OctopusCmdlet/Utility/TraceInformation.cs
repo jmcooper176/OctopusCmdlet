@@ -41,5 +41,28 @@ namespace OctopusCmdlet.Utility
     [OutputType(typeof(void))]
     public class TraceInformation : PSCmdlet
     {
+        #region Protected Methods
+
+        /// <inheritdoc />
+        /// <exception cref="PipelineStoppedException">
+        /// Always throws when <see cref="StopProcessing" /> is called.
+        /// </exception>
+        protected override void StopProcessing()
+        {
+            base.StopProcessing();
+
+            NewErrorRecord stopProcessingErr = new();
+            FormatErrorId pipelineStoppedEx = new();
+
+            var er = stopProcessingErr.NewErrorRecordCommand(
+                new PipelineStoppedException($"{CmdletName} : PipelineStoppedException : Pipeline stopping because 'StopProcessing' called"),
+                pipelineStoppedEx.FormatErrorIdCommand(typeof(PipelineStoppedException)),
+                ErrorCategory.OperationStopped,
+                this);
+            WriteFatal operationStopped = new();
+            operationStopped.WriteFatalCommand(er);
+        }
+
+        #endregion Protected Methods
     }
 }

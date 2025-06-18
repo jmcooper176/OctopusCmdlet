@@ -34,6 +34,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // Ignore Spelling: cmdlet
 using Octopus.Client;
 
+using OctopusCmdlet.ActionTemplate;
+using OctopusCmdlet.Utility;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,5 +50,49 @@ namespace OctopusCmdlet.Endpoint
     [OutputType(typeof(OctopusServerEndpoint))]
     public class NewEndpoint : PSCmdlet
     {
+        #region Public Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NewEndpoint" /> class.
+        /// </summary>
+        public NewEndpoint()
+        {
+            CmdletName = MyInvocation.MyCommand.Name;
+        }
+
+        #endregion Public Constructors
+
+        #region Internal Properties
+
+        /// <summary>
+        /// Gets a value indicating this <see cref="Cmdlet" /> name.
+        /// </summary>
+        internal string CmdletName { get; }
+
+        #endregion Internal Properties
+
+        #region Protected Methods
+
+        /// <inheritdoc />
+        /// <exception cref="PipelineStoppedException">
+        /// Always throws when <see cref="StopProcessing" /> is called.
+        /// </exception>
+        protected override void StopProcessing()
+        {
+            base.StopProcessing();
+
+            NewErrorRecord stopProcessingErr = new();
+            FormatErrorId pipelineStoppedEx = new();
+
+            var er = stopProcessingErr.NewErrorRecordCommand(
+                new PipelineStoppedException($"{CmdletName} : PipelineStoppedException : Pipeline stopping because 'StopProcessing' called"),
+                pipelineStoppedEx.FormatErrorIdCommand(typeof(PipelineStoppedException)),
+                ErrorCategory.OperationStopped,
+                this);
+            WriteFatal operationStopped = new();
+            operationStopped.WriteFatalCommand(er);
+        }
+
+        #endregion Protected Methods
     }
 }

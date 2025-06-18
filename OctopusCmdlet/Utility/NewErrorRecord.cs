@@ -240,33 +240,27 @@ namespace OctopusCmdlet.Utility
         /// </summary>
         internal int Count { get; set; }
 
-        internal PowerShell? Shell { get; set; }
-
         #endregion Public Properties
 
         #region Protected Methods
 
+        /// <inheritdoc />
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
 
-            InitialSessionState sessionState = InitialSessionState.CreateDefault();
+            BoundParameter bp = new(MyInvocation.BoundParameters);
 
-            if (Force.IsPresent && !MyInvocation.BoundParameters.ContainsKey("Confirm"))
+            if (Stopping)
             {
-                sessionState.Variables.Remove("ConfirmPreference", typeof(ConfirmImpact));
-                sessionState.Variables.Add(new SessionStateVariableEntry("ConfirmPreference", ConfirmImpact.None, ""));
+                WriteWarning pipelineStopping = new();
+                pipelineStopping.WriteWarningCommand($"{CmdletName} is Stopping in 'BeginProcessing'");
+                return;
             }
-
-            Shell = PowerShell.Create(sessionState);
-        }
-
-        /// <inheritdoc />
-        protected override void EndProcessing()
-        {
-            base.EndProcessing();
-
-            Dispose();
+            else if (Force.IsPresent && !bp.HasParameter("Confirm"))
+            {
+                SessionState.PSVariable.Set("ConfirmPreference", ConfirmImpact.None);
+            }
         }
 
         /// <inheritdoc />
@@ -276,7 +270,9 @@ namespace OctopusCmdlet.Utility
 
             if (Stopping)
             {
-                StopProcessing();
+                WriteWarning pipelineStopping = new();
+                pipelineStopping.WriteWarningCommand($"{CmdletName} is Stopping in 'ProcessRecord'");
+                return;
             }
             else
             {
@@ -326,7 +322,7 @@ namespace OctopusCmdlet.Utility
                     default:
                         if (ShouldProcess(Exception.ToString(), CmdletName))
                         {
-                            er = NewErrorRecordCommand(
+                            var er = NewErrorRecordCommand(
                                 Exception,
                                 ErrorId,
                                 Category,
@@ -345,15 +341,18 @@ namespace OctopusCmdlet.Utility
         }
 
         /// <inheritdoc />
+        /// <exception cref="PipelineStoppedException">
+        /// Always throws when <see cref="StopProcessing" /> is called.
+        /// </exception>
         protected override void StopProcessing()
         {
             base.StopProcessing();
 
-            Dispose();
+            FormatErrorId pipelineStoppedEx = new();
 
-            var er = NewErrorRecord.NewErrorRecordCommand<PipelineStoppedException>(
-                $"{CmdletName} : PipelineStoppedException : 'StopProcessing' called",
-                FormatErrorId.FormatErrorIdCommand(new PipelineStoppedException()),
+            ErrorRecord er = new(
+                new PipelineStoppedException($"{CmdletName} : PipelineStoppedException : Pipeline stopping because 'StopProcessing' called"),
+                pipelineStoppedEx.FormatErrorIdCommand(typeof(PipelineStoppedException)),
                 ErrorCategory.OperationStopped,
                 this);
             WriteFatal operationStopped = new();
@@ -401,7 +400,7 @@ namespace OctopusCmdlet.Utility
         /// <returns>
         /// Returns a new <see cref="ErrorRecord" /> on success; otherwise null.
         /// </returns>
-        public static ErrorRecord NewErrorRecordCommand<TException>(
+        public virtual ErrorRecord NewErrorRecordCommand<TException>(
             string message,
             string errorId,
             ErrorCategory category,
@@ -467,7 +466,7 @@ namespace OctopusCmdlet.Utility
         /// <returns>
         /// Returns a new <see cref="ErrorRecord" />.
         /// </returns>
-        public static ErrorRecord NewErrorRecordCommand(
+        public virtual ErrorRecord NewErrorRecordCommand(
             Exception exception,
             string errorId,
             ErrorCategory category,
@@ -538,7 +537,7 @@ namespace OctopusCmdlet.Utility
         /// <returns>
         /// Returns a new <see cref="ErrorRecord" />.
         /// </returns>
-        public static ErrorRecord NewErrorRecordCommand(
+        public virtual ErrorRecord NewErrorRecordCommand(
             Exception exception,
             string errorId,
             ErrorCategory category,
@@ -596,7 +595,7 @@ namespace OctopusCmdlet.Utility
         /// <returns>
         /// <param name="displayScriptPosition"> Specifies the position for the invocation or error. </param> Returns an updated <paramref name="errorRecord" />.
         /// </returns>
-        public static ErrorRecord UpdateErrorRecordCommand(
+        public virtual ErrorRecord UpdateErrorRecordCommand(
             ErrorRecord errorRecord,
             string? recommendedAction = null,
             string? categoryActivity = null,
@@ -626,44 +625,6 @@ namespace OctopusCmdlet.Utility
             return errorRecord;
         }
 
-        /// <inheritdoc />
-        public void Dispose()
-        {
-            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
-            Dispose(disposing: true);
-            GC.SuppressFinalize(this);
-        }
-
-        /// <summary>
-        /// Performs class-defined tasks associated with freeing, releasing, or resetting managed or unmanaged resources.
-        /// </summary>
-        /// <param name="disposing">
-        /// If true, disposal of managed resources is carried out; otherwise, disposal of managed resources is not carried out.
-        /// </param>
-        /// <remarks>
-        /// If <see cref="disposedValue" /> is false, set managed and unmanaged resources to null and set
-        /// <see cref="disposedValue" /> to true.
-        /// </remarks>
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    Shell?.Dispose();
-                }
-
-                Shell = null;
-                disposedValue = true;
-            }
-        }
-
         #endregion Public Methods
-
-        #region Private Fields
-
-        private bool disposedValue;
-
-        #endregion Private Fields
     }
 }

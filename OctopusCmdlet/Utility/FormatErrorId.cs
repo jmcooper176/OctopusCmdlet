@@ -33,6 +33,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 // Ignore Spelling: cmdlet
 
+using System.Diagnostics;
 using System.Management.Automation;
 using System.Runtime.CompilerServices;
 
@@ -44,8 +45,12 @@ namespace OctopusCmdlet.Utility
     {
         #region Public Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FormatErrorId" /> class.
+        /// </summary>
         public FormatErrorId()
         {
+            ActivityId = Environment.ProcessId;
             Caller = null;
             CmdletName = MyInvocation.MyCommand.Name;
             Count = 0;
@@ -55,6 +60,9 @@ namespace OctopusCmdlet.Utility
         #endregion Public Constructors
 
         #region Public Properties
+
+        [ValidateRange(ValidateRangeKind.Positive)]
+        public int ActivityId { get; set; }
 
         [AllowNull()]
         public string? Caller { get; set; }
@@ -102,6 +110,9 @@ namespace OctopusCmdlet.Utility
         [Parameter(Mandatory = true, ParameterSetName = "UsingException", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
         public Exception[] Exception { get; set; }
 
+        [Parameter(Mandatory = true, ParameterSetName = "UsingExceptionType", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
+        public Type[] ExceptionType { get; set; }
+
         [ValidateRange(ValidateRangeKind.NonNegative)]
         public int LineNumber { get; set; }
 
@@ -119,9 +130,14 @@ namespace OctopusCmdlet.Utility
         /// </param>
         /// <returns>
         /// </returns>
-        public static string FormatErrorIdCommand(Exception exception, [CallerMemberName] string? memberName = null, [CallerLineNumber] int lineNumber = 0)
+        public virtual string FormatErrorIdCommand(Exception exception, [CallerMemberName] string? memberName = null, [CallerLineNumber] int lineNumber = 0)
         {
-            return $"{memberName}-{exception.GetType().Name}-{lineNumber}";
+            return FormatErrorIdCommand(exception.GetType(), memberName, lineNumber);
+        }
+
+        public virtual string FormatErrorIdCommand(Type exceptionType, [CallerMemberName] string? memberName = null, [CallerLineNumber] int lineNumber = 0)
+        {
+            return $"{memberName}-{exceptionType.Name}-{lineNumber}";
         }
 
         /// <summary>
@@ -134,9 +150,9 @@ namespace OctopusCmdlet.Utility
         /// </param>
         /// <returns>
         /// </returns>
-        public static string FormatErrorIdCommand(ErrorRecord errorRecord, [CallerMemberName] string? memberName = null, [CallerLineNumber] int lineNumber = 0)
+        public virtual string FormatErrorIdCommand(ErrorRecord errorRecord, [CallerMemberName] string? memberName = null, [CallerLineNumber] int lineNumber = 0)
         {
-            return FormatErrorId.FormatErrorIdCommand(errorRecord.Exception, memberName, lineNumber);
+            return FormatErrorIdCommand(errorRecord.Exception, memberName, lineNumber);
         }
 
         /// <summary>
@@ -149,9 +165,17 @@ namespace OctopusCmdlet.Utility
         /// </param>
         /// <returns>
         /// </returns>
-        public static string FormatErrorIdCommand(ErrorCategory errorCategory, [CallerMemberName] string? memberName = null, [CallerLineNumber] int lineNumber = 0)
+        public virtual string FormatErrorIdCommand(ErrorCategory errorCategory, [CallerMemberName] string? memberName = null, [CallerLineNumber] int lineNumber = 0)
         {
-            return $"{memberName}-{errorCategory}-{lineNumber}";
+            ResolveException exception = new();
+
+            if (errorCategory == ErrorCategory.NotSpecified)
+            {
+                Utility.WriteWarning notSpecified = new();
+                notSpecified.WriteWarning($"{CmdletName} : Not best practice to specify {errorCategory}");
+            }
+
+            return FormatErrorIdCommand(exception.ResolveExceptionCommand(errorCategory), memberName, lineNumber);
         }
 
         #endregion Public Methods
@@ -188,8 +212,9 @@ namespace OctopusCmdlet.Utility
                     foreach (var item in Category)
                     {
                         Utility.WriteProgress forErrorCategory = new();
-                        forErrorCategory.WriteProgressCommand(activityId: 1, $"Processing ErrorCategory {Count++}");
-                        WriteObject(FormatErrorId.FormatErrorIdCommand(item, Caller, LineNumber));
+                        ProgressRecord pr = new(ActivityId, CmdletName, $"Processing ErrorCategory {Count++}");
+                        forErrorCategory.WriteProgress(pr);
+                        WriteObject(FormatErrorIdCommand(item, Caller, LineNumber));
                     }
 
                     break;
@@ -198,8 +223,20 @@ namespace OctopusCmdlet.Utility
                     foreach (var item in ErrorRecord)
                     {
                         Utility.WriteProgress forErrorRecord = new();
-                        forErrorRecord.WriteProgressCommand(activityId: 1, $"Processing ErrorRecord {Count++}");
-                        WriteObject(FormatErrorId.FormatErrorIdCommand(item, Caller, LineNumber));
+                        ProgressRecord pr = new(ActivityId, CmdletName, $"Processing ErrorRecord {Count++}");
+                        forErrorRecord.WriteProgressCommand(pr);
+                        WriteObject(FormatErrorIdCommand(item, Caller, LineNumber));
+                    }
+
+                    break;
+
+                case "UsingExceptionType":
+                    foreach (var item in ExceptionType)
+                    {
+                        Utility.WriteProgress forErrorRecord = new();
+                        ProgressRecord pr = new(ActivityId, CmdletName, $"Processing ExceptionType {Count++}");
+                        forErrorRecord.WriteProgressCommand(pr);
+                        WriteObject(FormatErrorIdCommand(item, Caller, LineNumber));
                     }
 
                     break;
@@ -208,8 +245,9 @@ namespace OctopusCmdlet.Utility
                     foreach (var item in Exception)
                     {
                         Utility.WriteProgress forException = new();
-                        forException.WriteProgressCommand(activityId: 1, $"Processing Exception {Count++}");
-                        WriteObject(FormatErrorId.FormatErrorIdCommand(item, Caller, LineNumber));
+                        ProgressRecord pr = new(ActivityId, CmdletName, $"Processing Exception {Count++}");
+                        forException.WriteProgressCommand(pr);
+                        WriteObject(FormatErrorIdCommand(item, Caller, LineNumber));
                     }
 
                     break;
@@ -218,15 +256,17 @@ namespace OctopusCmdlet.Utility
 
         /// <inheritdoc />
         /// <exception cref="PipelineStoppedException">
-        /// Always throws.
+        /// Always throws when <see cref="StopProcessing" /> is called.
         /// </exception>
         protected override void StopProcessing()
         {
             base.StopProcessing();
 
-            ErrorRecord er = NewErrorRecord.NewErrorRecordCommand(
+            NewErrorRecord pipelineStoppedErr = new();
+
+            ErrorRecord er = pipelineStoppedErr.NewErrorRecordCommand(
                 new PipelineStoppedException($"{CmdletName} : PipelineStoppedException : Pipeline stopping because 'StopProcessing' called"),
-                FormatErrorId.FormatErrorIdCommand(new PipelineStoppedException()),
+                $"{CmdletName}-PipelineStoppedException-{MyInvocation.ScriptLineNumber}",
                 ErrorCategory.OperationStopped,
                 this);
 
