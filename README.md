@@ -158,7 +158,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [x] Add stand-in logo.png
 - [x] Add Issue-support code
 - [ ] Implement all Infrastructure Cmdlets with Unit Tests (both VSTest and Pester)
-- [ ] Implement New-Endpoint, New-Client, and New-Repository with Unit Tests (both VSTest and Pester)
+- [ ] Implement New-Endpoint, New-Client, New-Repository, and Get-SpaceForRepository with Unit Tests (both VSTest and Pester)
 - [ ] Implement Remaining Cmdlets (there will be subregions here)
   * [ ] Account Cmdlets
 
