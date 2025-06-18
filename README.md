@@ -254,8 +254,10 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
   * [ ] PropertyValue Cmdlets
   * [ ] Proxy Cmdlets
+
   * [ ] Release Cmdlets
   * [ ] ReleaseTemplate Cmdlets
+
   * [ ] Report Cmdlets
   * [ ] Repository Cmdlets
   * [ ] Retention Cmdlets
@@ -268,6 +270,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
   * [ ] ScheduleTask Cmdlets
   * [ ] Scheduler Cmdlets
+
   * [ ] Scoped Cmdlets
   * [ ] Server Cmdlets
   * [ ] ServiceFabric Cmdlets
@@ -281,8 +284,10 @@ _For more examples, please refer to the [Documentation](https://example.com)_
   * [ ] Summary Cmdlets
   * [ ] SystemInfo Cmdlets
   * [ ] SystemRepository Cmdlets
+
   * [ ] Tag Cmdlets
   * [ ] TagSet Cmdlets
+
   * [ ] Task Cmdlets
   * [ ] Team Cmdlets
   * [ ] Telemetry Cmdlets
@@ -308,7 +313,9 @@ _For more examples, please refer to the [Documentation](https://example.com)_
   * [ ] WorkerPool Cmdlets
 
   * [ ] XOption Cmdlets
+
 - [ ] Circle back and refine code, unit tests, etc.
+
 - [ ] Multi-language Support
     - [ ] German
 
