@@ -35,12 +35,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Tenant
 {
-    internal class RemoveTenant
+    [Cmdlet(VerbsCommon.Remove, "Tenant")]
+    [OutputType(typeof(void))]
+    public class RemoveTenant : PSCmdlet
     {
     }
 }

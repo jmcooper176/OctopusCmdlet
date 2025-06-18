@@ -55,7 +55,6 @@
     <Folder Include="ActionTemplate\" />
     <Folder Include="ActionUpdate\" />
     <Folder Include="AWS\" />
-    <Folder Include="Azure\" />
     <Folder Include="Archive\" />
     <Folder Include="Artifact\" />
     <Folder Include="Audited\" />
@@ -103,9 +102,6 @@
     <Folder Include="Ldap\" />
     <Folder Include="LibraryVariableSet\" />
     <Folder Include="License\" />
-    <Folder Include="Machine\" />
-    <Folder Include="MachinePolicy\" />
-    <Folder Include="MachineRole\" />
     <Folder Include="Maintenance\" />
     <Folder Include="Maven\" />
     <Folder Include="Migration\" />
@@ -147,8 +143,6 @@
     <Folder Include="Retention\" />
     <Folder Include="Report\" />
     <Folder Include="ReleaseTemplate\" />
-    <Folder Include="Proxy\" />
-    <Folder Include="PropertyValue\" />
     <Folder Include="ProjectFeed\" />
     <Folder Include="Progression\" />
     <Folder Include="Process\" />
@@ -160,7 +154,6 @@
     <Folder Include="Okta\" />
     <Folder Include="Oicd\" />
     <Folder Include="OfflineDrop\" />
-    <Folder Include="Repository\" />
     <Folder Include="OciRegistry\" />
     <Folder Include="NuGet\" />
     <Folder Include="Tentacle\" />

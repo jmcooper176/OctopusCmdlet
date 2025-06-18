@@ -33,12 +33,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 // Ignore Spelling: cmdlet
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Utility
 {

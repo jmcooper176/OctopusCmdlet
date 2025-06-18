@@ -33,6 +33,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 // Ignore Spelling: cmdlet
 using Octopus.Client;
+using Octopus.Client.Repositories.Async;
 
 using System;
 using System.Collections.Generic;
@@ -44,7 +45,7 @@ using System.Threading.Tasks;
 namespace OctopusCmdlet.Space
 {
     [Cmdlet(VerbsCommon.New, "SpaceAsyncRepository")]
-    [OutputType(typeof(IOctopusSpaceAsyncRepository))]
+    [OutputType(typeof(ISpaceRepository))]
     public class NewSpaceAsyncRepository : PSCmdlet
     {
     }
