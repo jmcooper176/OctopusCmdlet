@@ -160,6 +160,154 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [ ] Implement all Infrastructure Cmdlets with Unit Tests (both VSTest and Pester)
 - [ ] Implement New-Endpoint, New-Client, and New-Repository with Unit Tests (both VSTest and Pester)
 - [ ] Implement Remaining Cmdlets (there will be subregions here)
+  * [ ] Account Cmdlets
+
+  * [ ] ActionTemplate Cmdlets
+  * [ ] ActionUpdate Cmdlets
+
+  * [ ] ApiKey Cmdlets
+  * [ ] Archive Cmdlets
+  * [ ] Artifact Cmdlets
+  * [ ] Audited Cmdlets
+  * [ ] Authentication Cmdlets
+  * [ ] AutoDeploy Cmdlets
+  * [ ] AWS Cmdlets
+  * [ ] Azure Cmdlets
+  * [ ] Backup Cmdlets
+  * [ ] BuildInformation Cmdlets
+
+  * [ ] BuiltInFeed Cmdlets
+  * [ ] BuiltInPackageRepository Cmdlets
+
+  * [ ] Certificate Cmdlets
+  * [ ] Channel Cmdlets
+  * [ ] Commit Cmdlets
+  * [ ] CommunityActionTemplate Cmdlets
+  * [ ] Configuration Cmdlets
+  * [ ] Dashboard Cmdlets
+  * [ ] Database Cmdlets
+  * [ ] Defect Cmdlets
+  * [ ] Deploy Cmdlets
+
+  * [ ] Deployment Cmdlets
+  * [ ] DeploymentAction Cmdlets
+  * [ ] DeploymentFreeze Cmdlets
+  * [ ] DeploymentPreview Cmdlets
+  * [ ] DeploymentProcess Cmdlets
+  * [ ] DeploymentSettings Cmdlets
+  * [ ] DeploymentStep Cmdlets
+  * [ ] DeploymentTemplate Cmdlets
+
+  * [ ] DirectoryServices Cmdlets
+  * [ ] Docker Cmdlets
+  * [ ] DocumentType Cmdlets
+  * [ ] Endpoint Cmdlets
+  * [ ] Environment Cmdlets
+  * [ ] Event Cmdlets
+  * [ ] Execution Cmdlets
+  * [ ] ExternalSecurityGroup Cmdlets
+  * [ ] Features Cmdlets
+  * [ ] Feed Cmdlets
+  * [ ] GCP Cmdlets
+  * [ ] Git Cmdlets
+  * [ ] GitHub Cmdlets
+  * [ ] Guest Cmdlets
+  * [ ] Helm Cmdlets
+  * [ ] HostProtection Cmdlets
+  * [ ] Icon Cmdlets
+  * [ ] IDConfiguration Cmdlets
+  * [ ] Identity Cmdlets
+  * [ ] Interruption Cmdlets
+  * [ ] Invitation Cmdlets
+  * [ ] Jira Cmdlets
+  * [ ] Kubernetes Cmdlets
+  * [ ] LDAP Cmdlets
+  * [ ] LibraryVariableSet Cmdlets
+  * [ ] License Cmdlets
+  * [ ] LifeCycle Cmdlets
+
+  * [ ] Machine/Target Cmdlets
+  * [ ] Machine/Target Policy Cmdlets
+  * [ ] Machine/Target Role Cmdlets
+
+  * [ ] Maintenance Cmdlets
+  * [ ] Maven Cmdlets
+  * [ ] Migration Cmdlets
+  * [ ] Named Cmdlets
+  * [ ] NuGet Cmdlets
+  * [ ] OciRegistry Cmdlets
+  * [ ] OfflineDrop Cmdlets
+  * [ ] Oicd Cmdlets
+  * [ ] Okta Cmdlets
+  * [ ] OpenID Cmdlets
+  * [ ] Package Cmdlets
+  * [ ] Performance Cmdlets
+  * [ ] Persistence Cmdlets
+  * [ ] Phase Cmdlets
+  * [ ] Process Cmdlets
+  * [ ] Progression Cmdlets
+
+  * [ ] ProjectCmdlets
+  * [ ] ProjectFeed Cmdlets
+  * [ ] ProjectGroup Cmdlets
+  * [ ] ProjectTrigger Cmdlets
+
+  * [ ] PropertyValue Cmdlets
+  * [ ] Proxy Cmdlets
+  * [ ] Release Cmdlets
+  * [ ] ReleaseTemplate Cmdlets
+  * [ ] Report Cmdlets
+  * [ ] Repository Cmdlets
+  * [ ] Retention Cmdlets
+
+  * [ ] Runbook Cmdlets
+  * [ ] RunbookProcess Cmdlets
+  * [ ] RunbookRun Cmdlets
+  * [ ] RunbookSnapshot Cmdlets
+  * [ ] RunbookTrigger Cmdlets
+
+  * [ ] ScheduleTask Cmdlets
+  * [ ] Scheduler Cmdlets
+  * [ ] Scoped Cmdlets
+  * [ ] Server Cmdlets
+  * [ ] ServiceFabric Cmdlets
+  * [ ] ServiceNow Cmdlets
+  * [ ] Smtp Cmdlets
+  * [ ] Snapshot Cmdlets
+  * [ ] Space Cmdlets
+  * [ ] SSH Cmdlets
+  * [ ] StepPackage Cmdlets
+  * [ ] Subscription Cmdlets
+  * [ ] Summary Cmdlets
+  * [ ] SystemInfo Cmdlets
+  * [ ] SystemRepository Cmdlets
+  * [ ] Tag Cmdlets
+  * [ ] TagSet Cmdlets
+  * [ ] Task Cmdlets
+  * [ ] Team Cmdlets
+  * [ ] Telemetry Cmdlets
+  * [ ] Tenant Cmdlets
+  * [ ] Tentacle/Target Cmdlets
+  * [ ] Token Cmdlets
+  * [ ] Trigger Cmdlets
+  * [ ] Upgrade Cmdlets
+
+  * [ ] User Cmdlets
+  * [ ] UserInvite Cmdlets
+  * [ ] UsernamePassword Cmdlets
+  * [ ] UserPermission Cmdlets
+  * [ ] UserRole Cmdlets
+  * [ ] UserTeam Cmdlets
+
+  * [ ] Variable Cmdlets
+  * [ ] VariableSet Cmdlets
+  * [ ] VersioningStragegy Cmdlets
+  * [ ] WebPortal Cmdlets
+
+  * [ ] Worker Cmdlets
+  * [ ] WorkerPool Cmdlets
+
+  * [ ] XOption Cmdlets
 - [ ] Circle back and refine code, unit tests, etc.
 - [ ] Multi-language Support
     - [ ] German
