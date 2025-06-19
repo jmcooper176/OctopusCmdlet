@@ -94,6 +94,8 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [PowerShell SDK][PowerShellSDK-NuGet-url]
 * [PowerShell][PowerShell-Installers-url]
 * [.NET 9.0 SDK][DotNet-SDK-Installers-url]
+* [Octopus.Local][Octopus-Local-Docker-Compose-url]
+* [Pester PowerShell Module][Pester-PowerShell-Gallery-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -1198,6 +1200,11 @@ Useful resources I find helpful.
 * [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
 * [Img Shields](https://shields.io)
 * [GitHub Pages](https://pages.github.com)
+* [Required Development Guildlines](https://learn.microsoft.com/en-us/powershell/scripting/developer/cmdlet/required-development-guidelines?view=powershell-7.5)
+* [Compile-time logging source generation](https://learn.microsoft.com/en-us/dotnet/core/extensions/logger-message-generator)
+* [Octopus Deploy API/Octopus.Client/C#](https://github.com/OctopusDeploy/OctopusDeploy-Api/tree/master/Octopus.Client/Csharp)
+* [Octopus.Client Documentation](https://octopus.com/docs/octopus-rest-api/octopus.client)
+* [Octopus.Local](https://github.com/OctopusDeployLabs/octopus.local)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -1222,3 +1229,5 @@ Useful resources I find helpful.
 [PowerShellSDK-NuGet-url]: https://www.nuget.org/packages/Microsoft.PowerShell.SDK
 [PowerShell-Installers-url]: https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.5
 [DotNet-SDK-Installers-url]: https://dotnet.microsoft.com/en-us/download/dotnet/9.0
+[Octopus-Local-Docker-Compose-url]: https://github.com/OctopusDeployLabs/octopus.local/blob/main/docker-compose.yml
+[Pester-PowerShell-Gallery-url]: https://www.powershellgallery.com/packages/Pester/5.7.1
