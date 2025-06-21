@@ -1,4 +1,40 @@
-﻿using Moq;
+﻿/* ****************************************************************************
+BSD-3-CLAUSE (a/k/a MODIFIED BSD) LICENSE
+
+Copyright (c) 2025 John Merryweather Cooper
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+“AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+**************************************************************************** */
+
+// Ignore Spelling: cmdlet
+using Moq;
+
+using OctopusCmdlet.Utility;
 
 using System.Management.Automation;
 
@@ -7,6 +43,24 @@ namespace NewErrorRecord.Tests.Utility
     [TestClass]
     public class NewErrorRecordTests
     {
+        #region Public Constructors
+
+        public NewErrorRecordTests()
+        {
+            FormatErrorId = new();
+            NewErrorRecord = new();
+        }
+
+        #endregion Public Constructors
+
+        #region Internal Properties
+
+        internal OctopusCmdlet.Utility.FormatErrorId FormatErrorId { get; }
+
+        internal OctopusCmdlet.Utility.NewErrorRecord NewErrorRecord { get; }
+
+        #endregion Internal Properties
+
         #region Public Methods
 
         [TestMethod]
@@ -24,10 +78,10 @@ namespace NewErrorRecord.Tests.Utility
             string? categoryTargetType = null;
 
             // Act
-            var result = OctopusCmdlet.Utility.NewErrorRecord.NewErrorRecordCommand(
-                exception,
-                category,
+            var result = NewErrorRecord.NewErrorRecordCommand(
+                exception: exception,
                 expected,
+                category,
                 targetObject,
                 recommendedAction,
                 categoryActivity,
@@ -56,10 +110,10 @@ namespace NewErrorRecord.Tests.Utility
             string? categoryTargetType = null;
 
             // Act
-            var result = OctopusCmdlet.Utility.NewErrorRecord.NewErrorRecordCommand(
+            var result = NewErrorRecord.NewErrorRecordCommand(
                 expected,
-                category,
                 errorId,
+                category,
                 targetObject,
                 recommendedAction,
                 categoryActivity,
@@ -88,10 +142,10 @@ namespace NewErrorRecord.Tests.Utility
             string? categoryTargetType = null;
 
             // Act
-            var result = OctopusCmdlet.Utility.NewErrorRecord.NewErrorRecordCommand(
+            var result = NewErrorRecord.NewErrorRecordCommand(
                 exception,
-                category,
                 errorId,
+                category,
                 expected,
                 recommendedAction,
                 categoryActivity,
@@ -120,10 +174,10 @@ namespace NewErrorRecord.Tests.Utility
             string? categoryTargetType = null;
 
             // Act
-            var actual = OctopusCmdlet.Utility.NewErrorRecord.NewErrorRecordCommand(
+            var actual = NewErrorRecord.NewErrorRecordCommand(
                 exception,
-                category,
                 errorId,
+                category,
                 targetObject,
                 recommendedAction,
                 categoryActivity,
@@ -151,10 +205,10 @@ namespace NewErrorRecord.Tests.Utility
             string? categoryTargetType = null;
 
             // Act
-            var result = OctopusCmdlet.Utility.NewErrorRecord.NewErrorRecordCommand<PSInvalidOperationException>(
+            var result = NewErrorRecord.NewErrorRecordCommand<PSInvalidOperationException>(
                 message,
-                expected,
                 errorId,
+                expected,
                 targetObject,
                 recommendedAction,
                 categoryActivity,
@@ -183,10 +237,10 @@ namespace NewErrorRecord.Tests.Utility
             string? categoryTargetType = null;
 
             // Act
-            var result = OctopusCmdlet.Utility.NewErrorRecord.NewErrorRecordCommand<PSInvalidOperationException>(
+            var result = NewErrorRecord.NewErrorRecordCommand<PSInvalidOperationException>(
                 message,
-                errorCategory,
                 expected,
+                errorCategory,
                 targetObject,
                 recommendedAction,
                 categoryActivity,
@@ -215,10 +269,10 @@ namespace NewErrorRecord.Tests.Utility
             string? categoryTargetType = null;
 
             // Act
-            var result = OctopusCmdlet.Utility.NewErrorRecord.NewErrorRecordCommand<PSInvalidOperationException>(
+            var result = NewErrorRecord.NewErrorRecordCommand<PSInvalidOperationException>(
                 expected,
-                category,
                 errorId,
+                category,
                 targetObject,
                 recommendedAction,
                 categoryActivity,
@@ -247,10 +301,10 @@ namespace NewErrorRecord.Tests.Utility
             string? categoryTargetType = null;
 
             // Act
-            var result = OctopusCmdlet.Utility.NewErrorRecord.NewErrorRecordCommand<PSInvalidOperationException>(
+            var result = NewErrorRecord.NewErrorRecordCommand<PSInvalidOperationException>(
                 message,
-                errorCategory,
                 errorId,
+                errorCategory,
                 expected,
                 recommendedAction,
                 categoryActivity,
@@ -279,10 +333,10 @@ namespace NewErrorRecord.Tests.Utility
             string? categoryTargetType = null;
 
             // Act
-            var actual = OctopusCmdlet.Utility.NewErrorRecord.NewErrorRecordCommand<PSInvalidOperationException>(
+            var actual = NewErrorRecord.NewErrorRecordCommand<PSInvalidOperationException>(
                 message,
-                category,
                 errorId,
+                category,
                 targetObject,
                 recommendedAction,
                 categoryActivity,
@@ -305,10 +359,10 @@ namespace NewErrorRecord.Tests.Utility
         public void UpdateErrorRecordCommand_ErrorRecordNoExtra_ExpectedCategoryActivityEqualsActualCategoryActivity()
         {
             // Arrange
-            ErrorRecord errorRecord = OctopusCmdlet.Utility.NewErrorRecord.NewErrorRecordCommand(
+            ErrorRecord errorRecord = NewErrorRecord.NewErrorRecordCommand(
                 new InvalidOperationException("This is a test exception message"),
-                ErrorCategory.InvalidOperation,
                 "Test-InvalidOperation-3",
+                ErrorCategory.InvalidOperation,
                 null);
             string? recommendedAction = "Test recommended action";
             string? expected = "Processing Record";
@@ -317,7 +371,7 @@ namespace NewErrorRecord.Tests.Utility
             string? categoryTargetType = null;
 
             // Act
-            var result = OctopusCmdlet.Utility.NewErrorRecord.UpdateErrorRecordCommand(
+            var result = NewErrorRecord.UpdateErrorRecordCommand(
                 errorRecord,
                 recommendedAction,
                 expected,
@@ -335,10 +389,10 @@ namespace NewErrorRecord.Tests.Utility
         public void UpdateErrorRecordCommand_ErrorRecordNoExtra_ExpectedCategoryReasonEqualsActualCategoryReason()
         {
             // Arrange
-            ErrorRecord errorRecord = OctopusCmdlet.Utility.NewErrorRecord.NewErrorRecordCommand(
+            ErrorRecord errorRecord = NewErrorRecord.NewErrorRecordCommand(
                 new InvalidOperationException("This is a test exception message"),
-                ErrorCategory.InvalidOperation,
                 "Test-InvalidOperation-3",
+                ErrorCategory.InvalidOperation,
                 null);
             string? recommendedAction = "Test recommended action";
             string? categoryActivity = "Processing Record";
@@ -347,7 +401,7 @@ namespace NewErrorRecord.Tests.Utility
             string? categoryTargetType = null;
 
             // Act
-            var result = OctopusCmdlet.Utility.NewErrorRecord.UpdateErrorRecordCommand(
+            var result = NewErrorRecord.UpdateErrorRecordCommand(
                 errorRecord,
                 recommendedAction,
                 categoryActivity,
@@ -365,10 +419,10 @@ namespace NewErrorRecord.Tests.Utility
         public void UpdateErrorRecordCommand_ErrorRecordNoExtra_ExpectedCategoryTargetNameEqualsActualCategoryTargetName()
         {
             // Arrange
-            ErrorRecord errorRecord = OctopusCmdlet.Utility.NewErrorRecord.NewErrorRecordCommand(
+            ErrorRecord errorRecord = NewErrorRecord.NewErrorRecordCommand(
                 new InvalidOperationException("This is a test exception message"),
-                ErrorCategory.InvalidOperation,
                 "Test-InvalidOperation-3",
+                ErrorCategory.InvalidOperation,
                 null);
             string? recommendedAction = "Test recommended action";
             string? categoryActivity = "Processing Record";
@@ -377,7 +431,7 @@ namespace NewErrorRecord.Tests.Utility
             string? categoryTargetType = null;
 
             // Act
-            var result = OctopusCmdlet.Utility.NewErrorRecord.UpdateErrorRecordCommand(
+            var result = NewErrorRecord.UpdateErrorRecordCommand(
                 errorRecord,
                 recommendedAction,
                 categoryActivity,
@@ -395,10 +449,10 @@ namespace NewErrorRecord.Tests.Utility
         public void UpdateErrorRecordCommand_ErrorRecordNoExtra_ExpectedCategoryTargetTypeEqualsActualCategoryTargetType()
         {
             // Arrange
-            ErrorRecord errorRecord = OctopusCmdlet.Utility.NewErrorRecord.NewErrorRecordCommand(
+            ErrorRecord errorRecord = NewErrorRecord.NewErrorRecordCommand(
                 new InvalidOperationException("This is a test exception message"),
-                ErrorCategory.InvalidOperation,
                 "Test-InvalidOperation-3",
+                ErrorCategory.InvalidOperation,
                 null);
             string? recommendedAction = "Test recommended action";
             string? categoryActivity = "Processing Record";
@@ -407,7 +461,7 @@ namespace NewErrorRecord.Tests.Utility
             string? expected = "System.String";
 
             // Act
-            var result = OctopusCmdlet.Utility.NewErrorRecord.UpdateErrorRecordCommand(
+            var result = NewErrorRecord.UpdateErrorRecordCommand(
                 errorRecord,
                 recommendedAction,
                 categoryActivity,
@@ -425,10 +479,10 @@ namespace NewErrorRecord.Tests.Utility
         public void UpdateErrorRecordCommand_ErrorRecordNoExtra_ExpectedRecommendedActionEqualsActualRecommendAction()
         {
             // Arrange
-            ErrorRecord errorRecord = OctopusCmdlet.Utility.NewErrorRecord.NewErrorRecordCommand(
+            ErrorRecord errorRecord = NewErrorRecord.NewErrorRecordCommand(
                 new InvalidOperationException("This is a test exception message"),
-                ErrorCategory.InvalidOperation,
                 "Test-InvalidOperation-3",
+                ErrorCategory.InvalidOperation,
                 null);
             string? expected = "Test recommended action";
             string? categoryActivity = null;
@@ -437,7 +491,7 @@ namespace NewErrorRecord.Tests.Utility
             string? categoryTargetType = null;
 
             // Act
-            var result = OctopusCmdlet.Utility.NewErrorRecord.UpdateErrorRecordCommand(
+            var result = NewErrorRecord.UpdateErrorRecordCommand(
                 errorRecord,
                 expected,
                 categoryActivity,
@@ -455,10 +509,10 @@ namespace NewErrorRecord.Tests.Utility
         public void UpdateErrorRecordCommand_ErrorRecordNoExtra_ReturnTypeErrorRecord()
         {
             // Arrange
-            ErrorRecord expected = OctopusCmdlet.Utility.NewErrorRecord.NewErrorRecordCommand(
+            ErrorRecord expected = NewErrorRecord.NewErrorRecordCommand(
                 new InvalidOperationException("This is a test exception message"),
-                ErrorCategory.InvalidOperation,
                 "Test-InvalidOperation-3",
+                ErrorCategory.InvalidOperation,
                 null);
             string? recommendedAction = null;
             string? categoryActivity = null;
@@ -467,7 +521,7 @@ namespace NewErrorRecord.Tests.Utility
             string? categoryTargetType = null;
 
             // Act
-            var actual = OctopusCmdlet.Utility.NewErrorRecord.UpdateErrorRecordCommand(
+            var actual = NewErrorRecord.UpdateErrorRecordCommand(
                 expected,
                 recommendedAction,
                 categoryActivity,

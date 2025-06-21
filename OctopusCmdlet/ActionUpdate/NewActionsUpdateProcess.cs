@@ -46,7 +46,10 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.ActionUpdate
 {
-    [Cmdlet(VerbsCommon.New, "ActionsUpdateProcess")]
+    /// <summary>
+    /// Implements the <c> New-ActionsUpdateProcess </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
+    [Cmdlet(VerbsCommon.New, "ActionsUpdateProcess", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(ActionsUpdateProcessResource))]
     public class NewActionsUpdateProcess : PSCmdlet
     {
@@ -62,6 +65,15 @@ namespace OctopusCmdlet.ActionUpdate
 
         #endregion Public Constructors
 
+        #region Public Properties
+
+        /// <summary>
+        /// Gets or sets a value specifying whether to override <c> CommandPreference </c> by setting it to <see cref="ConfirmImpact.None" />.
+        /// </summary>
+        public SwitchParameter Force { get; set; }
+
+        #endregion Public Properties
+
         #region Internal Properties
 
         /// <summary>
@@ -74,6 +86,14 @@ namespace OctopusCmdlet.ActionUpdate
         #region Protected Methods
 
         /// <inheritdoc />
+        protected override void BeginProcessing()
+        {
+            base.BeginProcessing();
+
+            DefaultProcessing.InitializeBeginProcessing(CmdletName, MyInvocation.BoundParameters, SessionState, Stopping, Force.IsPresent);
+        }
+
+        /// <inheritdoc />
         /// <exception cref="PipelineStoppedException">
         /// Always throws when <see cref="StopProcessing" /> is called.
         /// </exception>
@@ -81,16 +101,7 @@ namespace OctopusCmdlet.ActionUpdate
         {
             base.StopProcessing();
 
-            NewErrorRecord stopProcessingErr = new();
-            FormatErrorId pipelineStoppedEx = new();
-
-            var er = stopProcessingErr.NewErrorRecordCommand(
-                new PipelineStoppedException($"{CmdletName} : PipelineStoppedException : Pipeline stopping because 'StopProcessing' called"),
-                pipelineStoppedEx.FormatErrorIdCommand(typeof(PipelineStoppedException)),
-                ErrorCategory.OperationStopped,
-                this);
-            WriteFatal operationStopped = new();
-            operationStopped.WriteFatalCommand(er);
+            DefaultProcessing.InitializeStopProcessing(CmdletName, this, MyInvocation.ScriptLineNumber);
         }
 
         #endregion Protected Methods

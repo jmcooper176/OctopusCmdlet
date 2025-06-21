@@ -32,6 +32,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **************************************************************************** */
 
 // Ignore Spelling: cmdlet
+using OctopusCmdlet.Trigger;
+
 using System.Management.Automation;
 
 namespace OctopusCmdlet.Utility
@@ -40,6 +42,33 @@ namespace OctopusCmdlet.Utility
     [OutputType(typeof(void))]
     public class WriteError : PSCmdlet
     {
+        #region Public Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WriteError" /> class.
+        /// </summary>
+        public WriteError()
+        {
+            CmdletName = MyInvocation.MyCommand.Name;
+            NewErrorRecord = new();
+        }
+
+        #endregion Public Constructors
+
+        #region Internal Properties
+
+        /// <summary>
+        /// Gets a value indicating this <see cref="Cmdlet" /> name.
+        /// </summary>
+        internal string CmdletName { get; }
+
+        /// <summary>
+        /// Gets a value indicating the <see cref="NewErrorRecord" /> instance to use.
+        /// </summary>
+        internal NewErrorRecord NewErrorRecord { get; }
+
+        #endregion Internal Properties
+
         #region Public Methods
 
         public virtual void WriteErrorCommand(
@@ -50,14 +79,14 @@ namespace OctopusCmdlet.Utility
             string? categoryTargetName = null,
             string? categoryTargetType = null)
         {
-            errorRecord = UpdateErrorRecordCommand(
+            var er = NewErrorRecord.UpdateErrorRecordCommand(
                 errorRecord,
                 recommendedAction,
                 categoryActivity,
                 categoryReason,
                 categoryTargetName,
                 categoryTargetType);
-            base.WriteError(errorRecord);
+            base.WriteError(er);
         }
 
         public virtual void WriteErrorCommand<TException>(
@@ -71,7 +100,7 @@ namespace OctopusCmdlet.Utility
             string? categoryTargetName = null,
             string? categoryTargetType = null) where TException : Exception
         {
-            var er = NewErrorRecordCommand<TException>(
+            var er = NewErrorRecord.NewErrorRecordCommand<TException>(
                 message,
                 errorId,
                 category,
@@ -102,7 +131,7 @@ namespace OctopusCmdlet.Utility
             string? categoryTargetName = null,
             string? categoryTargetType = null)
         {
-            var er = NewErrorRecordCommand(
+            var er = NewErrorRecord.NewErrorRecordCommand(
                 exception,
                 errorId,
                 category,
@@ -127,6 +156,14 @@ namespace OctopusCmdlet.Utility
         #region Protected Methods
 
         /// <inheritdoc />
+        protected override void BeginProcessing()
+        {
+            base.BeginProcessing();
+
+            DefaultProcessing.InitializeBeginProcessing(CmdletName, MyInvocation.BoundParameters, SessionState, Stopping);
+        }
+
+        /// <inheritdoc />
         /// <exception cref="PipelineStoppedException">
         /// Always throws when <see cref="StopProcessing" /> is called.
         /// </exception>
@@ -134,15 +171,7 @@ namespace OctopusCmdlet.Utility
         {
             base.StopProcessing();
 
-            FormatErrorId pipelineStoppedEx = new();
-
-            ErrorRecord er = new(
-                new PipelineStoppedException($"{CmdletName} : PipelineStoppedException : Pipeline stopping because 'StopProcessing' called"),
-                pipelineStoppedEx.FormatErrorIdCommand(typeof(PipelineStoppedException)),
-                ErrorCategory.OperationStopped,
-                this);
-            WriteFatal operationStopped = new();
-            operationStopped.WriteFatalCommand(er);
+            DefaultProcessing.InitializeStopProcessing(CmdletName, this, MyInvocation.ScriptLineNumber);
         }
 
         #endregion Protected Methods

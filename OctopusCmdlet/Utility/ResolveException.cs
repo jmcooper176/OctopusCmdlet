@@ -153,7 +153,7 @@ namespace OctopusCmdlet.Utility
         /// Specifies an inner <see cref="Exception" /> to associate.
         /// </param>
         /// <returns>
-        /// Returns an <see cref="Exception" /> if <paramref name="errorCode" /> is non-zero; otherwise, returns null.
+        /// Returns an <see cref="Exception" /> if <paramref name="errorCode" /> is non-zero; otherwise, returns <see langref="null" />.
         /// </returns>
         public virtual Exception? ResolveExceptionCommand(int errorCode, string? message = null, Exception? innerException = null)
         {
@@ -276,7 +276,7 @@ namespace OctopusCmdlet.Utility
         {
             base.BeginProcessing();
 
-            BoundParameter bp = new(MyInvocation.BoundParameters);
+            BoundParameterDictionary bp = new(MyInvocation.BoundParameters);
 
             if (Stopping)
             {

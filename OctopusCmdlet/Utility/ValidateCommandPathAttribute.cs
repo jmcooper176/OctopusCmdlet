@@ -132,7 +132,7 @@ namespace OctopusCmdlet.Utility
         /// Verifies the value of <paramref name="arguments" /> is a valid application literal path value.
         /// </summary>
         /// <exception cref="ArgumentNullException">
-        /// Throws if, after removing the PSProvider, the application name left is null, empty, or all whitespace.
+        /// Throws if, after removing the PSProvider, the application name left is <see langref="null" />, empty, or all whitespace.
         /// </exception>
         /// <exception cref="ArgumentException">
         /// Throws if the PowerShell application name has no value (does not exist).

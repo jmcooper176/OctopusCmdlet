@@ -76,14 +76,7 @@ namespace OctopusCmdlet.Utility
 
             InformationRecord ir = new($"{activity} {statusDescription}", activityId.ToString(CultureInfo.CurrentCulture));
             base.WriteInformation(ir);
-            base.WriteProgressCommand(activityId, currentOperation, parentActivityId, percentComplete, recordType, secondsRemaining);
-        }
-
-        public override void TraceProgressCommand(int activityId, string activity, string statusDescription, string? currentOperation = null, int parentActivityId = 0, int percentComplete = -1, ProgressRecordType recordType = ProgressRecordType.Processing, int secondsRemaining = -1)
-        {
-            InformationRecord ir = new($"{activity} {statusDescription}", activityId.ToString(CultureInfo.CurrentCulture));
-            base.WriteInformation(ir);
-            base.WriteProgressCommand(activityId, activity, statusDescription, currentOperation, parentActivityId, percentComplete, recordType, secondsRemaining);
+            base.WriteProgressCommand(activityId, 0.0, recordType, currentOperation);
         }
 
         #endregion Public Methods

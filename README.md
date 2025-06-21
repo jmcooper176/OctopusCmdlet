@@ -96,6 +96,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [.NET 9.0 SDK][DotNet-SDK-Installers-url]
 * [Octopus.Local][Octopus-Local-Docker-Compose-url]
 * [Pester PowerShell Module][Pester-PowerShell-Gallery-url]
+* [Installing Chocolatey][Chocolatey-Home-Install-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -117,6 +118,10 @@ This is an example of how to list things you need to use the software and how to
 _Below is an example of how you can instruct your audience on installing and setting up this PowerShell module. These instructions do not rely on any external dependencies or services._
 
 1. Install PowerShell Core of at least version 7.2 or later.
+   ```sh
+   choco install powershell-core
+   ```
+
 2. Clone the repo
    ```sh
    git clone https://github.com/jmcooper176/OctopusCmdlet.git
@@ -125,7 +130,22 @@ _Below is an example of how you can instruct your audience on installing and set
    ```sh
    choco install dotnet-9.0-sdk
    ```
-4. Change git remote url to avoid accidental pushes to base project
+
+4. Setup a Local Octopus Deploy (follow the README.md at https://github.com/OctopusDeployLabs/octopus.local/blob/main/README.md)
+   ```sh
+   openssl req -x509 -out octopus.crt -keyout octopus.key -newkey rsa:2048 -nodes -sha256 -subj '/CN=octopus.local' -extensions EXT -config <(printf "[dn]\nCN=octopus.local\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:octopus.local\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
+
+   predeploy.sh
+
+   deploy.sh
+   ```
+
+5. Install latest stable Pester
+   ```sh
+   Install-Module -Name Pester -RequiredVersion 5.7.1
+   ```
+
+6. Change git remote url to avoid accidental pushes to base project
    ```sh
    git remote set-url origin github_username/repo_name
    git remote -v # confirm the changes
@@ -1231,3 +1251,4 @@ Useful resources I find helpful.
 [DotNet-SDK-Installers-url]: https://dotnet.microsoft.com/en-us/download/dotnet/9.0
 [Octopus-Local-Docker-Compose-url]: https://github.com/OctopusDeployLabs/octopus.local/blob/main/docker-compose.yml
 [Pester-PowerShell-Gallery-url]: https://www.powershellgallery.com/packages/Pester/5.7.1
+[Chocolatey-Home-Install-url]: https://chocolatey.org/install

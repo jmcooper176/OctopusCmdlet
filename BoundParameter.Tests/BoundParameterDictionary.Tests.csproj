@@ -1,0 +1,73 @@
+<Project Sdk="MSTest.Sdk/3.6.4">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UseVSTest>true</UseVSTest>
+    <NuGetAuditMode>all</NuGetAuditMode>
+    <Title>Unit Tests for BoundParameterDictionary Class</Title>
+    <Authors>John Merryweather Cooper</Authors>
+    <Company>John Merryweather Cooper</Company>
+    <Product>OctopusCmdlet</Product>
+    <Description>Unit Tests for the BoundParameterDictionary Class which provides warpped functionality around MyInvocation.BoundParameters.</Description>
+    <Copyright>Copyright (c) 2025, John Merryweather Cooper.  All Rights Reserved.</Copyright>
+    <PackageProjectUrl>https://github.com/jmcooper176/OctopusCmdlet</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/jmcooper176/OctopusCmdlet.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>BoundParametersDictionary;Unit;Tests</PackageTags>
+    <PackageReleaseNotes>See ..\RELEASENOTES.txt</PackageReleaseNotes>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <FileVersion>0.0.0.0</FileVersion>
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+    <AnalysisLevel>latest-recommended</AnalysisLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>9999</WarningLevel>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <WarningLevel>9999</WarningLevel>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OctopusCmdlet\OctopusCmdlet.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="MSTest.Analyzers" Version="3.9.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="MSTest.TestAdapter" Version="3.9.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="MSTest.TestFramework" Version="3.9.2" />
+  </ItemGroup>
+
+</Project>

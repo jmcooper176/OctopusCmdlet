@@ -47,14 +47,25 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Utility
 {
-    [Cmdlet(VerbsCommon.New, "InformationRecord")]
+    [Cmdlet(VerbsCommon.New, "InformationRecord", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(InformationRecord))]
     public class NewInformationRecord : PSCmdlet
     {
         #region Public Methods
 
+        #region Public Properties
+
+        /// <summary>
+        /// Gets or sets a value specifying whether to override <c> CommandPreference </c> by setting it to <see cref="ConfirmImpact.None" />.
+        /// </summary>
+        public SwitchParameter Force { get; set; }
+
+        #endregion Public Properties
+
+        #region Public Methods
+
         public virtual InformationRecord NewInformationRecordCommand(
-            object messageData,
+                            object messageData,
             [CallerFilePath] string? source = null)
         {
             var managedThreadId = Convert.ToUInt32(Environment.CurrentManagedThreadId);
@@ -92,16 +103,26 @@ namespace OctopusCmdlet.Utility
 
         #endregion Public Methods
 
-        #region Private Methods
+        #endregion Public Methods
 
-        private static uint GetNativeThreadId(uint managedThreadId)
-        {
-            return Process.GetCurrentProcess().Threads.Cast<ProcessThread>().Where(t => t.Id == managedThreadId).Select(t => Convert.ToUInt32(t.Id)).FirstOrDefault();
-        }
+        #region Internal Properties
 
-        #endregion Private Methods
+        /// <summary>
+        /// Gets a value indicating this <see cref="Cmdlet" /> name.
+        /// </summary>
+        internal string CmdletName { get; }
+
+        #endregion Internal Properties
 
         #region Protected Methods
+
+        /// <inheritdoc />
+        protected override void BeginProcessing()
+        {
+            base.BeginProcessing();
+
+            DefaultProcessing.InitializeBeginProcessing(CmdletName, MyInvocation.BoundParameters, SessionState, Stopping, Force.IsPresent);
+        }
 
         /// <inheritdoc />
         /// <exception cref="PipelineStoppedException">
@@ -111,16 +132,12 @@ namespace OctopusCmdlet.Utility
         {
             base.StopProcessing();
 
-            NewErrorRecord stopProcessingErr = new();
-            FormatErrorId pipelineStoppedEx = new();
+            DefaultProcessing.InitializeStopProcessing(CmdletName, this, MyInvocation.ScriptLineNumber);
+        }
 
-            var er = stopProcessingErr.NewErrorRecordCommand(
-                new PipelineStoppedException($"{CmdletName} : PipelineStoppedException : Pipeline stopping because 'StopProcessing' called"),
-                pipelineStoppedEx.FormatErrorIdCommand(typeof(PipelineStoppedException)),
-                ErrorCategory.OperationStopped,
-                this);
-            WriteFatal operationStopped = new();
-            operationStopped.WriteFatalCommand(er);
+        private static uint GetNativeThreadId(uint managedThreadId)
+        {
+            return Process.GetCurrentProcess().Threads.Cast<ProcessThread>().Where(t => t.Id == managedThreadId).Select(t => Convert.ToUInt32(t.Id)).FirstOrDefault();
         }
 
         #endregion Protected Methods

@@ -34,6 +34,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // Ignore Spelling: cmdlet
 using Octopus.Client.Model;
 
+using OctopusCmdlet.Repository;
 using OctopusCmdlet.Utility;
 
 using System;
@@ -46,9 +47,30 @@ using System.Threading.Tasks;
 namespace OctopusCmdlet.Tenant
 {
     [Cmdlet(VerbsCommon.Get, "Tenant")]
-    [OutputType(TenantResource)]
+    [OutputType(typeof(TenantResource))]
     public class GetTenant : PSCmdlet
     {
+        #region Public Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GetTenant" /> class.
+        /// </summary>
+        public GetTenant()
+        {
+            CmdletName = MyInvocation.MyCommand.Name;
+        }
+
+        #endregion Public Constructors
+
+        #region Internal Properties
+
+        /// <summary>
+        /// Gets a value indicating this <see cref="Cmdlet" /> name.
+        /// </summary>
+        internal string CmdletName { get; }
+
+        #endregion Internal Properties
+
         #region Protected Methods
 
         /// <inheritdoc />

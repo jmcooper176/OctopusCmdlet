@@ -133,12 +133,12 @@ namespace OctopusCmdlet.Utility
         /// Specifies the <see cref="object" /> instance <see cref="object.ToString" /> to log.
         /// </param>
         /// <param name="tags">
-        /// Specifies the array of tags to log. Maybe null.
+        /// Specifies the array of tags to log. Maybe <see langref="null" />.
         /// </param>
         /// <param name="level">
         /// Specifies the <see cref="LogLevel" /> to use. Defaults to <see cref="LogLevel.Information" />.
         /// </param>
-        [LoggerMessage(EventId = 41, EventName = "WriteInformationMessageDataTagsLog", Level = LogLevel.Information, Message = "Output {messageData} with Tags {tags ?? \"No Tags\"}")]
+        [LoggerMessage(EventId = 41, EventName = "WriteInformationMessageDataTagsLog", Level = LogLevel.Information, Message = "Output {messageData} with Tags {tags}")]
         public static partial void WriteInformationLog(this ILogger logger, object messageData, string[]? tags = null, LogLevel level = LogLevel.Information);
 
         /// <summary>

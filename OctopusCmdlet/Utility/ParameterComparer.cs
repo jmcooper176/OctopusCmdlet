@@ -38,7 +38,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace OctopusCmdlet.Utility
 {
     /// <summary>
-    /// The parameter comparer class implementing key comparison for the <see cref="BoundParameter" /> class.
+    /// The parameter comparer class implementing key comparison for the <see cref="BoundParameterDictionary" /> class.
     /// </summary>
     public class ParameterComparer : EqualityComparer<string>, IAlternateEqualityComparer<ReadOnlySpan<char>, string>, IAlternateEqualityComparer<KeyValuePair<string, object>, string>
     {
@@ -51,12 +51,12 @@ namespace OctopusCmdlet.Utility
         /// Specifies the PowerShell parameter name to test.
         /// </param>
         /// <returns>
-        /// True if <paramref name="name" /> is a valid PowerShell parameter name; otherwise, false.
+        /// <see langref="true" /> if <paramref name="name" /> is a valid PowerShell parameter name; otherwise, <see langref="false" />.
         /// </returns>
         /// <remarks>
         /// A valid PowerShell parameter name must:
         /// <list type="bullet">
-        /// <item> Not be null, empty, or all whitespace; </item>
+        /// <item> Not be <see langref="null" />, empty, or all whitespace; </item>
         /// <item> Not contain any whitespace; </item>
         /// <item> Not contain any symbols; </item>
         /// <item> Not equal any PowerShell reserved word; </item>

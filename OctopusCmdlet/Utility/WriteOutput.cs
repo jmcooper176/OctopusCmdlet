@@ -31,6 +31,40 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **************************************************************************** */
 
+// Ignore Spelling: cmdlet
+/* ****************************************************************************
+BSD-3-CLAUSE (a/k/a MODIFIED BSD) LICENSE
+
+Copyright (c) 2025 John Merryweather Cooper
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+“AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+**************************************************************************** */
+
 // Ignore Spelling: cmdlet Ignore Spelling: Cmdlet
 
 using System.Management.Automation;
@@ -49,6 +83,8 @@ namespace OctopusCmdlet.Utility
         public WriteOutput()
         {
             const string DEFAULT_OFS = " ";
+
+            FormatErrorId = new();
 
             BackgroundColor = Console.BackgroundColor;
             CmdletName = MyInvocation.MyCommand.Name;
@@ -106,6 +142,8 @@ namespace OctopusCmdlet.Utility
 
         internal string CmdletName { get; }
 
+        internal FormatErrorId FormatErrorId { get; }
+
         #endregion Internal Properties
 
         #region Public Methods
@@ -116,7 +154,7 @@ namespace OctopusCmdlet.Utility
         /// <returns>
         /// Returns the drive letter.
         /// </returns>
-        public static string GetCurrentDrive()
+        public string GetCurrentDrive()
         {
             try
             {
@@ -162,11 +200,11 @@ namespace OctopusCmdlet.Utility
         /// Specifies that relative or absolute path for the current drive. This path should be resolvable to a full, absolute path.
         /// </param>
         /// <returns>
-        /// True if the disk in <paramref name="path" /> is full; otherwise, false.
+        /// <see langref="true" /> if the disk in <paramref name="path" /> is full; otherwise, <see langref="false" />.
         /// </returns>
-        public static bool TestDiskFull(string path)
+        public bool TestDiskFull(string path)
         {
-            Utility.WriteError logException = new();
+            WriteError logException = new();
 
             if (System.IO.Path.Exists(path))
             {
@@ -174,7 +212,7 @@ namespace OctopusCmdlet.Utility
                 {
                     path = System.IO.Path.GetFullPath(path);
 
-                    DriveInfo drive = new(System.IO.Path.GetPathRoot(path) ?? Utility.WriteOutput.GetCurrentDrive());
+                    DriveInfo drive = new(System.IO.Path.GetPathRoot(path) ?? GetCurrentDrive());
 
                     if (drive.IsReady)
                     {
@@ -274,13 +312,13 @@ namespace OctopusCmdlet.Utility
         /// <remarks>
         /// The currently set <see cref="Console.BackgroundColor" /> will be used for the background color.
         /// </remarks>
-        public static void WriteOutputCommand(
+        public virtual void WriteOutputCommand(
             PSObject[] inputObject,
             ConsoleColor foregroundColor,
             bool noNewLine = false,
             object? separator = null)
         {
-            Utility.WriteOutput.WriteOutputCommand(inputObject, Console.BackgroundColor, foregroundColor, noNewLine, separator);
+            WriteOutputCommand(inputObject, Console.BackgroundColor, foregroundColor, noNewLine, separator);
         }
 
         /// <summary>
@@ -326,7 +364,7 @@ namespace OctopusCmdlet.Utility
         /// <remarks>
         /// The currently set <see cref="Console.BackgroundColor" /> will be used for the background color.
         /// </remarks>
-        public static void WriteOutputCommand(
+        public virtual void WriteOutputCommand(
             int column,
             int row,
             PSObject[] inputObject,
@@ -334,7 +372,7 @@ namespace OctopusCmdlet.Utility
             bool noNewLine = false,
             object? separator = null)
         {
-            Utility.WriteOutput.WriteOutputCommand(column, row, inputObject, Console.BackgroundColor, foregroundColor, noNewLine, separator);
+            WriteOutputCommand(column, row, inputObject, Console.BackgroundColor, foregroundColor, noNewLine, separator);
         }
 
         /// <summary>
@@ -396,7 +434,7 @@ namespace OctopusCmdlet.Utility
         /// <exception cref="IOException">
         /// Throws if an I/O error has occurred.
         /// </exception>
-        public static void WriteOutputCommand(
+        public virtual void WriteOutputCommand(
             PSObject[] inputObject,
             ConsoleColor backgroundColor,
             ConsoleColor foregroundColor,
@@ -509,7 +547,7 @@ namespace OctopusCmdlet.Utility
         /// <exception cref="IOException">
         /// Throws if an I/O error has occurred.
         /// </exception>
-        public static void WriteOutputCommand(
+        public virtual void WriteOutputCommand(
             int column,
             int row,
             PSObject[] inputObject,
@@ -605,7 +643,7 @@ namespace OctopusCmdlet.Utility
         /// <param name="bufferSize">
         /// </param>
         /// <exception cref="ArgumentNullException">
-        /// Throws when the created <see cref="StreamWriter" /> is null.
+        /// Throws when the created <see cref="StreamWriter" /> is <see langref="null" />.
         /// </exception>
         /// <exception cref="SecurityException">
         /// Throws when the caller does not have the permissions.
@@ -616,7 +654,7 @@ namespace OctopusCmdlet.Utility
         /// <exception cref="IOException">
         /// Throws if an I/O error has occurred.
         /// </exception>
-        public static void WriteOutputCommand(
+        public virtual void WriteOutputCommand(
             Stream stream,
             PSObject[] inputObject,
             bool noEnumerate = false,
@@ -740,7 +778,7 @@ namespace OctopusCmdlet.Utility
         /// Specifies a separator string to insert between objects written to the underlying <see cref="FileStream" />.
         /// </param>
         /// <exception cref="ArgumentNullException">
-        /// Throws when either the created <see cref="FileStream" /> or the <paramref name="encoding" /> is null.
+        /// Throws when either the created <see cref="FileStream" /> or the <paramref name="encoding" /> is <see langref="null" />.
         /// </exception>
         /// <exception cref="ArgumentOutOfRangeException">
         /// Throws when <paramref name="bufferSize" /> is less than -1.
@@ -748,7 +786,7 @@ namespace OctopusCmdlet.Utility
         /// <exception cref="ArgumentException">
         /// Throws when the underlying <see cref="FileStream" /> is not writable..
         /// </exception>
-        public static void WriteOutputCommand(
+        public virtual void WriteOutputCommand(
             string path,
             FileMode mode,
             PSObject[] inputObject,
@@ -761,7 +799,7 @@ namespace OctopusCmdlet.Utility
             try
             {
                 using FileStream fs = new(path, mode);
-                Utility.WriteOutput.WriteOutputCommand(fs, inputObject, noEnumerate, noNewLine, separator, leaveOpen: false, encoding, bufferSize);
+                WriteOutputCommand(fs, inputObject, noEnumerate, noNewLine, separator, leaveOpen: false, encoding, bufferSize);
             }
             catch (Exception ex)
             {
@@ -822,7 +860,7 @@ namespace OctopusCmdlet.Utility
         /// <param name="separator">
         /// Specifies a separator string to insert between objects written to the <paramref name="stream" />.
         /// </param>
-        public static void WriteOutputCommand(
+        public virtual void WriteOutputCommand(
             Stream stream,
             Encoding encoding,
             PSObject[] inputObject,
@@ -830,7 +868,7 @@ namespace OctopusCmdlet.Utility
             bool noNewLine = false,
             object? separator = null)
         {
-            Utility.WriteOutput.WriteOutputCommand(stream, inputObject, noEnumerate, noNewLine, separator, leaveOpen: true, encoding);
+            WriteOutputCommand(stream, inputObject, noEnumerate, noNewLine, separator, leaveOpen: true, encoding);
         }
 
         /// <summary>
@@ -841,7 +879,8 @@ namespace OctopusCmdlet.Utility
         /// Specifies a relative or absolute path for the file that the current <see cref="FileStream" /> will encapsulate.
         /// </param>
         /// <param name="append">
-        /// If true, <see cref="FileMode.Append" /> will be selected; otherwise, <see cref="FileMode.Create" /> will be selected.
+        /// If <see langref="true" />, <see cref="FileMode.Append" /> will be selected; otherwise, <see cref="FileMode.Create" />
+        /// will be selected.
         /// </param>
         /// <param name="inputObject">
         /// Specifies the objects to write to the <see cref="FileStream" /> which writes to <paramref name="path" />.
@@ -863,7 +902,7 @@ namespace OctopusCmdlet.Utility
         /// <param name="separator">
         /// Specifies a separator string to insert between objects written to the underlying <paramref name="FileStream" />.
         /// </param>
-        public static void WriteOutputCommand(
+        public virtual void WriteOutputCommand(
             string path,
             bool append,
             PSObject[] inputObject,
@@ -871,7 +910,7 @@ namespace OctopusCmdlet.Utility
             bool noNewLine = false,
             object? separator = null)
         {
-            Utility.WriteOutput.WriteOutputCommand(path, append ? FileMode.Append : FileMode.Create, inputObject, noEnumerate, noNewLine, separator);
+            WriteOutputCommand(path, append ? FileMode.Append : FileMode.Create, inputObject, noEnumerate, noNewLine, separator);
         }
 
         /// <summary>
@@ -904,7 +943,7 @@ namespace OctopusCmdlet.Utility
         /// <param name="separator">
         /// Specifies a separator string to insert between objects written to the underlying <paramref name="FileStream" />.
         /// </param>
-        public static void WriteOutputCommand(
+        public virtual void WriteOutputCommand(
             string path,
             FileStreamOptions options,
             PSObject[] inputObject,
@@ -912,7 +951,7 @@ namespace OctopusCmdlet.Utility
             bool noNewLine = false,
             object? separator = null)
         {
-            Utility.WriteOutput.WriteOutputCommand(path, Encoding.UTF8, options, inputObject, noEnumerate, noNewLine, separator, leaveOpen: true);
+            WriteOutputCommand(path, Encoding.UTF8, options, inputObject, noEnumerate, noNewLine, separator, leaveOpen: true);
         }
 
         /// <summary>
@@ -947,7 +986,7 @@ namespace OctopusCmdlet.Utility
         /// <param name="separator">
         /// Specifies a separator string to insert between objects written to the <paramref name="stream" />.
         /// </param>
-        public static void WriteOutputCommand(
+        public virtual void WriteOutputCommand(
             Stream stream,
             Encoding encoding,
             int bufferSize,
@@ -956,7 +995,7 @@ namespace OctopusCmdlet.Utility
             bool noNewLine = false,
             object? separator = null)
         {
-            Utility.WriteOutput.WriteOutputCommand(stream, inputObject, noEnumerate, noNewLine, separator, leaveOpen: true, encoding, bufferSize);
+            WriteOutputCommand(stream, inputObject, noEnumerate, noNewLine, separator, leaveOpen: true, encoding, bufferSize);
         }
 
         /// <summary>
@@ -967,7 +1006,8 @@ namespace OctopusCmdlet.Utility
         /// Specifies a relative or absolute path for the file that the current <see cref="FileStream" /> will encapsulate.
         /// </param>
         /// <param name="append">
-        /// If true, <see cref="FileMode.Append" /> will be selected; otherwise, <see cref="FileMode.Create" /> will be selected.
+        /// If <see langref="true" />, <see cref="FileMode.Append" /> will be selected; otherwise, <see cref="FileMode.Create" />
+        /// will be selected.
         /// </param>
         /// <param name="encoding">
         /// Specifies the character encoding to use.
@@ -992,7 +1032,7 @@ namespace OctopusCmdlet.Utility
         /// <param name="separator">
         /// Specifies a separator string to insert between objects written to the underlying <paramref name="FileStream" />.
         /// </param>
-        public static void WriteOutputCommand(
+        public virtual void WriteOutputCommand(
             string path,
             bool append,
             Encoding encoding,
@@ -1001,7 +1041,7 @@ namespace OctopusCmdlet.Utility
             bool noNewLine = false,
             object? separator = null)
         {
-            Utility.WriteOutput.WriteOutputCommand(path, append ? FileMode.Append : FileMode.Create, inputObject, noEnumerate, noNewLine, separator, encoding);
+            WriteOutputCommand(path, append ? FileMode.Append : FileMode.Create, inputObject, noEnumerate, noNewLine, separator, encoding);
         }
 
         /// <summary>
@@ -1038,12 +1078,12 @@ namespace OctopusCmdlet.Utility
         /// Specifies a separator string to insert between objects written to the <see cref="FileStream" /> which writes to <paramref name="stream" />.
         /// </param>
         /// <exception cref="ArgumentNullException">
-        /// Throws when <paramref name="options" /> is null.
+        /// Throws when <paramref name="options" /> is <see langref="null" />.
         /// </exception>
         /// <exception cref="ArgumentException">
         /// Throws when either:
         /// <list type="bullet">
-        /// <item> <paramref name="path" /> is null, empty, or contains only whitespace; </item>
+        /// <item> <paramref name="path" /> is <see langref="null" />, empty, or contains only whitespace; </item>
         /// <item> <paramref name="path" /> contains one or more invalid characters; OR </item>
         /// <item> <paramref name="path" /> refers to a non-file device, such as `CON:`, `COM1:`, or `LPT1:`, in an NTFS environment. </item>
         /// </list>
@@ -1094,7 +1134,7 @@ namespace OctopusCmdlet.Utility
         /// Throws when either the specified <paramref name="path" /> or the file name portion of <paramref name="path" />, or both
         /// exceed the system-defined maximum length.
         /// </exception>
-        public static void WriteOutputCommand(
+        public virtual void WriteOutputCommand(
             string path,
             Encoding encoding,
             FileStreamOptions options,
@@ -1107,7 +1147,7 @@ namespace OctopusCmdlet.Utility
             try
             {
                 using FileStream fs = new(path, options);
-                Utility.WriteOutput.WriteOutputCommand(fs, inputObject, noEnumerate, noNewLine, separator, leaveOpen, encoding);
+                WriteOutputCommand(fs, inputObject, noEnumerate, noNewLine, separator, leaveOpen, encoding);
             }
             catch (Exception ex)
             {
@@ -1153,7 +1193,7 @@ namespace OctopusCmdlet.Utility
                     {
                         errorLogger.WriteFatalCommand(ex, FormatErrorId.FormatErrorIdCommand(ex), ErrorCategory.ResourceExists, path);
                     }
-                    else if (options.PreallocationSize > 0 && System.IO.Path.Exists(path) && File.GetAttributes(path).HasFlag(FileAttributes.Normal) && Utility.WriteOutput.TestDiskFull(path))
+                    else if (options.PreallocationSize > 0 && System.IO.Path.Exists(path) && File.GetAttributes(path).HasFlag(FileAttributes.Normal) && TestDiskFull(path))
                     {
                         errorLogger.WriteFatalCommand(ex, FormatErrorId.FormatErrorIdCommand(ex), ErrorCategory.QuotaExceeded, path);
                     }
@@ -1193,7 +1233,8 @@ namespace OctopusCmdlet.Utility
         /// Specifies a relative or absolute path for the file that the current <see cref="FileStream" /> will encapsulate.
         /// </param>
         /// <param name="append">
-        /// If true, <see cref="FileMode.Append" /> will be selected; otherwise, <see cref="FileMode.Create" /> will be selected.
+        /// If <see langref="true" />, <see cref="FileMode.Append" /> will be selected; otherwise, <see cref="FileMode.Create" />
+        /// will be selected.
         /// </param>
         /// <param name="encoding">
         /// Specifies the character encoding to use.
@@ -1221,7 +1262,7 @@ namespace OctopusCmdlet.Utility
         /// <param name="separator">
         /// Specifies a separator string to insert between objects written to the <paramref name="stream" />.
         /// </param>
-        public static void WriteOutputCommand(
+        public virtual void WriteOutputCommand(
             string path,
             bool append,
             Encoding encoding,
@@ -1231,7 +1272,7 @@ namespace OctopusCmdlet.Utility
             bool noNewLine = false,
             object? separator = null)
         {
-            Utility.WriteOutput.WriteOutputCommand(path, append ? FileMode.Append : FileMode.Create, inputObject, noEnumerate, noNewLine, separator, encoding, bufferSize);
+            WriteOutputCommand(path, append ? FileMode.Append : FileMode.Create, inputObject, noEnumerate, noNewLine, separator, encoding, bufferSize);
         }
 
         /// <summary>
@@ -1257,14 +1298,14 @@ namespace OctopusCmdlet.Utility
         /// <param name="separator">
         /// Specifies a separator string to insert between objects written to the <paramref name="stream" />.
         /// </param>
-        public static void WriteStandardErrorCommand(
+        public virtual void WriteStandardErrorCommand(
             PSObject[] inputObject,
             bool noEnumerate = false,
             bool noNewLine = false,
             object? separator = null)
         {
             var bufferSize = Console.BufferHeight * Console.BufferWidth;
-            Utility.WriteOutput.WriteOutputCommand(Console.OpenStandardError(), inputObject, noEnumerate, noNewLine, separator, leaveOpen: true, Encoding.Latin1, bufferSize);
+            WriteOutputCommand(Console.OpenStandardError(), inputObject, noEnumerate, noNewLine, separator, leaveOpen: true, Encoding.Latin1, bufferSize);
         }
 
         /// <summary>
@@ -1290,14 +1331,14 @@ namespace OctopusCmdlet.Utility
         /// <param name="separator">
         /// Specifies a separator string to insert between objects written to the <paramref name="stream" />.
         /// </param>
-        public static void WriteStandardOutputCommand(
+        public virtual void WriteStandardOutputCommand(
             PSObject[] inputObject,
             bool noEnumerate = false,
             bool noNewLine = false,
             object? separator = null)
         {
             var bufferSize = Console.BufferHeight * Console.BufferWidth;
-            Utility.WriteOutput.WriteOutputCommand(Console.OpenStandardInput(), inputObject, noEnumerate, noNewLine, separator, leaveOpen: true, Encoding.Latin1, bufferSize);
+            WriteOutputCommand(Console.OpenStandardInput(), inputObject, noEnumerate, noNewLine, separator, leaveOpen: true, Encoding.Latin1, bufferSize);
         }
 
         #endregion Public Methods

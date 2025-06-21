@@ -1,4 +1,38 @@
-﻿/* *************************************************************************************
+﻿/* ****************************************************************************
+BSD-3-CLAUSE (a/k/a MODIFIED BSD) LICENSE
+
+Copyright (c) 2025 John Merryweather Cooper
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+“AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+**************************************************************************** */
+
+// Ignore Spelling: cmdlet
+/* *************************************************************************************
 BSD-3-CLAUSE (a/k/a MODIFIED BSD) LICENSE
 
 Copyright (c) 2025 John Merryweather Cooper
@@ -67,70 +101,84 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
+using System.Management.Automation;
 
 namespace OctopusCmdlet.Utility
 {
     /// <summary>
-    /// Implements an <see cref="IDictionary{TKey, TValue}" /> class for manipulating PowerShell bound parameters.
+    /// Implements an <see cref="IDictionary{TKey, TValue}" /> class for manipulating <see cref="PowerShell" /> bound parameters.
     /// </summary>
-    public class BoundParameter : IDictionary<string, object>
+    public class BoundParameterDictionary : IDictionary<string, object>
     {
         #region Public Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BoundParameter" /> class.
+        /// Initializes a new instance of the <see cref="BoundParameterDictionary" /> class.
+        /// </summary>
+        /// <remarks>
+        /// A default <see cref="Dictionary{TKey, TValue}" /> and a case insensitive <see cref="ParameterComparer" /> are specified
+        /// for initialization. The dictionary uses <see cref="string" /> for <see cref="IDictionary.Keys" /> and
+        /// <see cref="object" /> for <see cref="IDictionary.Values" /> to conform to <see cref="PowerShell" /> expectations.
+        /// </remarks>
+        public BoundParameterDictionary()
+            : this(new Dictionary<string, object>(), new ParameterComparer())
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BoundParameterDictionary" /> class.
         /// </summary>
         /// <param name="parameters">
-        /// Specifies a dictionary of PowerShell bound parameters to initialize with.
+        /// Specifies a dictionary of <see cref="PowerShell" /> bound parameters to initialize with.
         /// </param>
         /// <remarks>
-        /// A case insensitive <see cref="IEqualityComparer{T}" /> is specified to match PowerShell's expectations.
+        /// A case insensitive <see cref="ParameterComparer" /> is specified to match <see cref="PowerShell" />'s expectations.
         /// </remarks>
-        public BoundParameter(IDictionary<string, object> parameters)
+        public BoundParameterDictionary(IDictionary<string, object> parameters)
             : this(parameters, new ParameterComparer())
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BoundParameter" /> class.
+        /// Initializes a new instance of the <see cref="BoundParameterDictionary" /> class.
         /// </summary>
         /// <param name="parameters">
-        /// Specifies a dictionary of PowerShell bound parameters to initialize with.
+        /// Specifies a dictionary of <see cref="PowerShell" /> bound parameters to initialize with.
         /// </param>
         /// <param name="comparer">
-        /// Specifies the <see cref="IEqualityComparer{T}" /> implementation to use when comparing keys, or null to use the default
-        /// <see cref="EqualityComparer{T}" /> for the key type.
+        /// Specifies the <see cref="IEqualityComparer{T}" /> implementation to use when comparing keys, or <see langref="null" />
+        /// to use the default <see cref="EqualityComparer{T}" /> for the key type.
         /// </param>
-        public BoundParameter(IDictionary<string, object> parameters, IEqualityComparer<string> comparer)
+        public BoundParameterDictionary(IDictionary<string, object> parameters, IEqualityComparer<string> comparer)
         {
             dictionary = new(parameters, comparer);
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BoundParameter" /> class.
+        /// Initializes a new instance of the <see cref="BoundParameterDictionary" /> class.
         /// </summary>
         /// <param name="parameters">
-        /// Specifies the list of PowerShell bound parameters to initialize with.
+        /// Specifies the list of <see cref="PowerShell" /> bound parameters to initialize with.
         /// </param>
         /// <remarks>
-        /// A case insensitive <see cref="IEqualityComparer{T}" /> is specified to match PowerShell's expectations.
+        /// A case insensitive <see cref="IEqualityComparer{T}" /> is specified to match <see cref="PowerShell" />'s expectations.
         /// </remarks>
-        public BoundParameter(IEnumerable<KeyValuePair<string, object>> parameters)
+        public BoundParameterDictionary(IEnumerable<KeyValuePair<string, object>> parameters)
             : this(parameters, new ParameterComparer())
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BoundParameter" /> class.
+        /// Initializes a new instance of the <see cref="BoundParameterDictionary" /> class.
         /// </summary>
         /// <param name="parameters">
-        /// Specifies the list of PowerShell bound parameters to initialize with.
+        /// Specifies the list of <see cref="PowerShell" /> bound parameters to initialize with.
         /// </param>
         /// <param name="comparer">
-        /// Specifies the <see cref="IEqualityComparer{T}" /> implementation to use when comparing keys, or null to use the default
-        /// <see cref="EqualityComparer{T}" /> for the key type.
+        /// Specifies the <see cref="IEqualityComparer{T}" /> implementation to use when comparing keys, or <see langref="null" />
+        /// to use the default <see cref="EqualityComparer{T}" /> for the key type.
         /// </param>
-        public BoundParameter(IEnumerable<KeyValuePair<string, object>> parameters, IEqualityComparer<string> comparer)
+        public BoundParameterDictionary(IEnumerable<KeyValuePair<string, object>> parameters, IEqualityComparer<string> comparer)
         {
             dictionary = new(parameters, comparer);
         }
@@ -167,7 +215,7 @@ namespace OctopusCmdlet.Utility
 
         /// <inheritdoc />
         /// <exception cref="ArgumentException">
-        /// Throws if <paramref name="key" /> is not a valid PowerShell parameter name.
+        /// Throws if <paramref name="key" /> is not a valid <see cref="PowerShell" /> parameter name.
         /// </exception>
         public object this[string key]
         {
@@ -195,8 +243,8 @@ namespace OctopusCmdlet.Utility
 
         /// <inheritdoc />
         /// <exception cref="ArgumentException">
-        /// Throws if <paramref name="key" /> already exists in <see cref="BoundParameter" />, or is not a valid PowerShell
-        /// parameter name.
+        /// Throws if <paramref name="key" /> already exists in <see cref="BoundParameterDictionary" />, or is not a valid
+        /// <see cref="PowerShell" /> parameter name.
         /// </exception>
         public void Add(string key, object value)
         {
@@ -206,7 +254,7 @@ namespace OctopusCmdlet.Utility
             }
             else if (this.ContainsKey(key))
             {
-                throw new ArgumentException("Key already exists in BoundParameter", nameof(key));
+                throw new ArgumentException("Key already exists in BoundParameterDictionary", nameof(key));
             }
             else
             {
@@ -228,7 +276,7 @@ namespace OctopusCmdlet.Utility
 
         /// <inheritdoc />
         /// <exception cref="ArgumentNullException">
-        /// Throws if the item's key is null or empty.
+        /// Throws if the item's key is <see langref="null" /> or empty.
         /// </exception>
         public bool Contains(KeyValuePair<string, object> item)
         {
@@ -255,15 +303,10 @@ namespace OctopusCmdlet.Utility
             }
         }
 
-        /// <summary>
-        /// Determines whether <see cref="BoundParameter" /> contains a specific value.
-        /// </summary>
-        /// <param name="value">
-        /// Specifies the value to locate in <see cref="BoundParameter" />.
-        /// </param>
-        /// <returns>
-        /// True if <see cref="BoundParameter" /> contains an element with the specified value; otherwise, false.
-        /// </returns>
+        /// <summary> Determines whether <see cref="BoundParameterDictionary" /> contains a specific value. </summary> <param
+        /// name="value"> Specifies the value to locate in <see cref="BoundParameterDictionary" />. </param> <returns> <see
+        /// langref="<see langref="true"/>"/> if <see cref="BoundParameterDictionary" /> contains an element with the specified
+        /// value; otherwise, <see langref="false"/>. </returns>
         public bool ContainsValue(object value)
         {
             return dictionary.ContainsValue(value);
@@ -283,7 +326,7 @@ namespace OctopusCmdlet.Utility
         /// Throws if <paramref name="array" /> is multi-dimensional.
         /// </exception>
         /// <exception cref="ArgumentNullException">
-        /// Throws if <paramref name="array" /> is null or empty.
+        /// Throws if <paramref name="array" /> is <see langref="null" /> or empty.
         /// </exception>
         /// <exception cref="ArgumentOutOfRangeException">
         /// Throw if either index is negative or <paramref name="array" /> lacks the capacity to hold <see cref="Values" />.
@@ -309,7 +352,7 @@ namespace OctopusCmdlet.Utility
         }
 
         /// <summary>
-        /// Copies the key/value pairs of <see cref="BoundParameter" /> to an array at the specified <paramref name="array" /><paramref name="index" />.
+        /// Copies the key/value pairs of <see cref="BoundParameterDictionary" /> to an array at the specified <paramref name="array" /><paramref name="index" />.
         /// </summary>
         /// <param name="array">
         /// Specifies the one-dimensional array that is the destination of the elements copied from <see cref="Values" />. The array
@@ -319,10 +362,10 @@ namespace OctopusCmdlet.Utility
         /// Specifies the zero-based index in <paramref name="array" /> at which copying begins.
         /// </param>
         /// <exception cref="ArgumentNullException">
-        /// Throws if <paramref name="array" /> is null or empty.
+        /// Throws if <paramref name="array" /> is <see langref="null" /> or empty.
         /// </exception>
         /// <exception cref="ArgumentOutOfRangeException">
-        /// Throw if either index is negative or <paramref name="array" /> lacks the capacity to hold <see cref="BoundParameter" />.
+        /// Throw if either index is negative or <paramref name="array" /> lacks the capacity to hold <see cref="BoundParameterDictionary" />.
         /// </exception>
         public void CopyTo(KeyValuePair<string, object>[] array, int index)
         {
@@ -360,7 +403,7 @@ namespace OctopusCmdlet.Utility
         /// Throws if <paramref name="array" /> is multi-dimensional.
         /// </exception>
         /// <exception cref="ArgumentNullException">
-        /// Throws if <paramref name="array" /> is null or empty.
+        /// Throws if <paramref name="array" /> is <see langref="null" /> or empty.
         /// </exception>
         /// <exception cref="ArgumentOutOfRangeException">
         /// Throw if either index is negative or <paramref name="array" /> lacks the capacity to hold <see cref="Keys" />.
@@ -382,14 +425,14 @@ namespace OctopusCmdlet.Utility
         }
 
         /// <summary>
-        /// Ensures that <see cref="BoundParameter" /> can hold up to a specified number of entries without any further expansion of
-        /// its backing storage.
+        /// Ensures that <see cref="BoundParameterDictionary" /> can hold up to a specified number of entries without any further
+        /// expansion of its backing storage.
         /// </summary>
         /// <param name="capacity">
         /// Specifies the number of entries.
         /// </param>
         /// <returns>
-        /// The current capacity of <see cref="BoundParameter" />.
+        /// The current capacity of <see cref="BoundParameterDictionary" />.
         /// </returns>
         /// <exception cref="ArgumentOutOfRangeException">
         /// Throws if <paramref name="capacity" /> is negative.
@@ -407,12 +450,12 @@ namespace OctopusCmdlet.Utility
         }
 
         /// <summary>
-        /// Gets an instance of a type that can be used to perform operations on <see cref="BoundParameter" /> using
+        /// Gets an instance of a type that can be used to perform operations on <see cref="BoundParameterDictionary" /> using
         /// <typeparamref name="TAlternateKey" /> as a key instead of string.
         /// </summary>
         /// <typeparam name="TAlternateKey">
-        /// Specifies the alternate key type for performing lookups. This type must not allow null, and must allow structures to be
-        /// addressed as references.
+        /// Specifies the alternate key type for performing lookups. This type must not allow <see langref="null" />, and must allow
+        /// structures to be addressed as references.
         /// </typeparam>
         /// <returns>
         /// The created lookup instance of type <see cref="Dictionary{TKey, TValue}.AlternateLookup{T}" />; otherwise, default which
@@ -430,31 +473,24 @@ namespace OctopusCmdlet.Utility
         }
 
         /// <summary>
-        /// Tests whether <see cref="BoundParameter" /> has a valid PowerShell parameter <paramref name="name" />.
+        /// Tests whether <see cref="BoundParameterDictionary" /> has a valid <see cref="PowerShell" /> parameter <paramref name="name" />.
         /// </summary>
         /// <param name="name">
         /// Specifies the parameter name to locate.
         /// </param>
         /// <returns>
-        /// True if parameter <paramref name="name" /> is present; otherwise, false.
+        /// <see langref="true" /> if parameter <paramref name="name" /> is present; otherwise, <see langref="false" />.
         /// </returns>
         public bool HasParameter(string name)
         {
             return ParameterComparer.ValidateParameterName(name) && this.ContainsKey(name);
         }
 
-        /// <summary>
-        /// Tests whether <see cref="BoundParameter" /> has a valid PowerShell parameter <paramref name="name" /> with <paramref name="value" />..
-        /// </summary>
-        /// <param name="name">
-        /// Specifies the parameter name to locate.
-        /// </param>
-        /// <param name="value">
-        /// Specifies the parameter value to locate.
-        /// </param>
-        /// <returns>
-        /// True if parameter <paramref name="name" /> with <paramref name="value" /> is present; otherwise, false.
-        /// </returns>
+        /// <summary> Tests whether <see cref="BoundParameterDictionary" /> has a valid <see cref="PowerShell"/> parameter <paramref
+        /// name="name" /> with <paramref name="value" />.. </summary> <param name="name"> Specifies the parameter name to locate.
+        /// </param> <param name="value"> Specifies the parameter value to locate. </param> <returns> <see langref="<see
+        /// langref="true"/>"/> if parameter <paramref name="name" /> with <paramref name="value" /> is present; otherwise, <see
+        /// langref="false"/>. </returns>
         public bool HasParameter(string name, object value)
         {
             return ParameterComparer.ValidateParameterName(name) && this.Contains(new KeyValuePair<string, object>(name, value));
@@ -466,19 +502,10 @@ namespace OctopusCmdlet.Utility
             return dictionary.Remove(key);
         }
 
-        /// <summary>
-        /// Removes the value with the specified <paramref name="key" />, and copies the element value to the
-        /// <paramref name="value" /> parameter.
-        /// </summary>
-        /// <param name="key">
-        /// Specifies the key of the element to remove.
-        /// </param>
-        /// <param name="value">
-        /// Specifies the remove element value.
-        /// </param>
-        /// <returns>
-        /// True if the element is successfully found and remove; otherwise, false.
-        /// </returns>
+        /// <summary> Removes the value with the specified <paramref name="key" />, and copies the element value to the <paramref
+        /// name="value" /> parameter. </summary> <param name="key"> Specifies the key of the element to remove. </param> <param
+        /// name="value"> Specifies the remove element value. </param> <returns> <see langref="<see langref="true"/>"/> if the
+        /// element is successfully found and remove; otherwise, <see langref="false"/>. </returns>
         public bool Remove(string key, out object? value)
         {
             return dictionary.Remove(key, out value);
@@ -498,8 +525,8 @@ namespace OctopusCmdlet.Utility
         }
 
         /// <summary>
-        /// Sets the capacity of <see cref="BoundParameter" /> to what it would be if it had been originally initialized with all of
-        /// its entries.
+        /// Sets the capacity of <see cref="BoundParameterDictionary" /> to what it would be if it had been originally initialized
+        /// with all of its entries.
         /// </summary>
         public void TrimExcess()
         {
@@ -507,8 +534,8 @@ namespace OctopusCmdlet.Utility
         }
 
         /// <summary>
-        /// Sets the capacity of <see cref="BoundParameter" /> to hold a specific number of entries without further expansion of its
-        /// backing storage.
+        /// Sets the capacity of <see cref="BoundParameterDictionary" /> to hold a specific number of entries without further
+        /// expansion of its backing storage.
         /// </summary>
         /// <param name="capacity">
         /// Specifies the new capacity.
@@ -518,24 +545,13 @@ namespace OctopusCmdlet.Utility
             dictionary.TrimExcess(capacity);
         }
 
-        /// <summary>
-        /// Attempts to add the specified <paramref name="key" /> and <paramref name="value" /> to <see cref="BoundParameter" />.
-        /// </summary>
-        /// <param name="key">
-        /// Specifies the key of the element to add.
-        /// </param>
-        /// <param name="value">
-        /// Specifies the value of the element to add.
-        /// </param>
-        /// <returns>
-        /// True if the key/value pair was successfully added to <see cref="BoundParameter" />; otherwise, false.
-        /// </returns>
-        /// <exception cref="ArgumentException">
-        /// Throws if <paramref name="key" /> is not a valid PowerShell parameter name.
-        /// </exception>
-        /// <exception cref="ArgumentNullException">
-        /// Throws if <paramref name="key" /> is null or empty.
-        /// </exception>
+        /// <summary> Attempts to add the specified <paramref name="key" /> and <paramref name="value" /> to <see
+        /// cref="BoundParameterDictionary" />. </summary> <param name="key"> Specifies the key of the element to add. </param>
+        /// <param name="value"> Specifies the value of the element to add. </param> <returns> <see langref="<see
+        /// langref="true"/>"/> if the key/value pair was successfully added to <see cref="BoundParameterDictionary" />; otherwise,
+        /// <see langref="false"/>. </returns> <exception cref="ArgumentException"> Throws if <paramref name="key" /> is not a valid
+        /// <see cref="PowerShell"/> parameter name. </exception> <exception cref="ArgumentNullException"> Throws if <paramref
+        /// name="key" /> is <see langref="null"/> or empty. </exception>
         public bool TryAdd(string key, object value)
         {
             if (string.IsNullOrEmpty(key))
@@ -552,21 +568,13 @@ namespace OctopusCmdlet.Utility
             }
         }
 
-        /// <summary>
-        /// Gets an instance of a type that can used to perform operations on <see cref="BoundParameter" /> using
-        /// <typeparamref name="TAlternateKey" /> as a key instead of a string.
-        /// </summary>
-        /// <typeparam name="TAlternateKey">
-        /// Specifies the alternate key type for performing lookups.
-        /// </typeparam>
-        /// <param name="lookup">
-        /// Specifies the created lookup instance when the method returns true, or a default instance that should not be used if the
-        /// method returns false.
-        /// </param>
-        /// <returns>
-        /// True if a lookup could be created; otherwise, false.
-        /// </returns>
-        public bool TryGetAlternateLookup<TAlternateKey>(out Dictionary<string, object>.AlternateLookup<TAlternateKey> lookup) where TAlternateKey : notnull, allows ref struct
+        /// <summary> Gets an instance of a type that can used to perform operations on <see cref="BoundParameterDictionary" />
+        /// using <typeparamref name="TAlternateKey" /> as a key instead of a string. </summary> <typeparam name="TAlternateKey">
+        /// Specifies the alternate key type for performing lookups. </typeparam> <param name="lookup"> Specifies the created lookup
+        /// instance when the method returns <see langref="<see langref="true"/>"/>, or a default instance that should not be used
+        /// if the method returns <see langref="false"/>. </param> <returns> <see langref="true"/> if a lookup could be created;
+        /// otherwise, <see langref="false"/>. </returns>
+        public bool TryGetAlternateLookup<TAlternateKey>([MaybeNullWhen(false)] out Dictionary<string, object>.AlternateLookup<TAlternateKey> lookup) where TAlternateKey : notnull, allows ref struct
         {
             return dictionary.TryGetAlternateLookup(out lookup);
         }
@@ -578,8 +586,8 @@ namespace OctopusCmdlet.Utility
         }
 
         /// <summary>
-        /// Tries to add <paramref name="key" /> and <paramref name="value" /> to <see cref="BoundParameter" />, and if that fails,
-        /// updates the <paramref name="key" /> with <paramref name="value" />.
+        /// Tries to add <paramref name="key" /> and <paramref name="value" /> to <see cref="BoundParameterDictionary" />, and if
+        /// that fails, updates the <paramref name="key" /> with <paramref name="value" />.
         /// </summary>
         /// <param name="key">
         /// Specifies the key of the element to add or update.
@@ -588,10 +596,10 @@ namespace OctopusCmdlet.Utility
         /// Specifies the value of the element to add or update.
         /// </param>
         /// <exception cref="ArgumentException">
-        /// Throws if <paramref name="key" /> is not a valid PowerShell parameter name.
+        /// Throws if <paramref name="key" /> is not a valid <see cref="PowerShell" /> parameter name.
         /// </exception>
         /// <exception cref="ArgumentNullException">
-        /// Throws when <paramref name="key" /> is null or empty.
+        /// Throws when <paramref name="key" /> is <see langref="null" /> or empty.
         /// </exception>
         public void Update(string key, object value)
         {
@@ -610,8 +618,8 @@ namespace OctopusCmdlet.Utility
         }
 
         /// <summary>
-        /// Tries to add Key/Value pair <paramref name="item" /> to <see cref="BoundParameter" />, and if that fails, updates
-        /// Key/Value pair in <see cref="BoundParameter" />.
+        /// Tries to add Key/Value pair <paramref name="item" /> to <see cref="BoundParameterDictionary" />, and if that fails,
+        /// updates Key/Value pair in <see cref="BoundParameterDictionary" />.
         /// </summary>
         /// <param name="item">
         /// Specifies the Key/Value pair to add or update.
@@ -632,7 +640,7 @@ namespace OctopusCmdlet.Utility
         #region Private Fields
 
         /// <summary>
-        /// Backing storage for <see cref="BoundParameter" />.
+        /// Backing storage for <see cref="BoundParameterDictionary" />.
         /// </summary>
         private readonly Dictionary<string, object> dictionary;
 

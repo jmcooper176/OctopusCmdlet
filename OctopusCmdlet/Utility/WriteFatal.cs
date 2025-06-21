@@ -31,6 +31,40 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **************************************************************************** */
 
+// Ignore Spelling: cmdlet
+/* ****************************************************************************
+BSD-3-CLAUSE (a/k/a MODIFIED BSD) LICENSE
+
+Copyright (c) 2025 John Merryweather Cooper
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+“AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+**************************************************************************** */
+
 // Ignore Spelling: cmdlet Ignore Spelling: Cmdlet
 
 using System.Diagnostics.CodeAnalysis;
@@ -47,6 +81,7 @@ namespace OctopusCmdlet.Utility
         public WriteFatal()
         {
             CmdletName = MyInvocation.MyCommand.Name;
+            NewErrorRecord = new();
         }
 
         #endregion Public Constructors
@@ -54,6 +89,8 @@ namespace OctopusCmdlet.Utility
         #region Internal Properties
 
         internal string CmdletName { get; }
+
+        internal NewErrorRecord NewErrorRecord { get; }
 
         #endregion Internal Properties
 
@@ -68,15 +105,15 @@ namespace OctopusCmdlet.Utility
             string? categoryTargetName = null,
             string? categoryTargetType = null)
         {
-            errorRecord = NewErrorRecord.UpdateErrorRecordCommand(
+            var er = NewErrorRecord.UpdateErrorRecordCommand(
                 errorRecord,
                 recommendedAction,
                 categoryActivity,
                 categoryReason,
                 categoryTargetName,
                 categoryTargetType);
-            base.WriteError(errorRecord);
-            this.ThrowTerminatingError(errorRecord);
+            base.WriteError(er);
+            this.ThrowTerminatingError(er);
         }
 
         [DoesNotReturn]
@@ -136,6 +173,14 @@ namespace OctopusCmdlet.Utility
         #region Protected Methods
 
         /// <inheritdoc />
+        protected override void BeginProcessing()
+        {
+            base.BeginProcessing();
+
+            DefaultProcessing.InitializeBeginProcessing(CmdletName, MyInvocation.BoundParameters, SessionState, Stopping);
+        }
+
+        /// <inheritdoc />
         /// <exception cref="PipelineStoppedException">
         /// Always throws when <see cref="StopProcessing" /> is called.
         /// </exception>
@@ -143,16 +188,7 @@ namespace OctopusCmdlet.Utility
         {
             base.StopProcessing();
 
-            NewErrorRecord stopProcessingErr = new();
-            FormatErrorId pipelineStoppedEx = new();
-
-            var er = stopProcessingErr.NewErrorRecordCommand(
-                new PipelineStoppedException($"{CmdletName} : PipelineStoppedException : Pipeline stopping because 'StopProcessing' called"),
-                pipelineStoppedEx.FormatErrorIdCommand(typeof(PipelineStoppedException)),
-                ErrorCategory.OperationStopped,
-                this);
-            WriteFatal operationStopped = new();
-            operationStopped.WriteFatalCommand(er);
+            DefaultProcessing.InitializeStopProcessing(CmdletName, this, MyInvocation.ScriptLineNumber);
         }
 
         #endregion Protected Methods

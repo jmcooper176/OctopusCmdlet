@@ -201,6 +201,9 @@ namespace OctopusCmdlet.Utility
         [Parameter(Mandatory = true, ParameterSetName = "UsingException", ValueFromPipelineByPropertyName = true)]
         public Exception Exception { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value specifying whether to override <c> CommandPreference </c> by setting it to <see cref="ConfirmImpact.None" />.
+        /// </summary>
         public SwitchParameter Force { get; set; }
 
         /// <summary>
@@ -249,41 +252,20 @@ namespace OctopusCmdlet.Utility
         {
             base.BeginProcessing();
 
-            BoundParameter bp = new(MyInvocation.BoundParameters);
-
-            if (Stopping)
-            {
-                WriteWarning pipelineStopping = new();
-                pipelineStopping.WriteWarningCommand($"{CmdletName} is Stopping in 'BeginProcessing'");
-                return;
-            }
-            else if (Force.IsPresent && !bp.HasParameter("Confirm"))
-            {
-                SessionState.PSVariable.Set("ConfirmPreference", ConfirmImpact.None);
-            }
+            DefaultProcessing.InitializeBeginProcessing(CmdletName, MyInvocation.BoundParameters, SessionState, Stopping, Force.IsPresent);
         }
 
         /// <inheritdoc />
         protected override void ProcessRecord()
         {
-            base.ProcessRecord();
-
-            if (Stopping)
+            void ProcessARecord()
             {
-                WriteWarning pipelineStopping = new();
-                pipelineStopping.WriteWarningCommand($"{CmdletName} is Stopping in 'ProcessRecord'");
-                return;
-            }
-            else
-            {
-                ErrorRecord? er;
-
                 switch (ParameterSetName)
                 {
                     case "UsingErrorRecord":
                         if (ShouldProcess(ErrorRecord.ToString(), CmdletName))
                         {
-                            er = UpdateErrorRecordCommand(
+                            var er = UpdateErrorRecordCommand(
                                 ErrorRecord,
                                 RecommendedAction,
                                 CategoryActivity,
@@ -303,7 +285,7 @@ namespace OctopusCmdlet.Utility
 
                             if (ShouldProcess(item, CmdletName))
                             {
-                                er = NewErrorRecordCommand<PSInvalidOperationException>(
+                                var er = NewErrorRecordCommand<PSInvalidOperationException>(
                                 item,
                                 ErrorId,
                                 Category == ErrorCategory.NotSpecified ? ErrorCategory.InvalidOperation : Category,
@@ -338,6 +320,10 @@ namespace OctopusCmdlet.Utility
                         break;
                 }
             }
+
+            base.ProcessRecord();
+
+            DefaultProcessing.InitializeProcessRecord(CmdletName, Stopping, ProcessARecord);
         }
 
         /// <inheritdoc />
@@ -348,15 +334,7 @@ namespace OctopusCmdlet.Utility
         {
             base.StopProcessing();
 
-            FormatErrorId pipelineStoppedEx = new();
-
-            ErrorRecord er = new(
-                new PipelineStoppedException($"{CmdletName} : PipelineStoppedException : Pipeline stopping because 'StopProcessing' called"),
-                pipelineStoppedEx.FormatErrorIdCommand(typeof(PipelineStoppedException)),
-                ErrorCategory.OperationStopped,
-                this);
-            WriteFatal operationStopped = new();
-            operationStopped.WriteFatalCommand(er);
+            DefaultProcessing.InitializeStopProcessing(CmdletName, this, MyInvocation.ScriptLineNumber);
         }
 
         #endregion Protected Methods
@@ -398,7 +376,7 @@ namespace OctopusCmdlet.Utility
         /// Specifies the type full name of the object that was being processed when the error occurred.
         /// </param>
         /// <returns>
-        /// Returns a new <see cref="ErrorRecord" /> on success; otherwise null.
+        /// Returns a new <see cref="ErrorRecord" /> on success; otherwise <see langref="null" />.
         /// </returns>
         public virtual ErrorRecord NewErrorRecordCommand<TException>(
             string message,
@@ -412,18 +390,82 @@ namespace OctopusCmdlet.Utility
             string? categoryTargetType = null
             ) where TException : Exception
         {
-            var exception = (Exception?)Activator.CreateInstance(typeof(TException), message) ?? new InvalidOperationException(message);
-            var er = NewErrorRecord.NewErrorRecordCommand(
-                    exception,
-                    errorId,
-                    category,
-                    targetObject,
-                    recommendedAction,
-                    categoryActivity,
-                    categoryReason,
-                    categoryTargetName,
-                    categoryTargetType,
-                    message);
+            return this.NewErrorRecordCommand(
+                typeof(TException),
+                message,
+                errorId,
+                category,
+                targetObject,
+                recommendedAction,
+                categoryActivity,
+                categoryReason,
+                categoryTargetName,
+                categoryTargetType);
+        }
+
+        /// <summary>
+        /// Method implementing creating a new <see cref="ErrorRecord" /> in the case where parameter set name 'UsingMessage' is
+        /// being processed.
+        /// </summary>
+        /// <param name="exceptionType">
+        /// Specifies the <see cref="Exception" /> to create to hold the message.
+        /// </param>
+        /// <param name="message">
+        /// Specifies the message text to assign to <paramref name="exceptionType" /> during creation.
+        /// </param>
+        /// <param name="errorId">
+        /// Specifies the unique ID string to assign to the new <see cref="ErrorRecord" />.
+        /// </param>
+        /// <param name="category">
+        /// Specifies the <see cref="ErrorCategory" /> to assign to the new <see cref="ErrorRecord" />.
+        /// </param>
+        /// <param name="targetObject">
+        /// Specifies the object being processed when the error occurred.
+        /// </param>
+        /// <param name="recommendedAction">
+        /// Specifies the action the user should take to resolve or prevent the error.
+        /// </param>
+        /// <param name="categoryActivity">
+        /// Specifies the action that caused the error.
+        /// </param>
+        /// <param name="categoryReason">
+        /// Specifies how or why the activity caused the error.
+        /// </param>
+        /// <param name="categoryTargetName">
+        /// Specifies the name of the object that was being processed when the error occurred.
+        /// </param>
+        /// <param name="categoryTargetType">
+        /// Specifies the type full name of the object that was being processed when the error occurred.
+        /// </param>
+        /// <returns>
+        /// Returns a new <see cref="ErrorRecord" /> on success; otherwise <see langref="null" />.
+        /// </returns>
+        public virtual ErrorRecord NewErrorRecordCommand(
+            Type exceptionType,
+            string message,
+            string errorId,
+            ErrorCategory category,
+            object? targetObject = null,
+            string? recommendedAction = null,
+            string? categoryActivity = null,
+            string? categoryReason = null,
+            string? categoryTargetName = null,
+            string? categoryTargetType = null
+            )
+        {
+            var exception = (Exception?)Activator.CreateInstance(exceptionType, message) ?? new InvalidOperationException(message);
+
+            ErrorRecord errorRecord = new(exception, errorId, category, targetObject);
+
+            var er = UpdateErrorRecordCommand(
+                errorRecord,
+                recommendedAction,
+                categoryActivity,
+                categoryReason,
+                categoryTargetName,
+                categoryTargetType);
+
+            er.ErrorDetails = new(message ?? exception.Message);
 
             return er;
         }
@@ -461,7 +503,7 @@ namespace OctopusCmdlet.Utility
         /// </param>
         /// <param name="message">
         /// Specifies the message to set in <see cref="ErrorDetails" />, or <see cref="Exception.Message" /> if
-        /// <paramref name="message" /> is null.
+        /// <paramref name="message" /> is <see langref="null" />.
         /// </param>
         /// <returns>
         /// Returns a new <see cref="ErrorRecord" />.
@@ -481,7 +523,7 @@ namespace OctopusCmdlet.Utility
         {
             ErrorRecord errorRecord = new(exception, errorId, category, targetObject);
 
-            var er = NewErrorRecord.UpdateErrorRecordCommand(
+            var er = UpdateErrorRecordCommand(
                 errorRecord,
                 recommendedAction,
                 categoryActivity,
@@ -554,7 +596,7 @@ namespace OctopusCmdlet.Utility
         {
             ErrorRecord errorRecord = new(exception, errorId, category, targetObject);
 
-            var er = NewErrorRecord.UpdateErrorRecordCommand(
+            var er = UpdateErrorRecordCommand(
                 errorRecord,
                 recommendedAction,
                 categoryActivity,
