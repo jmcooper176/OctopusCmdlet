@@ -46,6 +46,9 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Feed
 {
+    /// <summary>
+    /// Implements the <c> Get-Package </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.Get, "Package")]
     [OutputType(typeof(PackageResource))]
     public class GetPackage : PSCmdlet

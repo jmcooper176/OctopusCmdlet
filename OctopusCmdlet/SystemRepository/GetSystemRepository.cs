@@ -47,6 +47,9 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.SystemRepository
 {
+    /// <summary>
+    /// Implements the <c> Get-SystemRepository </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.Get, "SystemRepository", DefaultParameterSetName = "UsingRepository")]
     [OutputType(typeof(IOctopusSpaceRepository), typeof(IOctopusSpaceAsyncRepository), ParameterSetName = ["UsingRepository", "UsingAsyncRepository"])]
     public class GetSystemRepository : PSCmdlet

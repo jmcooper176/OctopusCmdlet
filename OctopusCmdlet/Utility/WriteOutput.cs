@@ -80,6 +80,9 @@ namespace OctopusCmdlet.Utility
     {
         #region Public Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WriteOutput" /> class.
+        /// </summary>
         public WriteOutput()
         {
             const string DEFAULT_OFS = " ";
@@ -140,6 +143,9 @@ namespace OctopusCmdlet.Utility
 
         #region Internal Properties
 
+        /// <summary>
+        /// Gets a value indicating this <see cref="Cmdlet" /> name.
+        /// </summary>
         internal string CmdletName { get; }
 
         internal FormatErrorId FormatErrorId { get; }

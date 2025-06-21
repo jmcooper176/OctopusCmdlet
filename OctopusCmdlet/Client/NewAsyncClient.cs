@@ -47,6 +47,9 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Client
 {
+    /// <summary>
+    /// Implements the <c> New-AsyncClient </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "AsyncClient", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(OctopusAsyncClient))]
     public class NewAsyncClient : PSCmdlet

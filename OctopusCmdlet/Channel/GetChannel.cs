@@ -47,6 +47,9 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Channel
 {
+    /// <summary>
+    /// Implements the <c> Get-Channel </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.Get, "Channel")]
     [OutputType(typeof(ChannelResource))]
     public class GetChannel : PSCmdlet

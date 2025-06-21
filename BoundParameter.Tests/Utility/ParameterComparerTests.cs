@@ -115,7 +115,7 @@ namespace BoundParameterDictionary.Tests.Utility
         }
 
         [TestMethod]
-        public void GetHashCode_EmptyKeyValuePair_ResultIsInstanceofTypeInt()
+        public void GetHashCode_EmptyKeyValuePair_ResultIsInstanceOfTypeInt()
         {
             // Arrange
             var parameterComparer = new ParameterComparer();

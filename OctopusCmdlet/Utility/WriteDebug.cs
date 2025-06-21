@@ -69,6 +69,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 
+using Octopus.Client.Model.Forms;
+
 using System.Globalization;
 using System.Management.Automation;
 
@@ -80,6 +82,9 @@ namespace OctopusCmdlet.Utility
     {
         #region Public Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WriteDebug" /> class.
+        /// </summary>
         public WriteDebug()
         {
             CmdletName = MyInvocation.MyCommand.Name;
@@ -113,12 +118,6 @@ namespace OctopusCmdlet.Utility
         public object? Value { get; set; }
 
         #endregion Public Properties
-
-        #region Internal Properties
-
-        internal string CmdletName { get; }
-
-        #endregion Internal Properties
 
         #region Public Methods
 
@@ -186,19 +185,23 @@ namespace OctopusCmdlet.Utility
 
         #endregion Public Methods
 
+        #region Internal Properties
+
+        /// <summary>
+        /// Gets a value indicating this <see cref="Cmdlet" /> name.
+        /// </summary>
+        internal string CmdletName { get; }
+
+        #endregion Internal Properties
+
         #region Protected Methods
 
         /// <inheritdoc />
-        protected override void ProcessRecord()
+        protected override void BeginProcessing()
         {
-            base.ProcessRecord();
+            base.BeginProcessing();
 
-            if (Stopping)
-            {
-                WriteWarning pipelineStopping = new();
-                pipelineStopping.WriteWarningCommand($"{CmdletName} is Stopping in 'ProcessRecord'");
-                return;
-            }
+            DefaultProcessing.InitializeBeginProcessing(CmdletName, MyInvocation.BoundParameters, SessionState, Stopping);
         }
 
         /// <inheritdoc />
@@ -209,16 +212,7 @@ namespace OctopusCmdlet.Utility
         {
             base.StopProcessing();
 
-            NewErrorRecord stopProcessingErr = new();
-            FormatErrorId pipelineStoppedEx = new();
-
-            var er = stopProcessingErr.NewErrorRecordCommand(
-                new PipelineStoppedException($"{CmdletName} : PipelineStoppedException : Pipeline stopping because 'StopProcessing' called"),
-                pipelineStoppedEx.FormatErrorIdCommand(typeof(PipelineStoppedException)),
-                ErrorCategory.OperationStopped,
-                this);
-            WriteFatal operationStopped = new();
-            operationStopped.WriteFatalCommand(er);
+            DefaultProcessing.InitializeStopProcessing(CmdletName, this, MyInvocation.ScriptLineNumber);
         }
 
         #endregion Protected Methods

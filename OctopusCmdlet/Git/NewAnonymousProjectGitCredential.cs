@@ -47,6 +47,9 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Git
 {
+    /// <summary>
+    /// Implements the <c> New-AnonymousProjectGitCredential </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "AnonymousGitCredential", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(AnonymousProjectGitCredentialResource))]
     public class NewAnonymousProjectGitCredential : PSCmdlet

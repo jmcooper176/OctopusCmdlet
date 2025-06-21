@@ -33,6 +33,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 // Ignore Spelling: cmdlet
 
+using Octopus.Client.Model.Forms;
+
 using System.Diagnostics;
 using System.Management.Automation;
 using System.Runtime.CompilerServices;
@@ -195,6 +197,14 @@ namespace OctopusCmdlet.Utility
         #region Protected Methods
 
         /// <inheritdoc />
+        protected override void BeginProcessing()
+        {
+            base.BeginProcessing();
+
+            DefaultProcessing.InitializeBeginProcessing(CmdletName, MyInvocation.BoundParameters, SessionState, Stopping);
+        }
+
+        /// <inheritdoc />
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
@@ -262,16 +272,7 @@ namespace OctopusCmdlet.Utility
         {
             base.StopProcessing();
 
-            NewErrorRecord pipelineStoppedErr = new();
-
-            ErrorRecord er = pipelineStoppedErr.NewErrorRecordCommand(
-                new PipelineStoppedException($"{CmdletName} : PipelineStoppedException : Pipeline stopping because 'StopProcessing' called"),
-                $"{CmdletName}-PipelineStoppedException-{MyInvocation.ScriptLineNumber}",
-                ErrorCategory.OperationStopped,
-                this);
-
-            WriteFatal pipelineStopped = new();
-            pipelineStopped.WriteFatalCommand(er);
+            DefaultProcessing.InitializeStopProcessing(CmdletName, this, MyInvocation.ScriptLineNumber);
         }
 
         #endregion Protected Methods

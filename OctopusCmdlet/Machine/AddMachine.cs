@@ -33,6 +33,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 // Ignore Spelling: cmdlet
 using OctopusCmdlet.ActionTemplate;
+using OctopusCmdlet.Runbook;
 using OctopusCmdlet.Utility;
 
 using System;
@@ -61,6 +62,15 @@ namespace OctopusCmdlet.Machine
 
         #endregion Public Constructors
 
+        #region Public Properties
+
+        /// <summary>
+        /// Gets or sets a value specifying whether to override <c> CommandPreference </c> by setting it to <see cref="ConfirmImpact.None" />.
+        /// </summary>
+        public SwitchParameter Force { get; set; }
+
+        #endregion Public Properties
+
         #region Internal Properties
 
         /// <summary>
@@ -73,6 +83,14 @@ namespace OctopusCmdlet.Machine
         #region Protected Methods
 
         /// <inheritdoc />
+        protected override void BeginProcessing()
+        {
+            base.BeginProcessing();
+
+            DefaultProcessing.InitializeBeginProcessing(CmdletName, MyInvocation.BoundParameters, SessionState, Stopping, Force.IsPresent);
+        }
+
+        /// <inheritdoc />
         /// <exception cref="PipelineStoppedException">
         /// Always throws when <see cref="StopProcessing" /> is called.
         /// </exception>
@@ -80,16 +98,7 @@ namespace OctopusCmdlet.Machine
         {
             base.StopProcessing();
 
-            NewErrorRecord stopProcessingErr = new();
-            FormatErrorId pipelineStoppedEx = new();
-
-            var er = stopProcessingErr.NewErrorRecordCommand(
-                new PipelineStoppedException($"{CmdletName} : PipelineStoppedException : Pipeline stopping because 'StopProcessing' called"),
-                pipelineStoppedEx.FormatErrorIdCommand(typeof(PipelineStoppedException)),
-                ErrorCategory.OperationStopped,
-                this);
-            WriteFatal operationStopped = new();
-            operationStopped.WriteFatalCommand(er);
+            DefaultProcessing.InitializeStopProcessing(CmdletName, this, MyInvocation.ScriptLineNumber);
         }
 
         #endregion Protected Methods

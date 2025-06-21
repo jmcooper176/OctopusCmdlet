@@ -56,6 +56,9 @@ namespace OctopusCmdlet.Utility
 
         #region Public Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ValidateCommandPathAttribute" /> class.
+        /// </summary>
         public ValidateCommandPathAttribute()
         {
             ValidatorName = nameof(ValidateCommandPathAttribute);

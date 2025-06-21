@@ -78,6 +78,9 @@ namespace OctopusCmdlet.Utility
     {
         #region Public Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WriteFatal" /> class.
+        /// </summary>
         public WriteFatal()
         {
             CmdletName = MyInvocation.MyCommand.Name;
@@ -88,6 +91,9 @@ namespace OctopusCmdlet.Utility
 
         #region Internal Properties
 
+        /// <summary>
+        /// Gets a value indicating this <see cref="Cmdlet" /> name.
+        /// </summary>
         internal string CmdletName { get; }
 
         internal NewErrorRecord NewErrorRecord { get; }

@@ -47,6 +47,9 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Certificate
 {
+    /// <summary>
+    /// Implements the <c> Get-Certificate </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.Get, "Certificate")]
     [OutputType(typeof(CertificateResource))]
     public class GetCertificate : PSCmdlet
@@ -62,15 +65,6 @@ namespace OctopusCmdlet.Certificate
         }
 
         #endregion Public Constructors
-
-        #region Public Properties
-
-        /// <summary>
-        /// Gets or sets a value specifying whether to override <c> CommandPreference </c> by setting it to <see cref="ConfirmImpact.None" />.
-        /// </summary>
-        public SwitchParameter Force { get; set; }
-
-        #endregion Public Properties
 
         #region Internal Properties
 
@@ -88,7 +82,7 @@ namespace OctopusCmdlet.Certificate
         {
             base.BeginProcessing();
 
-            DefaultProcessing.InitializeBeginProcessing(CmdletName, MyInvocation.BoundParameters, SessionState, Stopping, Force.IsPresent);
+            DefaultProcessing.InitializeBeginProcessing(CmdletName, MyInvocation.BoundParameters, SessionState, Stopping);
         }
 
         /// <inheritdoc />

@@ -46,6 +46,9 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Tenant
 {
+    /// <summary>
+    /// Implements the <c> Get-Tenant </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.Get, "Tenant")]
     [OutputType(typeof(TenantResource))]
     public class GetTenant : PSCmdlet

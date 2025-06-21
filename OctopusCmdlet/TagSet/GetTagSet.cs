@@ -46,6 +46,9 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.TagSet
 {
+    /// <summary>
+    /// Implements the <c> Get-TagSet </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.Get, "TagSet")]
     [OutputType(typeof(TagSetResource))]
     public class GetTagSet : PSCmdlet

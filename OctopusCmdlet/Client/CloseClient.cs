@@ -52,6 +52,9 @@ namespace OctopusCmdlet.Client
     {
         #region Public Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CloseClient" /> class.
+        /// </summary>
         public CloseClient()
         {
             CmdletName = MyInvocation.MyCommand.Name;
@@ -66,6 +69,11 @@ namespace OctopusCmdlet.Client
 
         [Parameter(Mandatory = true, ParameterSetName = "UsingClient", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
         public IOctopusClient? Client { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value specifying whether to override <c> CommandPreference </c> by setting it to <see cref="ConfirmImpact.None" />.
+        /// </summary>
+        public SwitchParameter Force { get; set; }
 
         #endregion Public Properties
 
@@ -82,13 +90,22 @@ namespace OctopusCmdlet.Client
 
         #region Internal Properties
 
+        /// <summary>
+        /// Gets a value indicating this <see cref="Cmdlet" /> name.
+        /// </summary>
         internal string CmdletName { get; }
 
         #endregion Internal Properties
 
         #region Protected Methods
 
-        #region Protected Methods
+        /// <inheritdoc />
+        protected override void BeginProcessing()
+        {
+            base.BeginProcessing();
+
+            DefaultProcessing.InitializeBeginProcessing(CmdletName, MyInvocation.BoundParameters, SessionState, Stopping, Force.IsPresent);
+        }
 
         protected virtual void Dispose(bool disposing)
         {
@@ -98,11 +115,11 @@ namespace OctopusCmdlet.Client
                 {
                     if (ParameterSetName.Equals("UsingAsyncClient", StringComparison.OrdinalIgnoreCase))
                     {
-                        AsyncClient.Dispose();
+                        AsyncClient?.Dispose();
                     }
                     else
                     {
-                        Client.Dispose();
+                        Client?.Dispose();
                     }
                 }
 
@@ -117,20 +134,6 @@ namespace OctopusCmdlet.Client
 
                 disposedValue = true;
             }
-        }
-
-        #endregion Protected Methods
-
-
-
-        #region Protected Methods
-
-        /// <inheritdoc />
-        protected override void BeginProcessing()
-        {
-            base.BeginProcessing();
-
-            DefaultProcessing.InitializeBeginProcessing(CmdletName, MyInvocation.BoundParameters, SessionState, Stopping, Force.IsPresent);
         }
 
         /// <inheritdoc />
