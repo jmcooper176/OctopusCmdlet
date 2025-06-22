@@ -42,9 +42,13 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OctopusCmdlet.Project
+namespace OctopusCmdlet.Trigger
 {
+    /// <summary>
+    /// Implements the <c> Disable-ProjectTrigger </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsLifecycle.Disable, "ProjectTrigger", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class DisableProjectTrigger : PSCmdlet
     {

@@ -75,7 +75,7 @@ using System.Resources;
 namespace OctopusCmdlet.Utility
 {
     /// <summary>
-    /// Class implementing the 'New-ErrorRecord' PowerShell cmdlet.
+    /// Class implementing the 'New-ErrorRecord' <see cref="PowerShell" /><see cref="Cmdlet" />.
     /// </summary>
     [Cmdlet(
         VerbsCommon.New,
@@ -234,7 +234,7 @@ namespace OctopusCmdlet.Utility
         public object? TargetObject { get; set; }
 
         /// <summary>
-        /// Gets a value indicating the 'Name' of this cmdlet.
+        /// Gets a value indicating the 'Name' of this <see cref="cmdlet" />.
         /// </summary>
         internal string CmdletName { get; }
 

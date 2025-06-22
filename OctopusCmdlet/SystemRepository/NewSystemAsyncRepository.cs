@@ -45,10 +45,26 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.SystemRepository
 {
+    /// <summary>
+    /// Implements the <c> New-SystemAsyncRepository </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "SystemAsyncRepository", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(IOctopusSystemAsyncRepository))]
     public class NewSystemAsyncRepository : PSCmdlet
     {
+        #region Public Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NewSystemAsyncRepository" /> class.
+        /// </summary>
+        public NewSystemAsyncRepository()
+        {
+            CmdletName = MyInvocation.MyCommand.Name;
+        }
+
+        #endregion Public Constructors
+
         #region Public Properties
 
         /// <summary>

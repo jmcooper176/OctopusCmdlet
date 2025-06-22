@@ -39,7 +39,11 @@ using System.Management.Automation;
 
 namespace OctopusCmdlet.Utility
 {
+    /// <summary>
+    /// Implements the <c> Trace-Error </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsDiagnostic.Trace, "Error")]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class TraceError : PSCmdlet
     {

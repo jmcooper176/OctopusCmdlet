@@ -45,7 +45,12 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Machine
 {
-    [Cmdlet(VerbsLifecycle.Enable, "Machine")]
+    /// <summary>
+    /// Implements the <c> Enable-Machine </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
+    [Cmdlet(VerbsLifecycle.Enable, "Machine", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [Alias("Enable-Target")]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class EnableMachine : PSCmdlet
     {

@@ -42,9 +42,13 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OctopusCmdlet.Target
+namespace OctopusCmdlet.Tentacle
 {
+    /// <summary>
+    /// Implements for <c> Register-PollingTentacle </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsLifecycle.Register, "PollingTentacle", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class RegisterPollingTentacle : PSCmdlet
     {

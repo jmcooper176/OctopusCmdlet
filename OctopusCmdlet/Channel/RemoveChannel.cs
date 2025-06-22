@@ -45,7 +45,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Channel
 {
-    [Cmdlet(VerbsCommon.Remove, "Channel")]
+    /// <summary>
+    /// Implements the <c> Remove-Channel </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
+    [Cmdlet(VerbsCommon.Remove, "Channel", ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class RemoveChannel : PSCmdlet
     {

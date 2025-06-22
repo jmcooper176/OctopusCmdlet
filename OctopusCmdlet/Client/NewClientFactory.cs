@@ -47,6 +47,9 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Client
 {
+    /// <summary>
+    /// Implements the <c> New-ClientFactory </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "ClientFactory", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(OctopusClientFactory))]
     public class NewClientFactory : PSCmdlet

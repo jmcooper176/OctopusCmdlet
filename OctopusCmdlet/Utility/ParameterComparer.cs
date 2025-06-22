@@ -45,21 +45,21 @@ namespace OctopusCmdlet.Utility
         #region Public Methods
 
         /// <summary>
-        /// Validates that a string is a valid PowerShell parameter name.
+        /// Validates that a string is a valid <see cref="PowerShell" /> parameter name.
         /// </summary>
         /// <param name="name">
-        /// Specifies the PowerShell parameter name to test.
+        /// Specifies the <see cref="PowerShell" /> parameter name to test.
         /// </param>
         /// <returns>
-        /// <see langref="true" /> if <paramref name="name" /> is a valid PowerShell parameter name; otherwise, <see langref="false" />.
+        /// <see langref="true" /> if <paramref name="name" /> is a valid <see cref="PowerShell" /> parameter name; otherwise, <see langref="false" />.
         /// </returns>
         /// <remarks>
-        /// A valid PowerShell parameter name must:
+        /// A valid <see cref="PowerShell" /> parameter name must:
         /// <list type="bullet">
         /// <item> Not be <see langref="null" />, empty, or all whitespace; </item>
         /// <item> Not contain any whitespace; </item>
         /// <item> Not contain any symbols; </item>
-        /// <item> Not equal any PowerShell reserved word; </item>
+        /// <item> Not equal any <see cref="PowerShell" /> reserved word; </item>
         /// <item> Not start with a decimal digit; AND </item>
         /// <item> Valid if it is all letters or decimal digits OR all other tests pass. </item>
         /// </list>

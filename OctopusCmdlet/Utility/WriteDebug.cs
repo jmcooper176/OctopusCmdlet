@@ -76,7 +76,11 @@ using System.Management.Automation;
 
 namespace OctopusCmdlet.Utility
 {
+    /// <summary>
+    /// Implements the <c> Write-Debug </c><see cref="PowerShell" /><see cref="Cmdlet" /> extensions.
+    /// </summary>
     [Cmdlet(VerbsCommunications.Write, "Debug")]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class WriteDebug : PSCmdlet
     {

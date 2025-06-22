@@ -47,6 +47,9 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Release
 {
+    /// <summary>
+    /// Implements the <c> New-Release </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "Release", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(ReleaseResource))]
     public class NewRelease : PSCmdlet

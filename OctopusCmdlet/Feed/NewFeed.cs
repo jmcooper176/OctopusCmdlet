@@ -47,6 +47,9 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Feed
 {
+    /// <summary>
+    /// Implements the <c> New-Feed </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "Feed", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(FeedResource))]
     public class NewFeed : PSCmdlet

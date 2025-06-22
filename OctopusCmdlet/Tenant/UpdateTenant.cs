@@ -46,7 +46,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Tenant
 {
+    /// <summary>
+    /// Implements the <c> Update-Tenant </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsData.Update, "Tenant", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(TenantResource))]
     public class UpdateTenant : PSCmdlet
     {

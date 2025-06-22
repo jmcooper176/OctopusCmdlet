@@ -46,7 +46,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.TagSet
 {
+    /// <summary>
+    /// Implements the <c> Update-TagSet </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsData.Update, "TagSet", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(TagSetResource))]
     public class UpdateTagSet : PSCmdlet
     {

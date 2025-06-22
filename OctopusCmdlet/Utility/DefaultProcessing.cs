@@ -49,6 +49,10 @@ using SessionState = System.Management.Automation.SessionState;
 
 namespace OctopusCmdlet.Utility
 {
+    /// <summary>
+    /// Implements <c> Defaultt Processing </c> for the <see cref="PowerShell" /> protected methods
+    /// <see cref="Cmdlet.BeginProcessing" />, <see cref="Cmdlet.ProcessRecord" />, <see cref="Cmdlet.StopProcessing" />, and <see cref="Cmdlet.EndProcessing" />.
+    /// </summary>
     public static class DefaultProcessing
     {
         #region Public Methods
@@ -105,7 +109,7 @@ namespace OctopusCmdlet.Utility
         {
             if (string.IsNullOrWhiteSpace(name))
             {
-                return default(TPreference);
+                return default;
             }
             else
             {
@@ -218,7 +222,7 @@ namespace OctopusCmdlet.Utility
             bool force = false,
             Action? preInvoke = null)
         {
-            BoundParameterDictionary bp = new(boundParameters);
+            BoundParameterDictionary bp = [.. boundParameters];
 
             sessionState.SetPreferenceVariable<ConfirmImpact>(() => force && !bp.HasParameter("Confirm"), "ConfirmPreference", ConfirmImpact.None);
 

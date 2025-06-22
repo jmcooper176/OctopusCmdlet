@@ -78,7 +78,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Trigger
 {
+    /// <summary>
+    /// Implements the <c> Remove-RunbookTrigger </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.Remove, "RunbookTrigger", ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class RemoveRunbookTrigger : PSCmdlet
     {

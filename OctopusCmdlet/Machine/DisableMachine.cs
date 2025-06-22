@@ -45,7 +45,12 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Machine
 {
-    [Cmdlet(VerbsLifecycle.Disable, "Machine")]
+    /// <summary>
+    /// Implements the <c> Disable-Machine </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
+    [Cmdlet(VerbsLifecycle.Disable, "Machine", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [Alias("Disable-Target")]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class DisableMachine : PSCmdlet
     {

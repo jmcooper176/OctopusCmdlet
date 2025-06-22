@@ -46,7 +46,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Client
 {
-    [Cmdlet(VerbsCommon.Close, "Client", DefaultParameterSetName = "UsingClient")]
+    /// <summary>
+    /// Implements the <c> Close-Client </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
+    [Cmdlet(VerbsCommon.Close, "Client", DefaultParameterSetName = "UsingClient", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class CloseClient : PSCmdlet, IDisposable
     {

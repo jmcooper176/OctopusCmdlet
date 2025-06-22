@@ -45,10 +45,26 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Tenant
 {
+    /// <summary>
+    /// Implements the <c> New-Tenant </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "Tenant", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(TenantResource))]
     public class NewTenant : PSCmdlet
     {
+        #region Public Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NewTenant" /> class.
+        /// </summary>
+        public NewTenant()
+        {
+            CmdletName = MyInvocation.MyCommand.Name;
+        }
+
+        #endregion Public Constructors
+
         #region Public Properties
 
         /// <summary>

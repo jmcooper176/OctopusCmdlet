@@ -45,7 +45,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Deployment
 {
+    /// <summary>
+    /// Implements the <c> Remove-Deployment </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.Remove, "Deployment")]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class RemoveDeployment : PSCmdlet
     {

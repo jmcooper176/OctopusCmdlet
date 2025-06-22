@@ -43,7 +43,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Utility
 {
+    /// <summary>
+    /// Implements the <c> New-Response </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "Response", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(OctopusResponse))]
     public class NewResponse : PSCmdlet
     {

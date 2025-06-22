@@ -42,9 +42,13 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OctopusCmdlet.Target
+namespace OctopusCmdlet.Tentacle
 {
+    /// <summary>
+    /// Implements the <c> Unregister-PollingTentacle </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsLifecycle.Unregister, "PollingTentacle", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class UnregisterPollingTentacle : PSCmdlet
     {

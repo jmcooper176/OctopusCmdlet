@@ -42,9 +42,13 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OctopusCmdlet.Target
+namespace OctopusCmdlet.Tentacle
 {
+    /// <summary>
+    /// Implements the <c> Unregister-ListeningTentacle </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsLifecycle.Unregister, "ListeningTentacle", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class UnregisterListeningTentacle : PSCmdlet
     {

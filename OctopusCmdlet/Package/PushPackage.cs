@@ -33,6 +33,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 // Ignore Spelling: cmdlet
 using OctopusCmdlet.LifeCycle;
+using OctopusCmdlet.Project;
 using OctopusCmdlet.Utility;
 
 using System;
@@ -42,9 +43,13 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OctopusCmdlet.Feed
+namespace OctopusCmdlet.Package
 {
+    /// <summary>
+    /// Implements the <c> Push-Package </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.Push, "Package")]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class PushPackage : PSCmdlet
     {
@@ -72,6 +77,14 @@ namespace OctopusCmdlet.Feed
         #region Protected Methods
 
         /// <inheritdoc />
+        protected override void BeginProcessing()
+        {
+            base.BeginProcessing();
+
+            DefaultProcessing.InitializeBeginProcessing(CmdletName, MyInvocation.BoundParameters, SessionState, Stopping);
+        }
+
+        /// <inheritdoc />
         /// <exception cref="PipelineStoppedException">
         /// Always throws when <see cref="StopProcessing" /> is called.
         /// </exception>
@@ -79,16 +92,7 @@ namespace OctopusCmdlet.Feed
         {
             base.StopProcessing();
 
-            NewErrorRecord stopProcessingErr = new();
-            FormatErrorId pipelineStoppedEx = new();
-
-            var er = stopProcessingErr.NewErrorRecordCommand(
-                new PipelineStoppedException($"{CmdletName} : PipelineStoppedException : Pipeline stopping because 'StopProcessing' called"),
-                pipelineStoppedEx.FormatErrorIdCommand(typeof(PipelineStoppedException)),
-                ErrorCategory.OperationStopped,
-                this);
-            WriteFatal operationStopped = new();
-            operationStopped.WriteFatalCommand(er);
+            DefaultProcessing.InitializeStopProcessing(CmdletName, this, MyInvocation.ScriptLineNumber);
         }
 
         #endregion Protected Methods

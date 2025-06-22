@@ -47,6 +47,9 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Client
 {
+    /// <summary>
+    /// Implements the <c> New-ClientOption </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "ClientOption", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(OctopusClientOptions))]
     public class NewClientOption : PSCmdlet

@@ -47,6 +47,9 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Proxy
 {
+    /// <summary>
+    /// Implements the <c> New-Proxy </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "Proxy", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(ProxyResource))]
     public class NewProxy : PSCmdlet

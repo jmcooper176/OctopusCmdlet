@@ -44,7 +44,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Utility
 {
+    /// <summary>
+    /// Implements the <c> Trace-Exception </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsDiagnostic.Trace, "Exception")]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class TraceException : PSCmdlet
     {

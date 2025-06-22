@@ -44,7 +44,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Utility
 {
+    /// <summary>
+    /// Implements the <c> Trace-Command </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsDiagnostic.Trace, "Command")]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class TraceCommand : PSCmdlet
     {

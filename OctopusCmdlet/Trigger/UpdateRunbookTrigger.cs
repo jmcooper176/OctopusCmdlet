@@ -77,9 +77,13 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OctopusCmdlet.Runbook
+namespace OctopusCmdlet.Trigger
 {
+    /// <summary>
+    /// Implements the <c> Update-RunbookTrigger </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsData.Update, "RunbookTrigger", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(TriggerActionResource))]
     public class UpdateRunbookTrigger : PSCmdlet
     {

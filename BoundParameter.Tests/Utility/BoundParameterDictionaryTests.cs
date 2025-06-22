@@ -34,7 +34,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // Ignore Spelling: cmdlet
 using OctopusCmdlet.Utility;
 
-namespace VSTest.BoundParameterDictionary.Tests.Utility
+namespace BoundParameterDictionary.Tests.Utility
 {
     /// <summary>
     /// The bound parameter dictionary_ tests.
@@ -53,7 +53,7 @@ namespace VSTest.BoundParameterDictionary.Tests.Utility
         /// </returns>
         private static OctopusCmdlet.Utility.BoundParameterDictionary ClassUnderTestFactory()
         {
-            return new(new Dictionary<string, object>());
+            return [.. new Dictionary<string, object>()];
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace VSTest.BoundParameterDictionary.Tests.Utility
         /// </returns>
         private static OctopusCmdlet.Utility.BoundParameterDictionary ClassUnderTestFactory(IEqualityComparer<string> comparer)
         {
-            return new(new Dictionary<string, object>());
+            return new OctopusCmdlet.Utility.BoundParameterDictionary(new Dictionary<string, object>(), comparer);
         }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace VSTest.BoundParameterDictionary.Tests.Utility
             // Arrange
             var boundParameter = ClassUnderTestFactory();
             Array array = Array.Empty<object>();
-            int index = 0;
+            const int index = 0;
 
             // Act and Assert
             Assert.ThrowsException<ArgumentNullException>(() => boundParameter.CopyTo(array, index));
@@ -188,7 +188,7 @@ namespace VSTest.BoundParameterDictionary.Tests.Utility
             // Arrange
             var boundParameter = ClassUnderTestFactory();
             KeyValuePair<string, object>[] array = [.. boundParameter];
-            int index = 0;
+            const int index = 0;
 
             // Act and Assert
             Assert.ThrowsException<ArgumentNullException>(() => boundParameter.CopyTo(array, index));
@@ -199,8 +199,8 @@ namespace VSTest.BoundParameterDictionary.Tests.Utility
         {
             // Arrange
             var boundParameter = ClassUnderTestFactory();
-            string[] array = Array.Empty<string>();
-            int index = 0;
+            string[] array = [];
+            const int index = 0;
 
             // Act and Assert
             Assert.ThrowsException<ArgumentNullException>(() => boundParameter.CopyTo(array, index));
@@ -211,7 +211,7 @@ namespace VSTest.BoundParameterDictionary.Tests.Utility
         {
             // Arrange
             var boundParameter = ClassUnderTestFactory();
-            int expected = 0;
+            const int expected = 0;
 
             // Act
             var actual = boundParameter.EnsureCapacity(expected);
@@ -332,7 +332,7 @@ namespace VSTest.BoundParameterDictionary.Tests.Utility
         {
             // Arrange
             var boundParameter = ClassUnderTestFactory();
-            int expected = 0;
+            const int expected = 0;
 
             // Act
             boundParameter.TrimExcess(expected);
@@ -354,7 +354,7 @@ namespace VSTest.BoundParameterDictionary.Tests.Utility
         }
 
         [TestMethod]
-        public void TryGetAlternateLookup_EmptyBoundParameterDictionaryAlternateLookupReadOnlySpanChar_ResultIsNotNull()
+        public void TryGetAlternateLookup_EmptyBoundParameterDictionaryAlternateLookupReadOnlySpanChar_ResultIsTrue()
         {
             // Arrange
             var boundParameter = ClassUnderTestFactory();
@@ -363,7 +363,7 @@ namespace VSTest.BoundParameterDictionary.Tests.Utility
             var result = boundParameter.TryGetAlternateLookup<ReadOnlySpan<char>>(out Dictionary<string, object>.AlternateLookup<ReadOnlySpan<char>> lookup);
 
             // Assert
-            Assert.IsNotNull(result);
+            Assert.IsTrue(result);
         }
 
         [TestMethod]

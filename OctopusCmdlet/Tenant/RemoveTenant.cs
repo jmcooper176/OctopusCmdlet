@@ -44,7 +44,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Tenant
 {
+    /// <summary>
+    /// Implements the <c> Remove-Tenant </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.Remove, "Tenant", ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class RemoveTenant : PSCmdlet
     {

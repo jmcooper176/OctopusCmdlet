@@ -43,7 +43,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Utility
 {
+    /// <summary>
+    /// Implements the <c> Trace-Progress </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsDiagnostic.Trace, "Progress")]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class TraceProgress : WriteProgress
     {
@@ -51,7 +55,9 @@ namespace OctopusCmdlet.Utility
 
         public void TraceProgressCommand(ProgressRecord progressRecord)
         {
-            InformationRecord ir = new($"{progressRecord.Activity} {progressRecord.StatusDescription}", progressRecord.ActivityId.ToString(CultureInfo.CurrentCulture));
+            InformationRecord ir = new(
+                $"{progressRecord.Activity} {progressRecord.StatusDescription}",
+                progressRecord.ActivityId.ToString(CultureInfo.CurrentCulture));
             base.WriteInformation(ir);
             base.WriteProgressCommand(progressRecord);
         }
@@ -74,9 +80,11 @@ namespace OctopusCmdlet.Utility
                 statusDescription = $"Current Operation {currentOperation} Processing:";
             }
 
-            InformationRecord ir = new($"{activity} {statusDescription}", activityId.ToString(CultureInfo.CurrentCulture));
+            InformationRecord ir = new(
+                $"{activity} {statusDescription}",
+                activityId.ToString(CultureInfo.CurrentCulture));
             base.WriteInformation(ir);
-            base.WriteProgressCommand(activityId, 0.0, recordType, currentOperation);
+            base.WriteProgressCommand(activityId, 0.0, recordType, currentOperation, parentActivityId);
         }
 
         #endregion Public Methods

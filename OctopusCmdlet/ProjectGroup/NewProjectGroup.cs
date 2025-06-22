@@ -47,6 +47,9 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.ProjectGroup
 {
+    /// <summary>
+    /// Implements the <c> New-ProjectGroup </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "ProjectGroup", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(ProjectGroupResource))]
     public class NewProjectGroup : PSCmdlet

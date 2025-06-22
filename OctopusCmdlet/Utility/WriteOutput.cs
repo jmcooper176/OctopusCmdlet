@@ -569,7 +569,7 @@ namespace OctopusCmdlet.Utility
 
             try
             {
-                if ((column >= 0 && column < Console.BufferWidth) && (row >= 0 && row < Console.BufferHeight))
+                if (column >= 0 && column < Console.BufferWidth && (row >= 0 && row < Console.BufferHeight))
                 {
                     Console.SetCursorPosition(column, row);
                 }
@@ -626,13 +626,13 @@ namespace OctopusCmdlet.Utility
         /// Specifies the objects to write to the <paramref name="stream" />.
         /// </param>
         /// <param name="noEnumerate">
-        /// By default, this cmdlet always enumerates its output. The `NoEnumerate` parameter suppresses the default behavior, and
-        /// prevents this cmdlet from enumerating output.
+        /// By default, this <see cref="cmdlet" /> always enumerates its output. The `NoEnumerate` parameter suppresses the default
+        /// behavior, and prevents this <see cref="cmdlet" /> from enumerating output.
         /// <para>
         /// The `NoEnumerate` parameter is only useful within a pipeline. Trying to see the effects of `NoEnumerate` in the console
-        /// is problematic because PowerShell adds `Out-Default` to the end of every command line, which results in enumeration. But
-        /// if you pipe this cmdlet with `NoEnumerate` to another cmdlet, the downstream cmdlet receives the collection object, not
-        /// the enumerated items of the collection.
+        /// is problematic because <see cref="PowerShell" /> adds `Out-Default` to the end of every command line, which results in
+        /// enumeration. But if you pipe this <see cref="cmdlet" /> with `NoEnumerate` to another <see cref="cmdlet" />, the
+        /// downstream <see cref="cmdlet" /> receives the collection object, not the enumerated items of the collection.
         /// </para>
         /// </param>
         /// <param name="noNewLine">
@@ -767,13 +767,13 @@ namespace OctopusCmdlet.Utility
         /// Specifies the objects to write to the <see cref="FileStream" /> which writes to <paramref name="path" />.
         /// </param>
         /// <param name="noEnumerate">
-        /// By default, this cmdlet always enumerates its output. The `NoEnumerate` parameter suppresses the default behavior, and
-        /// prevents this cmdlet from enumerating output.
+        /// By default, this <see cref="cmdlet" /> always enumerates its output. The `NoEnumerate` parameter suppresses the default
+        /// behavior, and prevents this <see cref="cmdlet" /> from enumerating output.
         /// <para>
         /// The `NoEnumerate` parameter is only useful within a pipeline. Trying to see the effects of `NoEnumerate` in the console
-        /// is problematic because PowerShell adds `Out-Default` to the end of every command line, which results in enumeration. But
-        /// if you pipe this cmdlet with `NoEnumerate` to another cmdlet, the downstream cmdlet receives the collection object, not
-        /// the enumerated items of the collection.
+        /// is problematic because <see cref="PowerShell" /> adds `Out-Default` to the end of every command line, which results in
+        /// enumeration. But if you pipe this <see cref="cmdlet" /> with `NoEnumerate` to another <see cref="cmdlet" />, the
+        /// downstream <see cref="cmdlet" /> receives the collection object, not the enumerated items of the collection.
         /// </para>
         /// </param>
         /// <param name="noNewLine">
@@ -850,13 +850,13 @@ namespace OctopusCmdlet.Utility
         /// Specifies the objects to write to the <see cref="Stream" />.
         /// </param>
         /// <param name="noEnumerate">
-        /// By default, this cmdlet always enumerates its output. The `NoEnumerate` parameter suppresses the default behavior, and
-        /// prevents this cmdlet from enumerating output.
+        /// By default, this <see cref="cmdlet" /> always enumerates its output. The `NoEnumerate` parameter suppresses the default
+        /// behavior, and prevents this <see cref="cmdlet" /> from enumerating output.
         /// <para>
         /// The `NoEnumerate` parameter is only useful within a pipeline. Trying to see the effects of `NoEnumerate` in the console
-        /// is problematic because PowerShell adds `Out-Default` to the end of every command line, which results in enumeration. But
-        /// if you pipe this cmdlet with `NoEnumerate` to another cmdlet, the downstream cmdlet receives the collection object, not
-        /// the enumerated items of the collection.
+        /// is problematic because <see cref="PowerShell" /> adds `Out-Default` to the end of every command line, which results in
+        /// enumeration. But if you pipe this <see cref="cmdlet" /> with `NoEnumerate` to another <see cref="cmdlet" />, the
+        /// downstream <see cref="cmdlet" /> receives the collection object, not the enumerated items of the collection.
         /// </para>
         /// </param>
         /// <param name="noNewLine">
@@ -892,13 +892,13 @@ namespace OctopusCmdlet.Utility
         /// Specifies the objects to write to the <see cref="FileStream" /> which writes to <paramref name="path" />.
         /// </param>
         /// <param name="noEnumerate">
-        /// By default, this cmdlet always enumerates its output. The `NoEnumerate` parameter suppresses the default behavior, and
-        /// prevents this cmdlet from enumerating output.
+        /// By default, this <see cref="cmdlet" /> always enumerates its output. The `NoEnumerate` parameter suppresses the default
+        /// behavior, and prevents this <see cref="cmdlet" /> from enumerating output.
         /// <para>
         /// The `NoEnumerate` parameter is only useful within a pipeline. Trying to see the effects of `NoEnumerate` in the console
-        /// is problematic because PowerShell adds `Out-Default` to the end of every command line, which results in enumeration. But
-        /// if you pipe this cmdlet with `NoEnumerate` to another cmdlet, the downstream cmdlet receives the collection object, not
-        /// the enumerated items of the collection.
+        /// is problematic because <see cref="PowerShell" /> adds `Out-Default` to the end of every command line, which results in
+        /// enumeration. But if you pipe this <see cref="cmdlet" /> with `NoEnumerate` to another <see cref="cmdlet" />, the
+        /// downstream <see cref="cmdlet" /> receives the collection object, not the enumerated items of the collection.
         /// </para>
         /// </param>
         /// <param name="noNewLine">
@@ -933,13 +933,13 @@ namespace OctopusCmdlet.Utility
         /// Specifies the objects to write to the <see cref="FileStream" /> which writes to <paramref name="path" />.
         /// </param>
         /// <param name="noEnumerate">
-        /// By default, this cmdlet always enumerates its output. The `NoEnumerate` parameter suppresses the default behavior, and
-        /// prevents this cmdlet from enumerating output.
+        /// By default, this <see cref="cmdlet" /> always enumerates its output. The `NoEnumerate` parameter suppresses the default
+        /// behavior, and prevents this <see cref="cmdlet" /> from enumerating output.
         /// <para>
         /// The `NoEnumerate` parameter is only useful within a pipeline. Trying to see the effects of `NoEnumerate` in the console
-        /// is problematic because PowerShell adds `Out-Default` to the end of every command line, which results in enumeration. But
-        /// if you pipe this cmdlet with `NoEnumerate` to another cmdlet, the downstream cmdlet receives the collection object, not
-        /// the enumerated items of the collection.
+        /// is problematic because <see cref="PowerShell" /> adds `Out-Default` to the end of every command line, which results in
+        /// enumeration. But if you pipe this <see cref="cmdlet" /> with `NoEnumerate` to another <see cref="cmdlet" />, the
+        /// downstream <see cref="cmdlet" /> receives the collection object, not the enumerated items of the collection.
         /// </para>
         /// </param>
         /// <param name="noNewLine">
@@ -976,13 +976,13 @@ namespace OctopusCmdlet.Utility
         /// Specifies the objects to write to the <see cref="Stream" />.
         /// </param>
         /// <param name="noEnumerate">
-        /// By default, this cmdlet always enumerates its output. The `NoEnumerate` parameter suppresses the default behavior, and
-        /// prevents this cmdlet from enumerating output.
+        /// By default, this <see cref="cmdlet" /> always enumerates its output. The `NoEnumerate` parameter suppresses the default
+        /// behavior, and prevents this <see cref="cmdlet" /> from enumerating output.
         /// <para>
         /// The `NoEnumerate` parameter is only useful within a pipeline. Trying to see the effects of `NoEnumerate` in the console
-        /// is problematic because PowerShell adds `Out-Default` to the end of every command line, which results in enumeration. But
-        /// if you pipe this cmdlet with `NoEnumerate` to another cmdlet, the downstream cmdlet receives the collection object, not
-        /// the enumerated items of the collection.
+        /// is problematic because <see cref="PowerShell" /> adds `Out-Default` to the end of every command line, which results in
+        /// enumeration. But if you pipe this <see cref="cmdlet" /> with `NoEnumerate` to another <see cref="cmdlet" />, the
+        /// downstream <see cref="cmdlet" /> receives the collection object, not the enumerated items of the collection.
         /// </para>
         /// </param>
         /// <param name="noNewLine">
@@ -1022,13 +1022,13 @@ namespace OctopusCmdlet.Utility
         /// Specifies the objects to write to the <see cref="FileStream" /> which writes to <paramref name="path" />.
         /// </param>
         /// <param name="noEnumerate">
-        /// By default, this cmdlet always enumerates its output. The `NoEnumerate` parameter suppresses the default behavior, and
-        /// prevents this cmdlet from enumerating output.
+        /// By default, this <see cref="cmdlet" /> always enumerates its output. The `NoEnumerate` parameter suppresses the default
+        /// behavior, and prevents this <see cref="cmdlet" /> from enumerating output.
         /// <para>
         /// The `NoEnumerate` parameter is only useful within a pipeline. Trying to see the effects of `NoEnumerate` in the console
-        /// is problematic because PowerShell adds `Out-Default` to the end of every command line, which results in enumeration. But
-        /// if you pipe this cmdlet with `NoEnumerate` to another cmdlet, the downstream cmdlet receives the collection object, not
-        /// the enumerated items of the collection.
+        /// is problematic because <see cref="PowerShell" /> adds `Out-Default` to the end of every command line, which results in
+        /// enumeration. But if you pipe this <see cref="cmdlet" /> with `NoEnumerate` to another <see cref="cmdlet" />, the
+        /// downstream <see cref="cmdlet" /> receives the collection object, not the enumerated items of the collection.
         /// </para>
         /// </param>
         /// <param name="noNewLine">
@@ -1067,13 +1067,13 @@ namespace OctopusCmdlet.Utility
         /// Specifies the objects to write to the <see cref="FileStream" /> which writes to <paramref name="path" />.
         /// </param>
         /// <param name="noEnumerate">
-        /// By default, this cmdlet always enumerates its output. The `NoEnumerate` parameter suppresses the default behavior, and
-        /// prevents this cmdlet from enumerating output.
+        /// By default, this <see cref="cmdlet" /> always enumerates its output. The `NoEnumerate` parameter suppresses the default
+        /// behavior, and prevents this <see cref="cmdlet" /> from enumerating output.
         /// <para>
         /// The `NoEnumerate` parameter is only useful within a pipeline. Trying to see the effects of `NoEnumerate` in the console
-        /// is problematic because PowerShell adds `Out-Default` to the end of every command line, which results in enumeration. But
-        /// if you pipe this cmdlet with `NoEnumerate` to another cmdlet, the downstream cmdlet receives the collection object, not
-        /// the enumerated items of the collection.
+        /// is problematic because <see cref="PowerShell" /> adds `Out-Default` to the end of every command line, which results in
+        /// enumeration. But if you pipe this <see cref="cmdlet" /> with `NoEnumerate` to another <see cref="cmdlet" />, the
+        /// downstream <see cref="cmdlet" /> receives the collection object, not the enumerated items of the collection.
         /// </para>
         /// </param>
         /// <param name="noNewLine">
@@ -1252,13 +1252,13 @@ namespace OctopusCmdlet.Utility
         /// Specifies the objects to write to the <see cref="FileStream" /> which writes to <paramref name="path" />.
         /// </param>
         /// <param name="noEnumerate">
-        /// By default, this cmdlet always enumerates its output. The `NoEnumerate` parameter suppresses the default behavior, and
-        /// prevents this cmdlet from enumerating output.
+        /// By default, this <see cref="cmdlet" /> always enumerates its output. The `NoEnumerate` parameter suppresses the default
+        /// behavior, and prevents this <see cref="cmdlet" /> from enumerating output.
         /// <para>
         /// The `NoEnumerate` parameter is only useful within a pipeline. Trying to see the effects of `NoEnumerate` in the console
-        /// is problematic because PowerShell adds `Out-Default` to the end of every command line, which results in enumeration. But
-        /// if you pipe this cmdlet with `NoEnumerate` to another cmdlet, the downstream cmdlet receives the collection object, not
-        /// the enumerated items of the collection.
+        /// is problematic because <see cref="PowerShell" /> adds `Out-Default` to the end of every command line, which results in
+        /// enumeration. But if you pipe this <see cref="cmdlet" /> with `NoEnumerate` to another <see cref="cmdlet" />, the
+        /// downstream <see cref="cmdlet" /> receives the collection object, not the enumerated items of the collection.
         /// </para>
         /// </param>
         /// <param name="noNewLine">
@@ -1288,13 +1288,13 @@ namespace OctopusCmdlet.Utility
         /// Specifies the objects to write to the <see cref="TextWriter" /> which writes to <see cref="Console.OpenStandardError()" />.
         /// </param>
         /// <param name="noEnumerate">
-        /// By default, this cmdlet always enumerates its output. The `NoEnumerate` parameter suppresses the default behavior, and
-        /// prevents this cmdlet from enumerating output.
+        /// By default, this <see cref="cmdlet" /> always enumerates its output. The `NoEnumerate` parameter suppresses the default
+        /// behavior, and prevents this <see cref="cmdlet" /> from enumerating output.
         /// <para>
         /// The `NoEnumerate` parameter is only useful within a pipeline. Trying to see the effects of `NoEnumerate` in the console
-        /// is problematic because PowerShell adds `Out-Default` to the end of every command line, which results in enumeration. But
-        /// if you pipe this cmdlet with `NoEnumerate` to another cmdlet, the downstream cmdlet receives the collection object, not
-        /// the enumerated items of the collection.
+        /// is problematic because <see cref="PowerShell" /> adds `Out-Default` to the end of every command line, which results in
+        /// enumeration. But if you pipe this <see cref="cmdlet" /> with `NoEnumerate` to another <see cref="cmdlet" />, the
+        /// downstream <see cref="cmdlet" /> receives the collection object, not the enumerated items of the collection.
         /// </para>
         /// </param>
         /// <param name="noNewLine">
@@ -1321,13 +1321,13 @@ namespace OctopusCmdlet.Utility
         /// Specifies the objects to write to the <see cref="TextWriter" /> which writes to <see cref="Console.OpenStandardOutput()" />.
         /// </param>
         /// <param name="noEnumerate">
-        /// By default, this cmdlet always enumerates its output. The `NoEnumerate` parameter suppresses the default behavior, and
-        /// prevents this cmdlet from enumerating output.
+        /// By default, this <see cref="cmdlet" /> always enumerates its output. The `NoEnumerate` parameter suppresses the default
+        /// behavior, and prevents this <see cref="cmdlet" /> from enumerating output.
         /// <para>
         /// The `NoEnumerate` parameter is only useful within a pipeline. Trying to see the effects of `NoEnumerate` in the console
-        /// is problematic because PowerShell adds `Out-Default` to the end of every command line, which results in enumeration. But
-        /// if you pipe this cmdlet with `NoEnumerate` to another cmdlet, the downstream cmdlet receives the collection object, not
-        /// the enumerated items of the collection.
+        /// is problematic because <see cref="PowerShell" /> adds `Out-Default` to the end of every command line, which results in
+        /// enumeration. But if you pipe this <see cref="cmdlet" /> with `NoEnumerate` to another <see cref="cmdlet" />, the
+        /// downstream <see cref="cmdlet" /> receives the collection object, not the enumerated items of the collection.
         /// </para>
         /// </param>
         /// <param name="noNewLine">

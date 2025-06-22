@@ -46,7 +46,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Space
 {
+    /// <summary>
+    /// Implements the <c> New-SpaceAsyncRepository </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "SpaceAsyncRepository", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(ISpaceRepository))]
     public class NewSpaceAsyncRepository : PSCmdlet
     {

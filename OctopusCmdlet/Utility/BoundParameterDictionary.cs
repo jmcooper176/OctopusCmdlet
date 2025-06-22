@@ -347,7 +347,7 @@ namespace OctopusCmdlet.Utility
             }
             else
             {
-                this.Values.CopyTo(array.Cast<object>().ToArray(), index);
+                this.Values.CopyTo([.. array.Cast<object>()], index);
             }
         }
 
@@ -486,11 +486,19 @@ namespace OctopusCmdlet.Utility
             return ParameterComparer.ValidateParameterName(name) && this.ContainsKey(name);
         }
 
-        /// <summary> Tests whether <see cref="BoundParameterDictionary" /> has a valid <see cref="PowerShell"/> parameter <paramref
-        /// name="name" /> with <paramref name="value" />.. </summary> <param name="name"> Specifies the parameter name to locate.
-        /// </param> <param name="value"> Specifies the parameter value to locate. </param> <returns> <see langref="<see
-        /// langref="true"/>"/> if parameter <paramref name="name" /> with <paramref name="value" /> is present; otherwise, <see
-        /// langref="false"/>. </returns>
+        /// <summary>
+        /// Tests whether <see cref="BoundParameterDictionary" /> has a valid <see cref="PowerShell" /> parameter
+        /// <paramref name="name" /> with <paramref name="value" />.
+        /// </summary>
+        /// <param name="name">
+        /// Specifies the parameter name to locate.
+        /// </param>
+        /// <param name="value">
+        /// Specifies the parameter value to locate.
+        /// </param>
+        /// <returns>
+        /// <see langref="true" /> if parameter <paramref name="name" /> with <paramref name="value" /> is present; otherwise, <see langref="false" />.
+        /// </returns>
         public bool HasParameter(string name, object value)
         {
             return ParameterComparer.ValidateParameterName(name) && this.Contains(new KeyValuePair<string, object>(name, value));
@@ -545,13 +553,25 @@ namespace OctopusCmdlet.Utility
             dictionary.TrimExcess(capacity);
         }
 
-        /// <summary> Attempts to add the specified <paramref name="key" /> and <paramref name="value" /> to <see
-        /// cref="BoundParameterDictionary" />. </summary> <param name="key"> Specifies the key of the element to add. </param>
-        /// <param name="value"> Specifies the value of the element to add. </param> <returns> <see langref="<see
-        /// langref="true"/>"/> if the key/value pair was successfully added to <see cref="BoundParameterDictionary" />; otherwise,
-        /// <see langref="false"/>. </returns> <exception cref="ArgumentException"> Throws if <paramref name="key" /> is not a valid
-        /// <see cref="PowerShell"/> parameter name. </exception> <exception cref="ArgumentNullException"> Throws if <paramref
-        /// name="key" /> is <see langref="null"/> or empty. </exception>
+        /// <summary>
+        /// Attempts to add the specified <paramref name="key" /> and <paramref name="value" /> to <see cref="BoundParameterDictionary" />.
+        /// </summary>
+        /// <param name="key">
+        /// Specifies the key of the element to add.
+        /// </param>
+        /// <param name="value">
+        /// Specifies the value of the element to add.
+        /// </param>
+        /// <returns>
+        /// <see langref="true" /> if the key/value pair was successfully added to <see cref="BoundParameterDictionary" />;
+        /// otherwise, <see langref="false" />.
+        /// </returns>
+        /// <exception cref="ArgumentException">
+        /// Throws if <paramref name="key" /> is not a valid <see cref="PowerShell" /> parameter name.
+        /// </exception>
+        /// <exception cref="ArgumentNullException">
+        /// Throws if <paramref name="key" /> is <see langref="null" /> or empty.
+        /// </exception>
         public bool TryAdd(string key, object value)
         {
             if (string.IsNullOrEmpty(key))

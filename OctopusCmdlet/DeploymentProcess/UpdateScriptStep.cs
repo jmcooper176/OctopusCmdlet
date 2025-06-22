@@ -45,7 +45,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.DeploymentProcess
 {
-    [Cmdlet(VerbsData.Update, "ScriptStep")]
+    /// <summary>
+    /// Implements the <c> Update-ScriptStep </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
+    [Cmdlet(VerbsData.Update, "ScriptStep", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     public class UpdateScriptStep : PSCmdlet
     {
         #region Public Constructors

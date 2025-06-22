@@ -45,10 +45,26 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.TagSet
 {
+    /// <summary>
+    /// Implements the <c> New-TagSet </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "TagSet", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(TagSetResource))]
     public class NewTagSet : PSCmdlet
     {
+        #region Public Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NewTagSet" /> class.
+        /// </summary>
+        public NewTagSet()
+        {
+            CmdletName = MyInvocation.MyCommand.Name;
+        }
+
+        #endregion Public Constructors
+
         #region Public Properties
 
         /// <summary>

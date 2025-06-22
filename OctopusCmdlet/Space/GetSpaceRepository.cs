@@ -69,8 +69,7 @@ namespace OctopusCmdlet.Space
         #region Public Properties
 
         /// <summary>
-        /// Gets or sets a value indicating the <see cref="IOctopusAsyncRepository" /> to use <c> ForSpace(
-        /// <see cref="SpaceResource" />) </c>.
+        /// Gets or sets a value indicating the <see cref="IOctopusAsyncRepository" /> to use ForSpace( <see cref="SpaceResource" />).
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = "UsingAsyncRepository", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]

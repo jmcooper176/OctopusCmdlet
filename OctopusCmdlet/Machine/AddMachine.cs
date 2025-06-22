@@ -45,7 +45,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Machine
 {
-    [Cmdlet(VerbsCommon.Add, "Machine")]
+    /// <summary>
+    /// Implements the <c> Add-Machine </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
+    [Cmdlet(VerbsCommon.Add, "Machine", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [Alias("Add-Target")]
     [OutputType(typeof(void))]
     public class AddMachine : PSCmdlet

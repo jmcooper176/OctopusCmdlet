@@ -42,6 +42,9 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Utility
 {
+    /// <summary>
+    /// Implements the <c> New-ProgressRecord </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "ProgressRecord", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(ProgressRecord))]
     public class NewProgressRecord : PSCmdlet

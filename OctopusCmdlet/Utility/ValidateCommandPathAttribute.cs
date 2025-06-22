@@ -48,7 +48,7 @@ namespace OctopusCmdlet.Utility
         #region Private Fields
 
         /// <summary>
-        /// Constant string representing the PowerShell PSProvider separator.
+        /// Constant string representing the <see cref="PowerShell" /> PSProvider separator.
         /// </summary>
         private const string PSPROVIDER_SEPARATOR = ":\\";
 
@@ -138,7 +138,7 @@ namespace OctopusCmdlet.Utility
         /// Throws if, after removing the PSProvider, the application name left is <see langref="null" />, empty, or all whitespace.
         /// </exception>
         /// <exception cref="ArgumentException">
-        /// Throws if the PowerShell application name has no value (does not exist).
+        /// Throws if the <see cref="PowerShell" /> application name has no value (does not exist).
         /// </exception>
         protected override void Validate(object arguments, EngineIntrinsics engineIntrinsics)
         {
@@ -163,14 +163,14 @@ namespace OctopusCmdlet.Utility
                     UseFuzzyMatching = UseFuzzyMatching,
                 };
 
-                if (ArgumentList != null && ArgumentList.Length > 0)
+                if (ArgumentList?.Length > 0)
                 {
                     getCommand.ArgumentList = ArgumentList;
                 }
 
                 getCommand.CommandType = All ? CommandTypes.All : CommandTypes.Cmdlet;
 
-                if (FullyQualifiedModule != null && FullyQualifiedModule.Length > 0 && Module == null)
+                if (FullyQualifiedModule?.Length > 0 && Module == null)
                 {
                     getCommand.FullyQualifiedModule = FullyQualifiedModule;
                 }

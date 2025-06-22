@@ -81,7 +81,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.RunbookSnapshot
 {
+    /// <summary>
+    /// Implements the <c> New-RunbookSnapshot </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "RunbookSnapshot", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(RunbookSnapshotResource))]
     public class NewRunbookSnapshot : PSCmdlet
     {

@@ -45,7 +45,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.DeploymentProcess
 {
-    [Cmdlet(VerbsCommon.Remove, "ScriptStep")]
+    /// <summary>
+    /// Implements the <c> Remove-ScriptStep </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
+    [Cmdlet(VerbsCommon.Remove, "ScriptStep", ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class RemoveScriptStep : PSCmdlet
     {

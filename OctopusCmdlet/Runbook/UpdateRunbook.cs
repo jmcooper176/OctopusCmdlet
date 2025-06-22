@@ -79,7 +79,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Runbook
 {
+    /// <summary>
+    /// Implements the <c> Update-Runbook </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsData.Update, "Runbook", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(RunbookResource))]
     public class UpdateRunbook : PSCmdlet
     {

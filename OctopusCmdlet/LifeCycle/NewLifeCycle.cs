@@ -47,6 +47,9 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.LifeCycle
 {
+    /// <summary>
+    /// Implements the <c> New-LifeCycle </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "LifeCycle", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(LifecycleResource))]
     public class NewLifeCycle : PSCmdlet

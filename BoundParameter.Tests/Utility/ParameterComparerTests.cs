@@ -60,7 +60,7 @@ namespace BoundParameterDictionary.Tests.Utility
         {
             // Arrange
             var parameterComparer = new ParameterComparer();
-            ReadOnlySpan<char> alternate = default(global::System.ReadOnlySpan<global::System.Char>);
+            ReadOnlySpan<char> alternate = default;
 
             // Act
             var result = parameterComparer.Create(alternate);
@@ -89,7 +89,7 @@ namespace BoundParameterDictionary.Tests.Utility
         {
             // Arrange
             var parameterComparer = new ParameterComparer();
-            ReadOnlySpan<char> alternate = default(global::System.ReadOnlySpan<global::System.Char>);
+            ReadOnlySpan<char> alternate = default;
             string other = string.Empty;
 
             // Act
@@ -104,8 +104,8 @@ namespace BoundParameterDictionary.Tests.Utility
         {
             // Arrange
             var parameterComparer = new ParameterComparer();
-            string? x = null;
-            string? y = null;
+            const string? x = null;
+            const string? y = null;
 
             // Act
             var result = parameterComparer.Equals(x, y);
@@ -133,7 +133,7 @@ namespace BoundParameterDictionary.Tests.Utility
         {
             // Arrange
             var parameterComparer = new ParameterComparer();
-            ReadOnlySpan<char> alternate = default(global::System.ReadOnlySpan<global::System.Char>);
+            ReadOnlySpan<char> alternate = default;
 
             // Act
             var result = parameterComparer.GetHashCode(alternate);
@@ -160,7 +160,7 @@ namespace BoundParameterDictionary.Tests.Utility
         public void ValidateParameterName_NullName_ResultIsFalse()
         {
             // Arrange
-            string? name = null;
+            const string? name = null;
 
             // Act
             var result = ParameterComparer.ValidateParameterName(name);

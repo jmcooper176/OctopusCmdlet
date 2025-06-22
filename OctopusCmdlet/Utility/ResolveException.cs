@@ -179,92 +179,35 @@ namespace OctopusCmdlet.Utility
         /// </returns>
         public virtual Exception ResolveExceptionCommand(ErrorCategory category, string? message = null, Exception? innerException = null)
         {
-            switch (category)
+            return category switch
             {
-                case ErrorCategory.CloseError:
-                    return new PSObjectDisposedException(message, innerException);
-
-                case ErrorCategory.ConnectionError:
-                    return new CommunicationException(message, innerException);
-
-                case ErrorCategory.DeadlockDetected:
-                    return new AbandonedMutexException(message, innerException);
-
-                case ErrorCategory.InvalidArgument:
-                    return new PSArgumentException(message, innerException);
-
-                case ErrorCategory.InvalidData:
-                    return new InvalidDataException(message, innerException);
-
-                case ErrorCategory.InvalidResult:
-                    return new ApplicationFailedException(message, innerException);
-
-                case ErrorCategory.InvalidType:
-                    return new PSInvalidCastException(message, innerException);
-
-                case ErrorCategory.LimitsExceeded:
-                    return new PSArgumentOutOfRangeException(message, innerException);
-
-                case ErrorCategory.MetadataError:
-                    return new MetadataException(message, innerException);
-
-                case ErrorCategory.NotEnabled:
-                    return new PSNotSupportedException(message, innerException);
-
-                case ErrorCategory.NotImplemented:
-                    return new PSNotImplementedException(message, innerException);
-
-                case ErrorCategory.NotInstalled:
-                    return new CommandNotFoundException(message, innerException);
-
-                case ErrorCategory.FromStdErr:
-                case ErrorCategory.NotSpecified:
-                    return new Exception(message, innerException);
-
-                case ErrorCategory.ObjectNotFound:
-                    return new FileNotFoundException(message, innerException);
-
-                case ErrorCategory.OperationStopped:
-                    return new PipelineStoppedException(message, innerException);
-
-                case ErrorCategory.OperationTimeout:
-                    return new TimeoutException(message, innerException);
-
-                case ErrorCategory.ParserError:
-                    return new ParseException(message, innerException);
-
-                case ErrorCategory.ProtocolError:
-                    return new WebException(message, innerException);
-
-                case ErrorCategory.QuotaExceeded:
-                    return new QuotaExceededException(message, innerException);
-
-                case ErrorCategory.ResourceBusy:
-                    return new ServerTooBusyException(message, innerException);
-
-                case ErrorCategory.AuthenticationError:
-                case ErrorCategory.PermissionDenied:
-                case ErrorCategory.ResourceExists:
-                    return new UnauthorizedAccessException(message, innerException);
-
-                case ErrorCategory.ResourceUnavailable:
-                    return new ItemNotFoundException(message, innerException);
-
-                case ErrorCategory.SecurityError:
-                    return new PSSecurityException(message, innerException);
-
-                case ErrorCategory.SyntaxError:
-                    return new ParseException(message, innerException);
-
-                case ErrorCategory.DeviceError:
-                case ErrorCategory.OpenError:
-                case ErrorCategory.ReadError:
-                case ErrorCategory.WriteError:
-                    return new IOException(message, innerException);
-
-                default:
-                    return new PSInvalidOperationException(message, innerException);
-            }
+                ErrorCategory.CloseError => new PSObjectDisposedException(message, innerException),
+                ErrorCategory.ConnectionError => new CommunicationException(message, innerException),
+                ErrorCategory.DeadlockDetected => new AbandonedMutexException(message, innerException),
+                ErrorCategory.InvalidArgument => new PSArgumentException(message, innerException),
+                ErrorCategory.InvalidData => new InvalidDataException(message, innerException),
+                ErrorCategory.InvalidResult => new ApplicationFailedException(message, innerException),
+                ErrorCategory.InvalidType => new PSInvalidCastException(message, innerException),
+                ErrorCategory.LimitsExceeded => new PSArgumentOutOfRangeException(message, innerException),
+                ErrorCategory.MetadataError => new MetadataException(message, innerException),
+                ErrorCategory.NotEnabled => new PSNotSupportedException(message, innerException),
+                ErrorCategory.NotImplemented => new PSNotImplementedException(message, innerException),
+                ErrorCategory.NotInstalled => new CommandNotFoundException(message, innerException),
+                ErrorCategory.FromStdErr or ErrorCategory.NotSpecified => new Exception(message, innerException),
+                ErrorCategory.ObjectNotFound => new FileNotFoundException(message, innerException),
+                ErrorCategory.OperationStopped => new PipelineStoppedException(message, innerException),
+                ErrorCategory.OperationTimeout => new TimeoutException(message, innerException),
+                ErrorCategory.ParserError => new ParseException(message, innerException),
+                ErrorCategory.ProtocolError => new WebException(message, innerException),
+                ErrorCategory.QuotaExceeded => new QuotaExceededException(message, innerException),
+                ErrorCategory.ResourceBusy => new ServerTooBusyException(message, innerException),
+                ErrorCategory.AuthenticationError or ErrorCategory.PermissionDenied or ErrorCategory.ResourceExists => new UnauthorizedAccessException(message, innerException),
+                ErrorCategory.ResourceUnavailable => new ItemNotFoundException(message, innerException),
+                ErrorCategory.SecurityError => new PSSecurityException(message, innerException),
+                ErrorCategory.SyntaxError => new ParseException(message, innerException),
+                ErrorCategory.DeviceError or ErrorCategory.OpenError or ErrorCategory.ReadError or ErrorCategory.WriteError => new IOException(message, innerException),
+                _ => new PSInvalidOperationException(message, innerException),
+            };
         }
 
         #endregion Public Methods
@@ -276,7 +219,7 @@ namespace OctopusCmdlet.Utility
         {
             base.BeginProcessing();
 
-            BoundParameterDictionary bp = new(MyInvocation.BoundParameters);
+            BoundParameterDictionary bp = [.. MyInvocation.BoundParameters];
 
             if (Stopping)
             {

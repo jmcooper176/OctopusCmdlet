@@ -44,7 +44,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Tentacle
 {
+    /// <summary>
+    /// Implements for <c> Register-ListeningTentacle </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsLifecycle.Register, "ListeningTentacle", ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class RegisterListeningTentacle : PSCmdlet
     {

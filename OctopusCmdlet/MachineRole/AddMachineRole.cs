@@ -45,7 +45,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.MachineRole
 {
-    [Cmdlet(VerbsCommon.Add, "MachineRole")]
+    /// <summary>
+    /// Implements the <c> Add-MachineRole </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
+    [Cmdlet(VerbsCommon.Add, "MachineRole", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [Alias("Add-TargetRole")]
     [OutputType(typeof(void))]
     public class AddMachineRole : PSCmdlet

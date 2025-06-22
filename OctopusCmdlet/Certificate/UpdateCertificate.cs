@@ -47,7 +47,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Certificate
 {
-    [Cmdlet(VerbsData.Update, "Certificate")]
+    /// <summary>
+    /// Implements the <c> Update-Certificate </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
+    [Cmdlet(VerbsData.Update, "Certificate", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(CertificateResource))]
     public class UpdateCertificate : PSCmdlet
     {

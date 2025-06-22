@@ -47,6 +47,9 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Client
 {
+    /// <summary>
+    /// Implements the <c> New-HttpOctopusClient </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "HttpOctopusClient", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(IHttpOctopusClient))]
     public class NewHttpOctopusClient : PSCmdlet

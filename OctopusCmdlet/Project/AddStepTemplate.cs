@@ -45,7 +45,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Project
 {
-    [Cmdlet(VerbsCommon.Add, "StepTemplate")]
+    /// <summary>
+    /// Implements the <c> Add-StepTemplate </c><see cref="Powershell" /><see cref="Cmdlet" />.
+    /// </summary>
+    [Cmdlet(VerbsCommon.Add, "StepTemplate", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class AddStepTemplate : PSCmdlet
     {

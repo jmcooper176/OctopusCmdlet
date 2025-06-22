@@ -45,7 +45,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Project
 {
+    /// <summary>
+    /// Implements the <c> Copy-Project </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.Copy, "Project")]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class CopyProject : PSCmdlet
     {

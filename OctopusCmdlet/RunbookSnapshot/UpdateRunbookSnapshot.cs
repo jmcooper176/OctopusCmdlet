@@ -80,7 +80,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.RunbookSnapshot
 {
-    [Cmdlet(VerbsData.Update, "RunbookSnapshot")]
+    /// <summary>
+    /// Implements the <c> Update-RunbookSnapshot </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
+    [Cmdlet(VerbsData.Update, "RunbookSnapshot", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(RunbookSnapshotResource))]
     public class UpdateRunbookSnapshot : PSCmdlet
     {

@@ -44,7 +44,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.TagSet
 {
+    /// <summary>
+    /// Implements the <c> Remove-TagSet </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.Remove, "TagSet", ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class RemoveTagSet : PSCmdlet
     {

@@ -78,7 +78,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Runbook
 {
-    [Cmdlet(VerbsData.Publish, "Runbook")]
+    /// <summary>
+    /// Implements the <c> Publish-Runbook </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
+    [Cmdlet(VerbsData.Publish, "Runbook", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class PublishRunbook : PSCmdlet
     {

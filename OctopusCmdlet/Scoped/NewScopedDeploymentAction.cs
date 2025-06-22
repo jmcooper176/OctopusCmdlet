@@ -45,7 +45,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Scoped
 {
+    /// <summary>
+    /// Implements the <c> New-ScopedDeploymentAction </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "ScopedDeploymentAction", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(ScopedDeploymentActionResource))]
     public class NewScopedDeploymentAction : PSCmdlet
     {

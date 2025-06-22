@@ -79,7 +79,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Trigger
 {
+    /// <summary>
+    /// Implements the <c> New-Runbook </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "RunbookTrigger", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(TriggerActionResource))]
     public class NewRunbookTrigger : PSCmdlet
     {

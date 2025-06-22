@@ -39,7 +39,11 @@ using System.Management.Automation;
 
 namespace OctopusCmdlet.Utility
 {
+    /// <summary>
+    /// Implements the <c> Trace-Information </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsDiagnostic.Trace, "Information")]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class TraceInformation : PSCmdlet
     {

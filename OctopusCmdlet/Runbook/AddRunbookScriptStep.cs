@@ -78,7 +78,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Runbook
 {
-    [Cmdlet(VerbsCommon.Add, "RunbookScriptStep")]
+    /// <summary>
+    /// Implements the <c> Add-RunbookScriptStep </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
+    [Cmdlet(VerbsCommon.Add, "RunbookScriptStep", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class AddRunbookScriptStep : PSCmdlet
     {

@@ -68,14 +68,14 @@ namespace NewErrorRecord.Tests.Utility
         {
             // Arrange
             Exception exception = new InvalidOperationException("This is a test exception message");
-            ErrorCategory category = default(global::System.Management.Automation.ErrorCategory);
-            string expected = "Test-NewErrorRecordCommand-2";
+            const ErrorCategory category = default(global::System.Management.Automation.ErrorCategory);
+            const string expected = "Test-NewErrorRecordCommand-2";
             object? targetObject = null;
-            string? recommendedAction = null;
-            string? categoryActivity = null;
-            string? categoryReason = null;
-            string? categoryTargetName = null;
-            string? categoryTargetType = null;
+            const string? recommendedAction = null;
+            const string? categoryActivity = null;
+            const string? categoryReason = null;
+            const string? categoryTargetName = null;
+            const string? categoryTargetType = null;
 
             // Act
             var result = NewErrorRecord.NewErrorRecordCommand(
@@ -100,14 +100,14 @@ namespace NewErrorRecord.Tests.Utility
         {
             // Arrange
             Exception expected = new InvalidOperationException("This is a test exception message");
-            ErrorCategory category = default(global::System.Management.Automation.ErrorCategory);
-            string errorId = "Test-NewErrorRecordCommand-2";
+            const ErrorCategory category = default(global::System.Management.Automation.ErrorCategory);
+            const string errorId = "Test-NewErrorRecordCommand-2";
             object? targetObject = null;
-            string? recommendedAction = null;
-            string? categoryActivity = null;
-            string? categoryReason = null;
-            string? categoryTargetName = null;
-            string? categoryTargetType = null;
+            const string? recommendedAction = null;
+            const string? categoryActivity = null;
+            const string? categoryReason = null;
+            const string? categoryTargetName = null;
+            const string? categoryTargetType = null;
 
             // Act
             var result = NewErrorRecord.NewErrorRecordCommand(
@@ -132,14 +132,14 @@ namespace NewErrorRecord.Tests.Utility
         {
             // Arrange
             Exception exception = new InvalidOperationException("This is a test exception message");
-            ErrorCategory category = default(global::System.Management.Automation.ErrorCategory);
-            string errorId = "Test-NewErrorRecordCommand-2";
+            const ErrorCategory category = default(global::System.Management.Automation.ErrorCategory);
+            const string errorId = "Test-NewErrorRecordCommand-2";
             object? expected = null;
-            string? recommendedAction = null;
-            string? categoryActivity = null;
-            string? categoryReason = null;
-            string? categoryTargetName = null;
-            string? categoryTargetType = null;
+            const string? recommendedAction = null;
+            const string? categoryActivity = null;
+            const string? categoryReason = null;
+            const string? categoryTargetName = null;
+            const string? categoryTargetType = null;
 
             // Act
             var result = NewErrorRecord.NewErrorRecordCommand(
@@ -164,14 +164,14 @@ namespace NewErrorRecord.Tests.Utility
         {
             // Arrange
             Exception exception = new InvalidOperationException("This is a test exception message");
-            ErrorCategory category = default(global::System.Management.Automation.ErrorCategory);
-            string errorId = "Test-NewErrorRecordCommand-2";
+            const ErrorCategory category = default(global::System.Management.Automation.ErrorCategory);
+            const string errorId = "Test-NewErrorRecordCommand-2";
             object? targetObject = null;
-            string? recommendedAction = null;
-            string? categoryActivity = null;
-            string? categoryReason = null;
-            string? categoryTargetName = null;
-            string? categoryTargetType = null;
+            const string? recommendedAction = null;
+            const string? categoryActivity = null;
+            const string? categoryReason = null;
+            const string? categoryTargetName = null;
+            const string? categoryTargetType = null;
 
             // Act
             var actual = NewErrorRecord.NewErrorRecordCommand(
@@ -194,15 +194,15 @@ namespace NewErrorRecord.Tests.Utility
         public void NewErrorRecordCommand_MessageNoExtra_ExpectedErrorCategoryEqualsActualErrorCategory()
         {
             // Arrange
-            string message = "This is a test message";
-            ErrorCategory expected = default(global::System.Management.Automation.ErrorCategory);
-            string errorId = "Test-NewErrorRecordCommand-1";
+            const string message = "This is a test message";
+            const ErrorCategory expected = default(global::System.Management.Automation.ErrorCategory);
+            const string errorId = "Test-NewErrorRecordCommand-1";
             object? targetObject = null;
-            string? recommendedAction = null;
-            string? categoryActivity = null;
-            string? categoryReason = null;
-            string? categoryTargetName = null;
-            string? categoryTargetType = null;
+            const string? recommendedAction = null;
+            const string? categoryActivity = null;
+            const string? categoryReason = null;
+            const string? categoryTargetName = null;
+            const string? categoryTargetType = null;
 
             // Act
             var result = NewErrorRecord.NewErrorRecordCommand<PSInvalidOperationException>(
@@ -226,15 +226,15 @@ namespace NewErrorRecord.Tests.Utility
         public void NewErrorRecordCommand_MessageNoExtra_ExpectedErrorIdEqualsActualErrorId()
         {
             // Arrange
-            string message = "This is a test message";
-            ErrorCategory errorCategory = default(global::System.Management.Automation.ErrorCategory);
-            string expected = "Test-NewErrorRecordCommand-1";
+            const string message = "This is a test message";
+            const ErrorCategory errorCategory = default(global::System.Management.Automation.ErrorCategory);
+            const string expected = "Test-NewErrorRecordCommand-1";
             object? targetObject = null;
-            string? recommendedAction = null;
-            string? categoryActivity = null;
-            string? categoryReason = null;
-            string? categoryTargetName = null;
-            string? categoryTargetType = null;
+            const string? recommendedAction = null;
+            const string? categoryActivity = null;
+            const string? categoryReason = null;
+            const string? categoryTargetName = null;
+            const string? categoryTargetType = null;
 
             // Act
             var result = NewErrorRecord.NewErrorRecordCommand<PSInvalidOperationException>(
@@ -258,15 +258,15 @@ namespace NewErrorRecord.Tests.Utility
         public void NewErrorRecordCommand_MessageNoExtra_ExpectedMessageEqualsActualMessage()
         {
             // Arrange
-            string expected = "This is a test message";
-            ErrorCategory category = default(global::System.Management.Automation.ErrorCategory);
-            string errorId = "Test-NewErrorRecordCommand-1";
+            const string expected = "This is a test message";
+            const ErrorCategory category = default(global::System.Management.Automation.ErrorCategory);
+            const string errorId = "Test-NewErrorRecordCommand-1";
             object? targetObject = null;
-            string? recommendedAction = null;
-            string? categoryActivity = null;
-            string? categoryReason = null;
-            string? categoryTargetName = null;
-            string? categoryTargetType = null;
+            const string? recommendedAction = null;
+            const string? categoryActivity = null;
+            const string? categoryReason = null;
+            const string? categoryTargetName = null;
+            const string? categoryTargetType = null;
 
             // Act
             var result = NewErrorRecord.NewErrorRecordCommand<PSInvalidOperationException>(
@@ -290,15 +290,15 @@ namespace NewErrorRecord.Tests.Utility
         public void NewErrorRecordCommand_MessageNoExtra_ExpectedTargetObjectEqualsActualTargetObject()
         {
             // Arrange
-            string message = "This is a test message";
-            ErrorCategory errorCategory = default(global::System.Management.Automation.ErrorCategory);
-            string errorId = "Test-NewErrorRecordCommand-1";
+            const string message = "This is a test message";
+            const ErrorCategory errorCategory = default(global::System.Management.Automation.ErrorCategory);
+            const string errorId = "Test-NewErrorRecordCommand-1";
             object? expected = null;
-            string? recommendedAction = null;
-            string? categoryActivity = null;
-            string? categoryReason = null;
-            string? categoryTargetName = null;
-            string? categoryTargetType = null;
+            const string? recommendedAction = null;
+            const string? categoryActivity = null;
+            const string? categoryReason = null;
+            const string? categoryTargetName = null;
+            const string? categoryTargetType = null;
 
             // Act
             var result = NewErrorRecord.NewErrorRecordCommand<PSInvalidOperationException>(
@@ -322,15 +322,15 @@ namespace NewErrorRecord.Tests.Utility
         public void NewErrorRecordCommand_MessageNoExtra_ReturnTypeErrorRecord()
         {
             // Arrange
-            string message = "This is a test message";
-            ErrorCategory category = default(global::System.Management.Automation.ErrorCategory);
-            string errorId = "Test-NewErrorRecordCommand-1";
+            const string message = "This is a test message";
+            const ErrorCategory category = default(global::System.Management.Automation.ErrorCategory);
+            const string errorId = "Test-NewErrorRecordCommand-1";
             object? targetObject = null;
-            string? recommendedAction = null;
-            string? categoryActivity = null;
-            string? categoryReason = null;
-            string? categoryTargetName = null;
-            string? categoryTargetType = null;
+            const string? recommendedAction = null;
+            const string? categoryActivity = null;
+            const string? categoryReason = null;
+            const string? categoryTargetName = null;
+            const string? categoryTargetType = null;
 
             // Act
             var actual = NewErrorRecord.NewErrorRecordCommand<PSInvalidOperationException>(
@@ -364,11 +364,11 @@ namespace NewErrorRecord.Tests.Utility
                 "Test-InvalidOperation-3",
                 ErrorCategory.InvalidOperation,
                 null);
-            string? recommendedAction = "Test recommended action";
-            string? expected = "Processing Record";
-            string? categoryReason = null;
-            string? categoryTargetName = null;
-            string? categoryTargetType = null;
+            const string? recommendedAction = "Test recommended action";
+            const string? expected = "Processing Record";
+            const string? categoryReason = null;
+            const string? categoryTargetName = null;
+            const string? categoryTargetType = null;
 
             // Act
             var result = NewErrorRecord.UpdateErrorRecordCommand(
@@ -394,11 +394,11 @@ namespace NewErrorRecord.Tests.Utility
                 "Test-InvalidOperation-3",
                 ErrorCategory.InvalidOperation,
                 null);
-            string? recommendedAction = "Test recommended action";
-            string? categoryActivity = "Processing Record";
-            string? expected = "Invalid Operation";
-            string? categoryTargetName = null;
-            string? categoryTargetType = null;
+            const string? recommendedAction = "Test recommended action";
+            const string? categoryActivity = "Processing Record";
+            const string? expected = "Invalid Operation";
+            const string? categoryTargetName = null;
+            const string? categoryTargetType = null;
 
             // Act
             var result = NewErrorRecord.UpdateErrorRecordCommand(
@@ -424,11 +424,11 @@ namespace NewErrorRecord.Tests.Utility
                 "Test-InvalidOperation-3",
                 ErrorCategory.InvalidOperation,
                 null);
-            string? recommendedAction = "Test recommended action";
-            string? categoryActivity = "Processing Record";
-            string? categoryReason = "Invalid Operation";
-            string? expected = "InputObject";
-            string? categoryTargetType = null;
+            const string? recommendedAction = "Test recommended action";
+            const string? categoryActivity = "Processing Record";
+            const string? categoryReason = "Invalid Operation";
+            const string? expected = "InputObject";
+            const string? categoryTargetType = null;
 
             // Act
             var result = NewErrorRecord.UpdateErrorRecordCommand(
@@ -454,11 +454,11 @@ namespace NewErrorRecord.Tests.Utility
                 "Test-InvalidOperation-3",
                 ErrorCategory.InvalidOperation,
                 null);
-            string? recommendedAction = "Test recommended action";
-            string? categoryActivity = "Processing Record";
-            string? categoryReason = "Invalid Operation";
-            string? categoryTargetName = "InputObject";
-            string? expected = "System.String";
+            const string? recommendedAction = "Test recommended action";
+            const string? categoryActivity = "Processing Record";
+            const string? categoryReason = "Invalid Operation";
+            const string? categoryTargetName = "InputObject";
+            const string? expected = "System.String";
 
             // Act
             var result = NewErrorRecord.UpdateErrorRecordCommand(
@@ -484,11 +484,11 @@ namespace NewErrorRecord.Tests.Utility
                 "Test-InvalidOperation-3",
                 ErrorCategory.InvalidOperation,
                 null);
-            string? expected = "Test recommended action";
-            string? categoryActivity = null;
-            string? categoryReason = null;
-            string? categoryTargetName = null;
-            string? categoryTargetType = null;
+            const string? expected = "Test recommended action";
+            const string? categoryActivity = null;
+            const string? categoryReason = null;
+            const string? categoryTargetName = null;
+            const string? categoryTargetType = null;
 
             // Act
             var result = NewErrorRecord.UpdateErrorRecordCommand(
@@ -514,11 +514,11 @@ namespace NewErrorRecord.Tests.Utility
                 "Test-InvalidOperation-3",
                 ErrorCategory.InvalidOperation,
                 null);
-            string? recommendedAction = null;
-            string? categoryActivity = null;
-            string? categoryReason = null;
-            string? categoryTargetName = null;
-            string? categoryTargetType = null;
+            const string? recommendedAction = null;
+            const string? categoryActivity = null;
+            const string? categoryReason = null;
+            const string? categoryTargetName = null;
+            const string? categoryTargetType = null;
 
             // Act
             var actual = NewErrorRecord.UpdateErrorRecordCommand(

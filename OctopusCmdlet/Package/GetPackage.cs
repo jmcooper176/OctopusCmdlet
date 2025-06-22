@@ -44,7 +44,7 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OctopusCmdlet.Feed
+namespace OctopusCmdlet.Package
 {
     /// <summary>
     /// Implements the <c> Get-Package </c><see cref="PowerShell" /><see cref="Cmdlet" />.

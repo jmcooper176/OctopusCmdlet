@@ -47,7 +47,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Channel
 {
-    [Cmdlet(VerbsData.Update, "Channel")]
+    /// <summary>
+    /// Implements the <c> Update-Channel </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
+    [Cmdlet(VerbsData.Update, "Channel", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(ChannelResource))]
     public class UpdateChannel : PSCmdlet
     {

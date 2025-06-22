@@ -47,6 +47,9 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Endpoint
 {
+    /// <summary>
+    /// Implements the <c> New-Endpoint </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "Endpoint", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(OctopusServerEndpoint))]
     public class NewEndpoint : PSCmdlet

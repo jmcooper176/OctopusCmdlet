@@ -47,6 +47,9 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Repository
 {
+    /// <summary>
+    /// Implements the <c> New-CommonAsyncRepository </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "CommonAsyncRepository", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(IOctopusCommonAsyncRepository))]
     public class NewCommonAsyncRepository : PSCmdlet

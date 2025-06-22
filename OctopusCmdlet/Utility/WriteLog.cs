@@ -105,7 +105,7 @@ namespace OctopusCmdlet.Utility
         /// <param name="level">
         /// Specifies the <see cref="LogLevel" /> to use. Defaults to <see cref="LogLevel.Error" />.
         /// </param>
-        [LoggerMessage(EventId = 5, EventName = "WriteErrorRecordLog", Level = LogLevel.Error, Message = "Non-terminating Error {errorRecord}", SkipEnabledCheck = true)]
+        [LoggerMessage(EventId = 6, EventName = "WriteErrorRecordLog", Level = LogLevel.Error, Message = "Non-terminating Error {errorRecord}", SkipEnabledCheck = true)]
         public static partial void WriteErrorLog(this ILogger logger, ErrorRecord errorRecord, LogLevel level = LogLevel.Error);
 
         /// <summary>

@@ -45,7 +45,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Certificate
 {
-    [Cmdlet(VerbsCommon.Remove, "Certificate")]
+    /// <summary>
+    /// Implements the <c> Remove-Certificate </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
+    [Cmdlet(VerbsCommon.Remove, "Certificate", ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class RemoveCertificate : PSCmdlet
     {

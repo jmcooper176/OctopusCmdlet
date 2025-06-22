@@ -81,6 +81,9 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.GCP
 {
+    /// <summary>
+    /// Implements the <c> New-GoogleCloudAccount </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "GoogleCloudAccount", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(GoogleCloudAccountResource))]
     public class NewGoogleCloudAccount : PSCmdlet

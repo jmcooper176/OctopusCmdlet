@@ -45,7 +45,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.DeploymentProcess
 {
-    [Cmdlet(VerbsCommon.Add, "ScriptStepCondition")]
+    /// <summary>
+    /// Implements the <c> Add-ScriptStepCondition </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
+    [Cmdlet(VerbsCommon.Add, "ScriptStepCondition", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class AddScriptStepCondition : PSCmdlet
     {

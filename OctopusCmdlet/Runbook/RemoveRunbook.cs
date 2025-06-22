@@ -77,7 +77,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Runbook
 {
+    /// <summary>
+    /// Implements the <c> Remove-Runbook </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.Remove, "Runbook", ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class RemoveRunbook : PSCmdlet
     {

@@ -47,7 +47,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Package
 {
+    /// <summary>
+    /// Implements the <c> Find-Package </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.Find, "Package")]
+    [CmdletBinding]
     [OutputType(typeof(PackageResource))]
     public class FindPackage : PSCmdlet
     {

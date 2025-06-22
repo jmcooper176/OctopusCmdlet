@@ -45,7 +45,11 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Deploy
 {
+    /// <summary>
+    /// Implements the <c> Deploy-Release </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsLifecycle.Deploy, "Release")]
+    [CmdletBinding]
     [OutputType(typeof(void))]
     public class DeployRelease : PSCmdlet
     {

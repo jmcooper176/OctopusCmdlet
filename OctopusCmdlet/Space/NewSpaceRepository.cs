@@ -46,10 +46,26 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Space
 {
+    /// <summary>
+    /// Implements the <c> New-SpaceRepository </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "SpaceRepository", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [CmdletBinding]
     [OutputType(typeof(ISpaceRepository))]
     public class NewSpaceRepository : PSCmdlet
     {
+        #region Public Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NewSpaceRepository" /> class.
+        /// </summary>
+        public NewSpaceRepository()
+        {
+            CmdletName = MyInvocation.MyCommand.Name;
+        }
+
+        #endregion Public Constructors
+
         #region Public Properties
 
         /// <summary>

@@ -47,6 +47,9 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Repository
 {
+    /// <summary>
+    /// Implements the <c> New-CommonRepository </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "CommonRepository", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(IOctopusCommonRepository))]
     public class NewCommonRepository : PSCmdlet

@@ -47,6 +47,9 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.PropertyValue
 {
+    /// <summary>
+    /// Implements the <c> New-PropertyValue </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "PropertyValue", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(PropertyValueResource))]
     public class NewPropertyValue : PSCmdlet

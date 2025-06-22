@@ -47,6 +47,9 @@ using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Deployment
 {
+    /// <summary>
+    /// Implements the <c> New-DeploymentActionSlug </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "DeploymentActionSlug", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(DeploymentActionSlugPackageResource))]
     public class NewDeploymentActionSlugPackage : PSCmdlet

@@ -41,7 +41,11 @@ using System.Runtime.CompilerServices;
 
 namespace OctopusCmdlet.Utility
 {
+    /// <summary>
+    /// Implements the <c> Format-ErrorId </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.Format, "ErrorId", DefaultParameterSetName = "UsingException")]
+    [CmdletBinding]
     [OutputType(typeof(string))]
     public class FormatErrorId : PSCmdlet
     {

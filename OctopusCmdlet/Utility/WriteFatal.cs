@@ -72,6 +72,9 @@ using System.Management.Automation;
 
 namespace OctopusCmdlet.Utility
 {
+    /// <summary>
+    /// Implements the <c> Write-Fatal </c><see cref="Powershell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommunications.Write, "Fatal")]
     [OutputType(typeof(void))]
     public class WriteFatal : PSCmdlet

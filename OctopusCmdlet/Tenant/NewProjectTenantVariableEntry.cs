@@ -43,8 +43,11 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OctopusCmdlet.Project
+namespace OctopusCmdlet.Tenant
 {
+    /// <summary>
+    /// Implements the <c> New-ProjectTenantVariableEntry </c><see cref="PowerShell" /><see cref="Cmdlet" />.
+    /// </summary>
     [Cmdlet(VerbsCommon.New, "ProjectTenantVariableEntry", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(ProjectTenantVariableEntry))]
     public class NewProjectTenantVariableEntry : PSCmdlet
