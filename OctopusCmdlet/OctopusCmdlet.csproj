@@ -42,7 +42,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.6" />
     <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.5.1" />
-    <PackageReference Include="Octopus.Client" Version="15.2.2170" />
+    <PackageReference Include="Octopus.Client" Version="15.2.2178" />
   </ItemGroup>
 
   <ItemGroup>
