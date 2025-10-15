@@ -1,0 +1,101 @@
+Add         a           Common          Low
+Clear       cl          Common          Medium
+Close       cs          Common          Medium
+Copy        cp          Common          Medium
+Enter       et          Common          Medium
+Exit        ex          Common          Low
+Find        fd          Common       
+Format      f           Common       
+Get         g           Common       
+Hide        h           Common          Low
+Join        j           Common       
+Lock        lk          Common          Low
+Move        m           Common          Medium
+New         n           Common          Low
+Open        op          Common       
+Optimize    om          Common          Low
+Push        pu          Common       
+Pop         pop         Common       
+Redo        re          Common          Low
+Remove      r           Common          Medium
+Rename      rn          Common          Low
+Reset       rs          Common          Low
+Resize      rz          Common          Low
+Search      sr          Common       
+Select      sc          Common       
+Set         s           Common          Medium
+Show        sh          Common       
+Skip        sk          Common       
+Split       sl          Common       
+Step        st          Common       
+Switch      sw          Common       
+Undo        un          Common          Low
+Unlock      uk          Common          Low
+Watch       wc          Common       
+Connect     cc          Communication   Low
+Disconnect  dc          Communication   Low
+Read        rd          Communication
+Receive     rc          Communication
+Send        sd          Communication   Low
+Write       wr          Communication   Low
+Backup      ba          Data            Low
+Checkpoint  ch          Data         
+Compare     cr          Data         
+Compress    cm          Data            Low
+Convert     cv          Data         
+ConvertFrom cf          Data         
+ConvertTo   ct          Data         
+Dismount    dm          Data            Medium
+Edit        ed          Data            Low
+Expand      en          Data         
+Export      ep          Data         
+Group       gp          Data         
+Import      ip          Data            Low
+Initialize  in          Data            Low
+Limit       l           Data         
+Merge       mg          Data            Medium
+Mount       mt          Data            Medium
+Out         o           Data         
+Publish     pb          Data            Low
+Restore     rr          Data            Medium
+Save        sv          Data            Low
+Sync        sy          Data            Medium
+Unpublish   ub          Data            Low
+Update      ud          Data            Medium
+Debug       db          Diagnostic      Low
+Measure     ms          Diagnostic   
+Ping        pi          Diagnostic   
+Repair      rp          Diagnostic      Medium
+Resolve     rv          Diagnostic   
+Test        t           Diagnostic   
+Trace       tr          Diagnostic   
+Approve     ap          Lifecycle       Medium
+Assert      as          Lifecycle    
+Build       bd          Lifecycle       Low
+Check       ck          Lifecycle
+Complete    cmp         Lifecycle    
+Confirm     cn          Lifecycle       Medium
+Deny        dn          Lifecycle       Low
+Deploy      dp          Lifecycle       Medium
+Disable     d           Lifecycle       Low
+Enable      e           Lifecycle       Low
+Install     is          Lifecycle       Medium
+Invoke      i           Lifecycle       Low
+Register    rg          Lifecycle       Low
+Request     rq          Lifecycle    
+Restart     rt          Lifecycle       Low
+Resume      ru          Lifecycle       Low
+Start       sa          Lifecycle       Low
+Stop        sp          Lifecycle       Low
+Submit      sb          Lifecycle    
+Suspend     ss          Lifecycle       Low
+Uninstall   us          Lifecycle       Medium
+Unregister  ur          Lifecycle       Low
+Wait        w           Lifecycle    
+Use         u           Other        
+Block       bl          Security        Medium
+Grant       gr          Security        Medium
+Protect     pt          Security        Medium
+Revoke      rk          Security        Medium
+Unblock     ul          Security        Medium
+Unprotect   up          Security        Medium

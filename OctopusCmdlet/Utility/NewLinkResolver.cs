@@ -50,6 +50,18 @@ namespace OctopusCmdlet.Utility
     [OutputType(typeof(ILinkResolver))]
     public class NewLinkResolver : PSCmdlet
     {
+        #region Public Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NewLinkResolver" /> class.
+        /// </summary>
+        public NewLinkResolver()
+        {
+            CmdletName = MyInvocation.MyCommand.Name;
+        }
+
+        #endregion Public Constructors
+
         #region Public Properties
 
         /// <summary>

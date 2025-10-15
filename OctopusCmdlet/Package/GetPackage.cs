@@ -35,7 +35,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 using Octopus.Client.Model;
 
 using OctopusCmdlet.LifeCycle;
-using OctopusCmdlet.Utility;
+using OctopusCmdlet.Utility.ErrorRecord;
 
 using System;
 using System.Collections.Generic;

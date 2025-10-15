@@ -51,6 +51,18 @@ namespace OctopusCmdlet.Utility
     [OutputType(typeof(OctopusResponse))]
     public class NewResponse : PSCmdlet
     {
+        #region Public Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NewResponse" /> class.
+        /// </summary>
+        public NewResponse()
+        {
+            CmdletName = MyInvocation.MyCommand.Name;
+        }
+
+        #endregion Public Constructors
+
         #region Public Properties
 
         /// <summary>

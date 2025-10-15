@@ -52,6 +52,18 @@ namespace OctopusCmdlet.Tenant
     [OutputType(typeof(ProjectTenantVariableEntry))]
     public class NewProjectTenantVariableEntry : PSCmdlet
     {
+        #region Public Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NewProjectTenantVariableEntry" /> class.
+        /// </summary>
+        public NewProjectTenantVariableEntry()
+        {
+            CmdletName = MyInvocation.MyCommand.Name;
+        }
+
+        #endregion Public Constructors
+
         #region Public Properties
 
         /// <summary>

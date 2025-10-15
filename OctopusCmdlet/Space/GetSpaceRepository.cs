@@ -35,15 +35,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 using Octopus.Client;
 using Octopus.Client.Model;
 
-using OctopusCmdlet.Account;
-using OctopusCmdlet.Utility;
+using OctopusCmdlet.Utility.ErrorRecord;
+using OctopusCmdlet.Utility.Message;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Space
 {

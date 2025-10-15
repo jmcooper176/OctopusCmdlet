@@ -70,7 +70,6 @@
     <Folder Include="Database\" />
     <Folder Include="Defect\" />
     <Folder Include="Deploy\" />
-    <Folder Include="DeploymentAction\" />
     <Folder Include="DeploymentFreeze\" />
     <Folder Include="DeploymentPreview\" />
     <Folder Include="DeploymentSettings\" />
@@ -134,7 +133,6 @@
     <Folder Include="ServiceNow\" />
     <Folder Include="ServiceFabric\" />
     <Folder Include="Server\" />
-    <Folder Include="Scoped\" />
     <Folder Include="Scheduler\" />
     <Folder Include="ScheduledTask\" />
     <Folder Include="RunbookSnapshot\" />

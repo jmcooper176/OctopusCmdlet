@@ -32,11 +32,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **************************************************************************** */
 
 // Ignore Spelling: cmdlet
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Utility
 {
@@ -145,25 +141,25 @@ namespace OctopusCmdlet.Utility
         public static bool IsNull<TKey, TValue>(KeyValuePair<TKey, TValue?> pair) => NullOrEmpty.IsNull(pair.Value);
 
         /// <summary>
-        /// Determines whether <paramref name="value" /> is <see langref="null" />, empty, or all <see cref="ASCII" /> characters.
+        /// Determines whether <paramref name="value" /> is <see langref="null" />, empty, or all <see cref="Ascii" /> characters.
         /// </summary>
         /// <param name="value">
         /// Specifies the string under test.
         /// </param>
         /// <returns>
-        /// <see langref="true" /> if <paramref name="value" /> is <see langref="null" />, empty, or all <see cref="ASCII" />
+        /// <see langref="true" /> if <paramref name="value" /> is <see langref="null" />, empty, or all <see cref="Ascii" />
         /// characters; otherwise, <see langref="false" />.
         /// </returns>
         public static bool IsNullOrAscii(string? value) => NullOrEmpty.IsNullOrEmpty(value) || NullOrEmpty.IsNullOrValue(value, c => char.IsAscii(c));
 
         /// <summary>
-        /// Determines whether <paramref name="value" /> is <see langref="null" />, empty, or all <see cref="ASCII" /> decimal digit.
+        /// Determines whether <paramref name="value" /> is <see langref="null" />, empty, or all <see cref="Ascii" /> decimal digit.
         /// </summary>
         /// <param name="value">
         /// Specifies the string under test.
         /// </param>
         /// <returns>
-        /// <see langref="true" /> if <paramref name="value" /> is <see langref="null" />, empty, or all <see cref="ASCII" />
+        /// <see langref="true" /> if <paramref name="value" /> is <see langref="null" />, empty, or all <see cref="Ascii" />
         /// decimal digit; otherwise, <see langref="false" />.
         /// </returns>
         public static bool IsNullOrAsciiDigit(string? value) => NullOrEmpty.IsNullOrEmpty(value) || NullOrEmpty.IsNullOrValue(value, c => char.IsAsciiDigit(c));

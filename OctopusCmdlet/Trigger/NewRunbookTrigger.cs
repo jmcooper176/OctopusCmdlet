@@ -87,6 +87,18 @@ namespace OctopusCmdlet.Trigger
     [OutputType(typeof(TriggerActionResource))]
     public class NewRunbookTrigger : PSCmdlet
     {
+        #region Public Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NewRunbookTrigger" /> class.
+        /// </summary>
+        public NewRunbookTrigger()
+        {
+            CmdletName = MyInvocation.MyCommand.Name;
+        }
+
+        #endregion Public Constructors
+
         #region Public Properties
 
         /// <summary>

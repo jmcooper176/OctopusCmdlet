@@ -36,6 +36,10 @@ using Microsoft.ApplicationInsights.DataContracts;
 
 using Octopus.Client.Model.Forms;
 
+using OctopusCmdlet.Utility.BoundParameters;
+using OctopusCmdlet.Utility.ErrorRecord;
+using OctopusCmdlet.Utility.Message;
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -50,7 +54,7 @@ using SessionState = System.Management.Automation.SessionState;
 namespace OctopusCmdlet.Utility
 {
     /// <summary>
-    /// Implements <c> Defaultt Processing </c> for the <see cref="PowerShell" /> protected methods
+    /// Implements <c> Default Processing </c> for the <see cref="PowerShell" /> protected methods
     /// <see cref="Cmdlet.BeginProcessing" />, <see cref="Cmdlet.ProcessRecord" />, <see cref="Cmdlet.StopProcessing" />, and <see cref="Cmdlet.EndProcessing" />.
     /// </summary>
     public static class DefaultProcessing
@@ -179,7 +183,7 @@ namespace OctopusCmdlet.Utility
         /// <param name="preInvoke">
         /// Specifies the delegate to optionally call to perform additional <see cref="Cmdlet.BeginProcessing" /> actions. Maybe <see langref="null" />.
         /// </param>
-        public static void InitializeBeginProcessing(string cmdletName, bool stopping, Action? preInvoke = null)
+        public static void InitializeBeginProcessing(string cmdletName, bool stopping, System.Action? preInvoke = null)
         {
             if (stopping)
             {
@@ -220,7 +224,7 @@ namespace OctopusCmdlet.Utility
             SessionState sessionState,
             bool stopping,
             bool force = false,
-            Action? preInvoke = null)
+            System.Action? preInvoke = null)
         {
             BoundParameterDictionary bp = [.. boundParameters];
 
@@ -241,7 +245,7 @@ namespace OctopusCmdlet.Utility
         /// <param name="dispose">
         /// Specifies the cleanup delegate for the <see cref="Cmdlet" />.
         /// </param>
-        public static void InitializeEndProcessing(string cmdletName, bool stopping, Action dispose)
+        public static void InitializeEndProcessing(string cmdletName, bool stopping, System.Action dispose)
         {
             dispose.Invoke();
 
@@ -265,7 +269,7 @@ namespace OctopusCmdlet.Utility
         /// <param name="processRecord">
         /// Specifies the record processing delegate for the <see cref="Cmdlet" />.
         /// </param>
-        public static void InitializeProcessRecord(string cmdletName, bool stopping, Action processRecord)
+        public static void InitializeProcessRecord(string cmdletName, bool stopping, System.Action processRecord)
         {
             if (stopping)
             {
@@ -298,7 +302,7 @@ namespace OctopusCmdlet.Utility
         /// Always throws when <see cref="Cmdlet.StopProcessing" /> is called.
         /// </exception>
         [DoesNotReturn]
-        public static void InitializeStopProcessing(string cmdletName, Cmdlet cmdlet, [CallerLineNumber] int lineNumber = 0, Action? dispose = null)
+        public static void InitializeStopProcessing(string cmdletName, Cmdlet cmdlet, [CallerLineNumber] int lineNumber = 0, System.Action? dispose = null)
         {
             dispose?.Invoke();
 
@@ -401,7 +405,7 @@ namespace OctopusCmdlet.Utility
             if (sessionState.TestSessionStateVariable(name))
             {
                 value = sessionState.GetPreferenceVariable<TPreference>(name);
-                return true;
+                return value != null;
             }
             else
             {
@@ -425,7 +429,7 @@ namespace OctopusCmdlet.Utility
             if (sessionState.TestSessionStateVariable(name))
             {
                 value = sessionState.GetSessionStateVariable(name);
-                return true;
+                return value != null;
             }
             else
             {
