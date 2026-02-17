@@ -54,6 +54,18 @@ namespace OctopusCmdlet.Space
     [OutputType(typeof(ISpaceRepository))]
     public class NewSpaceAsyncRepository : PSCmdlet
     {
+        #region Public Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NewSpaceAsyncRepository" /> class.
+        /// </summary>
+        public NewSpaceAsyncRepository()
+        {
+            CmdletName = MyInvocation.MyCommand.Name;
+        }
+
+        #endregion Public Constructors
+
         #region Public Properties
 
         /// <summary>

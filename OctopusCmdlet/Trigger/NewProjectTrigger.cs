@@ -52,6 +52,18 @@ namespace OctopusCmdlet.Trigger
     [OutputType(typeof(ProjectTriggerResource))]
     public class NewProjectTrigger : PSCmdlet
     {
+        #region Public Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NewProjectTrigger" /> class.
+        /// </summary>
+        public NewProjectTrigger()
+        {
+            CmdletName = MyInvocation.MyCommand.Name;
+        }
+
+        #endregion Public Constructors
+
         #region Public Properties
 
         /// <summary>

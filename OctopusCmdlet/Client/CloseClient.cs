@@ -33,16 +33,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 // Ignore Spelling: cmdlet
 using Octopus.Client;
-using Octopus.Client.Model.Forms;
 
 using OctopusCmdlet.Utility;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OctopusCmdlet.Client
 {
@@ -83,6 +77,7 @@ namespace OctopusCmdlet.Client
 
         #region Public Methods
 
+        /// <inheritdoc />
         public void Dispose()
         {
             // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
@@ -111,6 +106,7 @@ namespace OctopusCmdlet.Client
             DefaultProcessing.InitializeBeginProcessing(CmdletName, MyInvocation.BoundParameters, SessionState, Stopping, Force.IsPresent);
         }
 
+        /// <inheritdoc />
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
