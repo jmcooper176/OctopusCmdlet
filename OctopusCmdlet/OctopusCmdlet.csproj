@@ -160,6 +160,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.15" />
     <None Include="..\images\logo.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
